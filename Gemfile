@@ -12,6 +12,12 @@ group :production do
   gem 'pg'
 end
 
+# for travis, see http://about.travis-ci.org/docs/user/languages/ruby/
+group :test do
+  gem 'rake'
+end
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 
@@ -28,6 +34,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 #https://github.com/seyhunak/twitter-bootstrap-rails
+gem "therubyracer"
+gem "less-rails"
 gem 'twitter-bootstrap-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
