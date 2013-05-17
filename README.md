@@ -1,5 +1,7 @@
 = README
+
 Work in progress. Here's the
+
 === Backlog
 
 * As an Organizer, I can set up an event containing a venue and date and time.
