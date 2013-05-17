@@ -131,6 +131,7 @@ DEPENDENCIES
   less-rails
   pg
   rails (= 4.0.0.rc1)
+  rake
   sass-rails (~> 4.0.0.rc1)
   sdoc
   sqlite3
