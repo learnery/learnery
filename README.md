@@ -1,8 +1,12 @@
-= README
+[![Build Status](https://travis-ci.org/learnery/learnery.png?branch=master)](https://travis-ci.org/learnery/learnery)
+
+README
+========
 
 Work in progress. Here's the
 
-=== Backlog
+Backlog
+---------------
 
 * As an Organizer, I can set up an event containing a venue and date and time.
 * as an organizer, I can send an invitation to registered people.
@@ -17,7 +21,8 @@ Work in progress. Here's the
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-=== Things you may want to cover:
+Things we may want to cover:
+-----------
 
 * Ruby version 2.0.0
 
@@ -38,5 +43,3 @@ application up and running.
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
