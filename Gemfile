@@ -22,6 +22,10 @@ end
 # for travis, see http://about.travis-ci.org/docs/user/languages/ruby/
 group :test do
   gem 'rake'
+  gem 'minitest-spec-rails'
+  gem 'capybara'
+  gem 'capybara_minitest_spec'
+  gem 'database_cleaner'
 end
 
 

@@ -40,6 +40,15 @@ GEM
     arel (4.0.0)
     atomic (1.1.9)
     builder (3.1.4)
+    capybara (2.1.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    capybara_minitest_spec (1.0.0)
+      capybara (>= 2)
+      minitest (>= 2)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -48,6 +57,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     commonjs (0.2.6)
+    database_cleaner (1.0.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -70,7 +80,11 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.4)
+    minitest-spec-rails (4.7.2)
+      minitest (~> 4.7)
+      rails (>= 3.0)
     multi_json (1.7.3)
+    nokogiri (1.5.9)
     pg (0.15.1)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -132,15 +146,21 @@ GEM
     uglifier (2.1.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  capybara
+  capybara_minitest_spec
   coffee-rails (~> 4.0.0)
+  database_cleaner
   jbuilder (~> 1.0.1)
   jquery-rails
   less-rails
+  minitest-spec-rails
   pg
   rails (= 4.0.0.rc1)
   rails3_serve_static_assets!

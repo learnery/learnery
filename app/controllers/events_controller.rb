@@ -1,10 +1,19 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
-  # GET /events
-  # GET /events.json
+  # `GET /events`            shows future events in @events, the next event is featured as @event
+  # `GET /events?past=true`  shows past events in @events
   def index
-    @events = Event.all
+    if params[:past] == "true" then
+      @events = Event.past
+      render "past"
+    else
+      @events = Event.future
+      if @events.count > 0 then
+        @event = @events.pop
+      end
+      render "index"
+    end
   end
 
   # GET /events/1
