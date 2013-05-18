@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+
 gem 'rails', '4.0.0.rc1'
 
 group :development, :test do
@@ -10,7 +10,14 @@ end
 
 group :production do
   gem 'pg'
+
+  # to enable static asset serving for rails4 on heroku
+  # https://devcenter.heroku.com/articles/rails4
+  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
+  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+
 end
+
 
 # for travis, see http://about.travis-ci.org/docs/user/languages/ruby/
 group :test do
