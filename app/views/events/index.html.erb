@@ -12,7 +12,7 @@
 <% else %>
 
   <div class="hero-unit">
-    <h1><%= @event.name %> <%=l @event.starts, format: :short %></h1>
+    <h1><%= @event.name %> <br/><%=l @event.starts, format: :short %></h1>
     <p><%= @event.description %></p>
     <p><%= link_to "Learn more", event_path( @event ), { class: "btn btn-primary btn-large" } %></p>
   </div>
