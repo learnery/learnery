@@ -1,5 +1,5 @@
 <%- model_class = Event -%>
-
+<div class="head-slider"></div>
 <% if @event.nil? %>
 
   <div class="hero-unit">
@@ -11,11 +11,7 @@
 
 <% else %>
 
-  <div class="hero-unit">
-    <h1><%= @event.name %> <%=l @event.starts, format: :short %></h1>
-    <p><%= @event.description %></p>
-    <p><%= link_to "Learn more", event_path( @event ), { class: "btn btn-primary btn-large" } %></p>
-  </div>
+  <%= render "intro" %>
 
   <% if @events.count > 0 %>
 
