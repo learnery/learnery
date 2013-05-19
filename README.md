@@ -12,13 +12,13 @@ liking and deploy the app to heroku in a few simple steps.
 
 Here are some example installations with different themes:
 
-![learnery with blank theme](http://learnery.github.io/images/screenshot-1.png)
+![learnery with blank theme](http://learnery.github.io/images/screenshot-1.png) [learnery with blank theme](http://learnery.herokuapp.com/) 
 
-![learnery with theme webdev](http://learnery.github.io/images/screenshot-2.png)
+![learnery with theme webdev](http://learnery.github.io/images/screenshot-2.png) [learnery with theme webdev](http://limitless-tor-9264.herokuapp.com/)
 
-![learnery with theme coderdojo](http://learnery.github.io/images/screenshot-3.png)
+![learnery with theme coderdojo](http://learnery.github.io/images/screenshot-3.png) [learnery with theme coderdojo](http://ancient-tor-6627.herokuapp.com/)
 
-![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png)
+![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png) [learnery with theme railsgirls](http://serene-badlands-9643.herokuapp.com/)
 
 
 INSTALL
