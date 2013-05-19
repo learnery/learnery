@@ -10,7 +10,7 @@ class EventsController < ApplicationController
     else
       @events = Event.future
       if @events.count > 0 then
-        @event = @events.pop
+        @event = @events.shift
       end
       render "index"
     end
