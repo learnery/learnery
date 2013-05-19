@@ -17,6 +17,7 @@ module Learnery
     # config.time_zone = 'Central Time (US & Canada)'
 
     config.assets.paths << File.join( Rails.root, 'app', 'assets', 'fonts') 
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
     # try to load the theme
     theme_folder      =     File.join( Rails.root, 'theme') 
