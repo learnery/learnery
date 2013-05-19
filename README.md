@@ -21,6 +21,8 @@ Here are some example installations with different themes:
 ![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png) [learnery with theme railsgirls](http://serene-badlands-9643.herokuapp.com/)
 
 
+There is [more documention](http://learnery.github.io/) than just this README!
+
 INSTALL
 ======
 
