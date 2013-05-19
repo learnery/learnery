@@ -56,8 +56,18 @@ You can change the files in the themes-folder:
             └── _site_links.html.erb  = will be added to top navigation
             
 
-When you are content with your changes commit and push
-the changes IN THE THEME FOLDER only!
+When you are content with your changes commit your changes twice
+(once inside the theme folder, once in the main folder)
+but push only once (only your theme folder)
+
+
+    cd theme
+    git commit -a -m 'my important changes'
+    git push origin master
+    cd ..
+    git add theme
+    # DO NOT PUSH!
+    
 
 
 Then you can deploy to heroku:
