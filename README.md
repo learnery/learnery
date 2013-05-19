@@ -10,6 +10,16 @@ open learning events, like railsbridge, barcamps, user groups,
 meetups, hackathons.  You can adapt the theme to your 
 liking and deploy the app to heroku in a few simple steps.
 
+Here are some example installations with different themes:
+
+![learnery with blank theme](http://learnery.github.io/images/screenshot-1.png)
+
+![learnery with theme webdev](http://learnery.github.io/images/screenshot-2.png)
+
+![learnery with theme coderdojo](http://learnery.github.io/images/screenshot-3.png)
+
+![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png)
+
 
 INSTALL
 ======
