@@ -23,7 +23,9 @@ module Learnery
     theme_folder      =     File.join( Rails.root, 'theme') 
     theme_initializer =     File.join( Rails.root, 'theme', 'initializer.rb'  ) 
 
-    if ! File.directory?( theme_folder) or ! File.exists?( theme_initializer )  then
+    if File.basename($PROGRAM_NAME) == "rake" then
+      # running from rake - theme not required
+    elsif ! File.directory?( theme_folder) or ! File.exists?( theme_initializer )  then
       puts "Your installation of learnery needs a theme-folder!"
       puts "run rails generate theme to get a blank theme,"
       puts "or get a readymade theme at https://github.com/learnery/"
