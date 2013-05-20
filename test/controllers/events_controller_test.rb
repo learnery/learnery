@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @event = events(:one)
   end
