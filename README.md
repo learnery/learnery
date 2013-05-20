@@ -32,9 +32,6 @@ Here are some example installations with different themes:
 [learnery with theme railsgirls](http://serene-badlands-9643.herokuapp.com/)
 
 
-(damn, those screenshots look better than the current sites.  
-changing the layout+views is currently borken, you can only change
-colors, links and footer)
 
 INSTALL
 ======
@@ -50,6 +47,18 @@ Clone this repository and start your rails server:
 and play around with it on http://localhost:3000/
 
 
+### deploying to heroku
+
+You can deploy to heroku:
+
+    heroku create
+    git push heroku master
+    heroku run rake db:migrate
+    heroku open
+    
+congratulations, your site is online!
+
+
 ### switching themes
 
 You can try one of the ready made themes from https://github.com/learnery :
@@ -59,6 +68,7 @@ Edit the Gemfile to use another Theme:
     gem 'learnery-theme', :git => 'https://github.com/learnery/theme-webdev.git'
     gem 'learnery-theme', :git => 'https://github.com/learnery/theme-coderdojo.git'
     gem 'learnery-theme', :git => 'https://github.com/learnery/theme-railsgirls.git'
+
 
 ### modifying a theme
 
@@ -90,17 +100,6 @@ push your gem to a public repository, and change the Gemfile in you learnery app
 
     gem 'learnery-theme', :git => 'https://github.com/MYNAME/theme-MYTHEME.git'
 
-
-### deploying to heroku
-
-You can deploy to heroku:
-
-    heroku create
-    git push heroku master
-    heroku run rake db:migrate
-    heroku open
-    
-congratulations, your site is online!
 
 
 

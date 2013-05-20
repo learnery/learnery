@@ -19,9 +19,5 @@ module Learnery
     config.assets.paths << File.join( Rails.root, 'app', 'assets', 'fonts') 
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
-    # try to load the theme
-    theme_folder      =     File.join( Rails.root, 'theme') 
-    theme_initializer =     File.join( Rails.root, 'theme', 'initializer.rb'  ) 
-
   end
 end
