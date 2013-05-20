@@ -21,10 +21,5 @@ module Learnery
 
     # was recommended for devise:
     config.assets.initialize_on_precompile = false
-
-    # try to load the theme
-    theme_folder      =     File.join( Rails.root, 'theme')
-    theme_initializer =     File.join( Rails.root, 'theme', 'initializer.rb'  )
-
- end
+  end
 end

@@ -33,3 +33,7 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver # Revert Capybara.current_driver to Capybara.default_driver
   end
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end

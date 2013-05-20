@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/learnery/learnery-theme.git
-  revision: 08dff2e311328ec8cb25dcbbecb78bc6da1360f0
+  revision: 3f355b699a8ec1d1c9b5569429977c76c3b9bad6
   specs:
     learnery-theme (0.0.1)
 
@@ -119,6 +119,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
+    redcarpet (2.2.2)
     ref (1.0.5)
     sass (3.2.9)
     sass-rails (4.0.0.rc1)
@@ -183,6 +184,7 @@ DEPENDENCIES
   rails3_serve_static_assets!
   rails_log_stdout!
   rake
+  redcarpet
   sass-rails (~> 4.0.0.rc1)
   sdoc
   sqlite3
