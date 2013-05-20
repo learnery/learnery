@@ -3,7 +3,7 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0.rc1'
 
-gem 'learnery-theme', :path => '/Developer/Webmirror/manage-that-meetup/learnery-theme'
+gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
 
 group :development, :test do
   gem 'sqlite3'

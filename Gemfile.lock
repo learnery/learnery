@@ -10,8 +10,9 @@ GIT
   specs:
     rails_log_stdout (0.0.1)
 
-PATH
-  remote: /Developer/Webmirror/manage-that-meetup/learnery-theme
+GIT
+  remote: https://github.com/learnery/learnery-theme.git
+  revision: 849fea6fb4b3afbce97ed90ce3fc4b04ea0392d3
   specs:
     learnery-theme (0.0.1)
 
