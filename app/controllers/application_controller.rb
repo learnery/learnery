@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   # TODO: find a better place to manipulate the view path - maybe in config somewhere?
   def prepend_theme_in_view_path
     learnery_theme_paths = view_paths.select{|p| p.to_s =~/learnery-theme/ }
-    Rails.logger.warn("found theme path #{learnery_theme_paths} in paths")
     prepend_view_path( learnery_theme_paths )
   end
 end
