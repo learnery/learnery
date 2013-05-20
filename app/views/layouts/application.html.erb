@@ -36,9 +36,8 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'authentication_links' %>
+    <%= render 'notices' %>
 
     <%= render "main_layout" %>
 
