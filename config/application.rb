@@ -26,5 +26,5 @@ module Learnery
     theme_folder      =     File.join( Rails.root, 'theme')
     theme_initializer =     File.join( Rails.root, 'theme', 'initializer.rb'  )
 
-  end
+ end
 end
