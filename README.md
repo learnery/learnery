@@ -12,16 +12,29 @@ liking and deploy the app to heroku in a few simple steps.
 
 Here are some example installations with different themes:
 
-![learnery with blank theme](http://learnery.github.io/images/screenshot-1.png) [learnery with blank theme](http://learnery.herokuapp.com/) 
+![learnery with blank theme](http://learnery.github.io/images/screenshot-1.png) 
 
-![learnery with theme webdev](http://learnery.github.io/images/screenshot-2.png) [learnery with theme webdev](http://limitless-tor-9264.herokuapp.com/)
-
-![learnery with theme coderdojo](http://learnery.github.io/images/screenshot-3.png) [learnery with theme coderdojo](http://ancient-tor-6627.herokuapp.com/)
-
-![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png) [learnery with theme railsgirls](http://serene-badlands-9643.herokuapp.com/)
+[learnery with blank theme](http://learnery.herokuapp.com/) 
 
 
-There is [more documention](http://learnery.github.io/) than just this README!
+![learnery with theme webdev](http://learnery.github.io/images/screenshot-2.png) 
+
+[learnery with theme webdev](http://limitless-tor-9264.herokuapp.com/)
+
+
+![learnery with theme coderdojo](http://learnery.github.io/images/screenshot-3.png) 
+
+[learnery with theme coderdojo](http://ancient-tor-6627.herokuapp.com/)
+
+
+![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png) 
+
+[learnery with theme railsgirls](http://serene-badlands-9643.herokuapp.com/)
+
+
+(damn, those screenshots look better than the current sites.  
+changing the layout+views is currently borken, you can only change
+colors, links and footer)
 
 INSTALL
 ======
@@ -52,16 +65,16 @@ Edit the Gemfile to use another Theme:
 To make your own theme fork one of the themes mentioned above.
 Clone the repository and edit the files:
 
-├── app
-│   └── views
-│       └── application
-│           ├── _footer.html.erb
-│           └── _site_links.html.erb
-└── vendor
-    └── assets
-        └── stylesheets
-            ├── style.css.less      = your main stylesheet
-            └── variables.css.less  = variables for bootstrap and you own stylesheet
+    ├── app
+    │   └── views
+    │       └── application
+    │           ├── _footer.html.erb
+    │           └── _site_links.html.erb
+    └── vendor
+        └── assets
+            └── stylesheets
+                ├── style.css.less      = your main stylesheet
+                └── variables.css.less  = variables for bootstrap and you own stylesheet
 
 
 build the gem
