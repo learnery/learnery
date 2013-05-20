@@ -1,6 +1,3 @@
 [submodule "theme-0"]
 	path = theme
-	url = https://github.com/learnery/theme-coderdojo.git
-[submodule "theme-1"]
-	path = theme
 	url = https://github.com/learnery/theme-blank.git
