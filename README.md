@@ -32,31 +32,45 @@ First clone this repository:
     cd my-learnery-site/
     bundle install
 
-Now you have to decide if you want to build your theme from scatch:
+Learnery comes with a blank theme that as a git submodule.
+To get to know learnery you can simply initialize this theme:
 
-    rails generate theme
-  
-or if you want to for one of the themes from https://github.com/learnery to start with:
-fork it into your own github account, say https://github.com/YOURGITHUB/theme-NAME.git
-then:
+    rake theme:init
 
-    git submodule add https://github.com/YOURGITHUB/theme-NAME.git theme
-   
-Now you have a theme-folder in your app, you can
-start your app now:
+Now you have a theme in the folder ./theme.
+you can start your app now:
    
     rake db:migrate
     rails s
    
 and play around with it on http://localhost:3000/
 
+
+### switching themes
+
+You can try one of the ready made themes from https://github.com/learnery :
+
+    rake theme:remove   # to remove your old theme
+    rake theme:install  webdev                                         # to install a theme by name
+    rake theme:install  https://github.com/learnery/theme-webdev.git   # to install a theme by git url
+
+If you want to modify the theme, 
+fork it into your own github account, 
+say https://github.com/YOURGITHUB/theme-NAME.git then:
+
+    rake theme:remove  
+    rake theme:install https://github.com/YOURGITHUB/theme-NAME.git
+   
+
+### modifying a theme
+
 You can change the files in the themes-folder:
 
     theme/
     ├── README.md
-    ├── initializer.rb = set locale, site name and description  
+    ├── initializer.rb          = set locale, site name and description  
     ├── stylesheets
-    │   ├── variables.css.less  = for bootstrap and you own stylesheet
+    │   ├── variables.css.less  = variables for bootstrap and you own stylesheet
     │   └── style.css.less      = your main stylesheet
     ├── images
     │   ├── favicon.ico         = favicon
@@ -75,14 +89,15 @@ but push only once (only your theme folder)
 
     cd theme
     git commit -a -m 'my important changes'
-    git push origin master
+    git push origin master   
     cd ..
     git add theme
     # DO NOT PUSH!
     
 
+### deploying to heroku
 
-Then you can deploy to heroku:
+You can deploy to heroku:
 
     heroku create
     git push heroku master
