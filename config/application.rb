@@ -16,12 +16,15 @@ module Learnery
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
-    config.assets.paths << File.join( Rails.root, 'app', 'assets', 'fonts') 
+    config.assets.paths << File.join( Rails.root, 'app', 'assets', 'fonts')
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
+    # was recommended for devise:
+    config.assets.initialize_on_precompile = false
+
     # try to load the theme
-    theme_folder      =     File.join( Rails.root, 'theme') 
-    theme_initializer =     File.join( Rails.root, 'theme', 'initializer.rb'  ) 
+    theme_folder      =     File.join( Rails.root, 'theme')
+    theme_initializer =     File.join( Rails.root, 'theme', 'initializer.rb'  )
 
   end
 end

@@ -5,6 +5,9 @@ gem 'rails', '4.0.0.rc1'
 
 gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
 
+# 3.0.0 supports rails 4.0.0
+gem 'devise', '3.0.0.rc'
+
 group :development, :test do
   gem 'sqlite3'
 end
