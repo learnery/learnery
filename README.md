@@ -26,20 +26,11 @@ There is [more documention](http://learnery.github.io/) than just this README!
 INSTALL
 ======
 
-First clone this repository:
+Clone this repository and start your rails server:
 
     git clone https://github.com/learnery/learnery.git my-learnery-site
     cd my-learnery-site/
     bundle install
-
-Learnery comes with a blank theme that as a git submodule.
-To get to know learnery you can simply initialize this theme:
-
-    rake theme:init
-
-Now you have a theme in the folder ./theme.
-you can start your app now:
-   
     rake db:migrate
     rails s
    
@@ -49,51 +40,43 @@ and play around with it on http://localhost:3000/
 ### switching themes
 
 You can try one of the ready made themes from https://github.com/learnery :
+Edit the Gemfile to use another Theme:
 
-    rake theme:remove   # to remove your old theme
-    rake theme:install  webdev                                         # to install a theme by name
-    rake theme:install  https://github.com/learnery/theme-webdev.git   # to install a theme by git url
-
-If you want to modify the theme, 
-fork it into your own github account, 
-say https://github.com/YOURGITHUB/theme-NAME.git then:
-
-    rake theme:remove  
-    rake theme:install https://github.com/YOURGITHUB/theme-NAME.git
-   
+    gem 'learnery-theme', :git => 'https://github.com/learnery/theme-blank.git'
+    gem 'learnery-theme', :git => 'https://github.com/learnery/theme-webdev.git'
+    gem 'learnery-theme', :git => 'https://github.com/learnery/theme-coderdojo.git'
+    gem 'learnery-theme', :git => 'https://github.com/learnery/theme-railsgirls.git'
 
 ### modifying a theme
 
-You can change the files in the themes-folder:
+To make your own theme fork one of the themes mentioned above.
+Clone the repository and edit the files:
 
-    theme/
-    ├── README.md
-    ├── initializer.rb          = set locale, site name and description  
-    ├── stylesheets
-    │   ├── variables.css.less  = variables for bootstrap and you own stylesheet
-    │   └── style.css.less      = your main stylesheet
-    ├── images
-    │   ├── favicon.ico         = favicon
-    │   ├── slider-1.jpg        = any other images you want to add
-    │   └── slider-2.jpg          use them with image_tag( 'slider-1.jpg' )
-    └── views
-        └── application
-            ├── _footer.html.erb      = short text 
-            └── _site_links.html.erb  = will be added to top navigation
-            
-
-When you are content with your changes commit your changes twice
-(once inside the theme folder, once in the main folder)
-but push only once (only your theme folder)
+├── app
+│   └── views
+│       └── application
+│           ├── _footer.html.erb
+│           └── _site_links.html.erb
+└── vendor
+    └── assets
+        └── stylesheets
+            ├── style.css.less      = your main stylesheet
+            └── variables.css.less  = variables for bootstrap and you own stylesheet
 
 
-    cd theme
-    git commit -a -m 'my important changes'
-    git push origin master   
-    cd ..
-    git add theme
-    # DO NOT PUSH!
-    
+build the gem
+
+    rake build
+
+And test it locally by specifying the full path in the Gemfile of you learnery app:
+
+    gem 'learnery-theme', :path => '/really/long/path/to/learnery-theme'
+
+repeat until you are satisfied with your changes.  Then
+push your gem to a public repository, and change the Gemfile in you learnery app:
+
+    gem 'learnery-theme', :git => 'https://github.com/MYNAME/theme-MYTHEME.git'
+
 
 ### deploying to heroku
 

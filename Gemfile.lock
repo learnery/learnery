@@ -10,6 +10,11 @@ GIT
   specs:
     rails_log_stdout (0.0.1)
 
+PATH
+  remote: /Developer/Webmirror/manage-that-meetup/learnery-theme
+  specs:
+    learnery-theme (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -159,6 +164,7 @@ DEPENDENCIES
   database_cleaner
   jbuilder (~> 1.0.1)
   jquery-rails
+  learnery-theme!
   less-rails
   minitest-spec-rails
   pg
