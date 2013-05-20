@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/learnery/learnery-theme.git
-  revision: 849fea6fb4b3afbce97ed90ce3fc4b04ea0392d3
+  revision: 08dff2e311328ec8cb25dcbbecb78bc6da1360f0
   specs:
     learnery-theme (0.0.1)
 
@@ -119,7 +119,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
-    ref (1.0.4)
+    ref (1.0.5)
     sass (3.2.9)
     sass-rails (4.0.0.rc1)
       railties (>= 4.0.0.beta, < 5.0)
@@ -156,7 +156,7 @@ GEM
       execjs
       railties (>= 3.1)
     tzinfo (0.3.37)
-    uglifier (2.1.0)
+    uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
