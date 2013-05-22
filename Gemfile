@@ -11,6 +11,7 @@ gem 'learnery-theme', :git => theme_url
 
 # 3.0.0 supports rails 4.0.0
 gem 'devise', '3.0.0.rc'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'sqlite3'

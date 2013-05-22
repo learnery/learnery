@@ -3,6 +3,15 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
 
+module LoginHelper
+  def login_user(user)
+    visit "/users/sign_in"
+    fill_in 'Email', :with => user.email
+    fill_in 'Password', :with => user.password
+    click_button 'Sign in'
+  end
+end
+
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
@@ -23,6 +32,7 @@ DatabaseCleaner.strategy = :truncation
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+  include LoginHelper
 
   # Stop ActiveRecord from wrapping tests in transactions
   self.use_transactional_fixtures = false
@@ -37,3 +47,4 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
+
