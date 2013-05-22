@@ -18,3 +18,9 @@
   padding: 10px 5px;
 }
 
+.controls label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+  margin-left: 5px;
+}

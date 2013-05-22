@@ -16,6 +16,8 @@ module Learnery
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
+    config.autoload_paths << File.join( Rails.root, 'app', 'form_builders' )
+
     config.assets.paths << File.join( Rails.root, 'app', 'assets', 'fonts')
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 

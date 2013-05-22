@@ -2,9 +2,9 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
   test "past" do
-    past_event   = Event.create!( :description => "past event",   :starts => Date.today - 10 )
-    next_event   = Event.create!( :description => "next event",   :starts => Date.today + 10 )
-    future_event = Event.create!( :description => "future event", :starts => Date.today + 30 )
+    past_event   = Event.create!( :name => "past event",   :starts => Date.today - 10 )
+    next_event   = Event.create!( :name => "next event",   :starts => Date.today + 10 )
+    future_event = Event.create!( :name => "future event", :starts => Date.today + 30 )
 
     f = Event.past
 
@@ -13,9 +13,9 @@ class EventTest < ActiveSupport::TestCase
     f.wont_include future_event
   end
   test "future" do
-    past_event   = Event.create!( :description => "past event",   :starts => Date.today - 10 )
-    next_event   = Event.create!( :description => "next event",   :starts => Date.today + 10 )
-    future_event = Event.create!( :description => "future event", :starts => Date.today + 30 )
+    past_event   = Event.create!( :name => "past event",   :starts => Date.today - 10 )
+    next_event   = Event.create!( :name => "next event",   :starts => Date.today + 10 )
+    future_event = Event.create!( :name => "future event", :starts => Date.today + 30 )
 
     f = Event.future
 

@@ -1,4 +1,4 @@
-class EventTest < ActionDispatch::IntegrationTest
+class CreateAndEditEventsTest < ActionDispatch::IntegrationTest
  
   test "cannot create without name" do
     visit "/events/new"
