@@ -4,11 +4,10 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0.rc1'
 
-SKIP_THEME = false unless defined? SKIP_THEME
-unless SKIP_THEME
-  puts "Gemfile: using default theme"
-  gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
-end
+theme_url = 'https://github.com/learnery/learnery-theme.git' unless defined? theme_url
+puts "Gemfile: using theme #{theme_url}"
+gem 'learnery-theme', :git => theme_url
+
 
 # 3.0.0 supports rails 4.0.0
 gem 'devise', '3.0.0.rc'
