@@ -5,7 +5,6 @@ ruby '2.0.0'
 gem 'rails', '4.0.0.rc1'
 
 unless defined? SKIP_THEME
-  puts "Gemfile: using default theme"
   gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
 end
 
