@@ -5,6 +5,20 @@ class EventTest < ActionDispatch::IntegrationTest
 
     page.must_have_content('New')
     within('#new_event') do
+      fill_in 'Starts', with: '2013-03-23 13:19'
+      click_button 'Create Event'
+    end
+
+    page.must_have_content("can't be blank")
+  end
+
+ 
+  test "cannot create without start time" do
+    visit "/events/new"
+
+    page.must_have_content('New')
+    within('#new_event') do
+      fill_in 'Name',   with: 'Some Event'
       click_button 'Create Event'
     end
 

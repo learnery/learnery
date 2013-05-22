@@ -179,6 +179,7 @@ DEPENDENCIES
   learnery-theme!
   less-rails
   minitest-spec-rails
+  nokogiri
   pg
   rails (= 4.0.0.rc1)
   rails3_serve_static_assets!
