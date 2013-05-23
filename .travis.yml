@@ -1,8 +1,18 @@
+---
 language: ruby
 rvm:
-  - 2.0.0
+- 2.0.0
 gemfile:
-  - Gemfile
-  - gemfiles/Gemfile.coderdojo
-  - gemfiles/Gemfile.railsgirls
-  - gemfiles/Gemfile.webdev
+- Gemfile
+- gemfiles/Gemfile.coderdojo
+- gemfiles/Gemfile.railsgirls
+- gemfiles/Gemfile.webdev
+env:
+  global:
+  - secure: |-
+      JpT5DR1eHjgt6v9W3/CbD0WrWJ5bQaiS6hxjiyRuZFml76nTkLeJsC9333eq
+      kUPQDWPCqaDwnOe4qBvg8zMwVGPtBxDBbfu3AHNwQOfRIPqnfpOIJ59rXebT
+      bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=
+after_script:
+- require 'heroku-headless'
+- HerokuHeadless::Deployer.deploy( 'learnery-staging' )

@@ -7,10 +7,16 @@ gem 'rails', '4.0.0.rc1'
 unless defined? SKIP_THEME
   gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
 end
+# for travis deploy to learnery-staging
+group :test do
+  gem 'heroku-headless'
+end
 
 # 3.0.0 supports rails 4.0.0
 gem 'devise', '3.0.0.rc'
 gem 'nokogiri'
+
+
 
 group :development, :test do
   gem 'sqlite3'
