@@ -20,5 +20,4 @@ before_script:
 script:
 - rake
 - bundle exec ruby ci/travis-deploy.rb > herokuoutput.log
-- less herokuoutput.log
 - ci/check_heroku_output.rb
