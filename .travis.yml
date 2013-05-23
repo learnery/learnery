@@ -14,8 +14,10 @@ env:
   - LEARNERY_THEME=webdev
   - LEARNERY_THEME=coderdojo
 before_install:
-- themes/copytheme.sh
+- ci/copytheme.sh
 before_script:
-- themes/commit_Gemfile_lock.sh
-after_success:
-- bundle exec ruby themes/travis-deploy.rb
+- ci/commit_Gemfile_lock.sh
+script:
+- rake
+- bundle exec ruby ci/travis-deploy.rb | tee herokuoutput.log
+- ci/check_heroku_output.rb
