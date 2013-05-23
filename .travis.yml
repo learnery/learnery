@@ -14,5 +14,4 @@ env:
       kUPQDWPCqaDwnOe4qBvg8zMwVGPtBxDBbfu3AHNwQOfRIPqnfpOIJ59rXebT
       bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=
 after_script:
-- require 'heroku-headless'
-- HerokuHeadless::Deployer.deploy( 'learnery-staging' )
+- ci/deploy.rb
