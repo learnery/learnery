@@ -14,4 +14,4 @@ env:
       kUPQDWPCqaDwnOe4qBvg8zMwVGPtBxDBbfu3AHNwQOfRIPqnfpOIJ59rXebT
       bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=
 after_script:
-- ci/deploy.rb
+- bundle exec ruby ci/deploy.rb
