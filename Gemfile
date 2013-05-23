@@ -4,9 +4,8 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0.rc1'
 
-unless defined? SKIP_THEME
-  gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
-end
+eval(File.read('Gemfile.theme'),binding)
+
 # for travis deploy to learnery-staging
 group :test do
   # forked for now because we need this:

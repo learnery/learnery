@@ -2,16 +2,20 @@
 language: ruby
 rvm:
 - 2.0.0
-gemfile:
-- Gemfile
-- gemfiles/Gemfile.coderdojo
-- gemfiles/Gemfile.railsgirls
-- gemfiles/Gemfile.webdev
 env:
   global:
   - secure: |-
-      JpT5DR1eHjgt6v9W3/CbD0WrWJ5bQaiS6hxjiyRuZFml76nTkLeJsC9333eq
-      kUPQDWPCqaDwnOe4qBvg8zMwVGPtBxDBbfu3AHNwQOfRIPqnfpOIJ59rXebT
-      bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=
-after_script:
-- bundle exec ruby ci/deploy.rb
+      Lfd2G/6XfJitYdL5r2sruLhX9Vseh2ducAmcIZoF3lcWds92j0xoInxmhmko
+      fYMNu7G3UvAoGlp9AAJo5f1l7gN/SlbenO60xfb8gIaX31I0RpHZHrsU43/W
+      0byVN9fwjU5wxUTmqcCF7yAYUOsgWmUjIteQcU0LBOURq9yFsaQ=
+  matrix:
+  - LEARNERY_THEME=default
+  - LEARNERY_THEME=railsgirls
+  - LEARNERY_THEME=webdev
+  - LEARNERY_THEME=coderdojo
+before_install:
+- themes/copytheme.sh
+before_script:
+- themes/commit_Gemfile_lock.sh
+after_success:
+- bundle exec ruby themes/travis-deploy.rb

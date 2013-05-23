@@ -7,29 +7,29 @@ README
 
 Learnery is a rails app you can use to organize
 open learning events, like railsbridge, barcamps, user groups,
-meetups, hackathons.  You can adapt the theme to your 
+meetups, hackathons.  You can adapt the theme to your
 liking and deploy the app to heroku in a few simple steps.
 
 Here are some example installations with different themes:
 
-![learnery with blank theme](http://learnery.github.io/images/screenshot-1.png) 
+![learnery with blank theme](http://learnery.github.io/images/screenshot-1.png)
 
-[learnery with blank theme](http://learnery.herokuapp.com/) 
-
-
-![learnery with theme webdev](http://learnery.github.io/images/screenshot-2.png) 
-
-[learnery with theme webdev](http://limitless-tor-9264.herokuapp.com/)
+[learnery with blank theme](http://learnery-staging.herokuapp.com/)
 
 
-![learnery with theme coderdojo](http://learnery.github.io/images/screenshot-3.png) 
+![learnery with theme webdev](http://learnery-staging-webdev.github.io/images/screenshot-2.png)
 
-[learnery with theme coderdojo](http://ancient-tor-6627.herokuapp.com/)
+[learnery with theme webdev](http://learnery-staging-webdev.herokuapp.com/)
 
 
-![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png) 
+![learnery with theme coderdojo](http://learnery.github.io/images/screenshot-3.png)
 
-[learnery with theme railsgirls](http://serene-badlands-9643.herokuapp.com/)
+[learnery with theme coderdojo](http://learnery-staging-coderdojo.herokuapp.com/)
+
+
+![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png)
+
+[learnery with theme railsgirls](http://learnery-staging-railsgirls.herokuapp.com/)
 
 
 
@@ -43,7 +43,7 @@ Clone this repository and start your rails server:
     bundle install
     rake db:migrate
     rails s
-   
+
 and play around with it on http://localhost:3000/
 
 
@@ -55,14 +55,14 @@ You can deploy to heroku:
     git push heroku master
     heroku run rake db:migrate
     heroku open
-    
+
 congratulations, your site is online!
 
 
 ### switching themes
 
 You can try one of the ready made themes from https://github.com/learnery :
-Edit the Gemfile to use another Theme:
+Edit the Gemfile.theme to use another Theme:
 
     gem 'learnery-theme', :git => 'https://github.com/learnery/theme-blank.git'
     gem 'learnery-theme', :git => 'https://github.com/learnery/theme-webdev.git'
@@ -91,12 +91,12 @@ build the gem
 
     rake build
 
-And test it locally by specifying the full path in the Gemfile of you learnery app:
+And test it locally by specifying the full path in Gemfile.theme of you learnery app:
 
     gem 'learnery-theme', :path => '/really/long/path/to/learnery-theme'
 
 repeat until you are satisfied with your changes.  Then
-push your gem to a public repository, and change the Gemfile in you learnery app:
+push your gem to a public repository, and change the reference in Gemfile.theme in you learnery app:
 
     gem 'learnery-theme', :git => 'https://github.com/MYNAME/theme-MYTHEME.git'
 
