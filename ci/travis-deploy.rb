@@ -2,7 +2,6 @@
 # this is called by travis ci
 require 'heroku-headless'
 
-puts "ENV['TRAVIS_TEST_RESULT'] #{ENV['TRAVIS_TEST_RESULT'].inspect}"
 if ENV['TRAVIS_TEST_RESULT'] == "0"
 
   if 'default' == ENV['LEARNERY_THEME']

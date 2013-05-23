@@ -19,6 +19,6 @@ before_script:
 - ci/commit_Gemfile_lock.sh
 script:
 - rake
-- bundle exec ruby ci/travis-deploy.rb | tee herokuoutput.log
+- bundle exec ruby ci/travis-deploy.rb > herokuoutput.log
 - less herokuoutput.log
 - ci/check_heroku_output.rb
