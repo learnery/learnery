@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 if ENV['TRAVIS_TEST_RESULT'] == "0"
-  deployed =  open('herokuoutput.log').grep(/Rails app detected/)
+  #deployed =  open('herokuoutput.log').grep(/Rails app detected/)
+  deployed = open('heroku_push_result.log').grep(/true/)
   if deployed.empty?
-    puts "could not find 'Rails app detected' in heroku output - deployment failed?"
+    puts "deployment failed?"
     exit 1
   else
     exit 0

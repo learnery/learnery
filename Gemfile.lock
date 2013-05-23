@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/learnery/heroku-headless.git
-  revision: 02f4f6974229d98c836a2d246f058c3bc1736d34
+  revision: aab91de46e026f3e5fb17daceca4d9c71ef5e3ec
   specs:
     heroku-headless (0.2.0)
       heroku-api
