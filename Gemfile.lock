@@ -11,7 +11,7 @@ GIT
     rails_log_stdout (0.0.1)
 
 GIT
-  remote: git@github.com:learnery/heroku-headless.git
+  remote: https://github.com/learnery/heroku-headless.git
   revision: 02f4f6974229d98c836a2d246f058c3bc1736d34
   specs:
     heroku-headless (0.2.0)
