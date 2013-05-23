@@ -23,8 +23,6 @@ class UserProfileTest < ActionDispatch::IntegrationTest
   end
 
   test "can edit name" do
-    skip "sort out devise and user editing"
-
     pw    = '12345678'
     nick  = 'some nickname'
     first = 'some firstname'
