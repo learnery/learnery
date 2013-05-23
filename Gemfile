@@ -9,7 +9,9 @@ unless defined? SKIP_THEME
 end
 # for travis deploy to learnery-staging
 group :test do
-  gem 'heroku-headless'
+  # forked for now because we need this:
+  # https://github.com/learnery/heroku-headless/commit/b5179227c710ac84e871b91699fd0fc355d43b28
+  gem 'heroku-headless', :git => 'git@github.com:learnery/heroku-headless.git'
 end
 
 # 3.0.0 supports rails 4.0.0

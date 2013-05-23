@@ -11,6 +11,14 @@ GIT
     rails_log_stdout (0.0.1)
 
 GIT
+  remote: git@github.com:learnery/heroku-headless.git
+  revision: 02f4f6974229d98c836a2d246f058c3bc1736d34
+  specs:
+    heroku-headless (0.2.0)
+      heroku-api
+      rendezvous
+
+GIT
   remote: https://github.com/learnery/learnery-theme.git
   revision: 3f355b699a8ec1d1c9b5569429977c76c3b9bad6
   specs:
@@ -76,9 +84,6 @@ GEM
       multi_json (~> 1.0)
     heroku-api (0.3.11)
       excon (~> 0.22.1)
-    heroku-headless (0.2.0)
-      heroku-api
-      rendezvous
     hike (1.2.2)
     i18n (0.6.4)
     jbuilder (1.0.2)
@@ -181,7 +186,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   devise (= 3.0.0.rc)
-  heroku-headless
+  heroku-headless!
   jbuilder (~> 1.0.1)
   jquery-rails
   learnery-theme!
