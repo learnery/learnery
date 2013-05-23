@@ -7,7 +7,8 @@ env:
   - secure: |-
       JpT5DR1eHjgt6v9W3/CbD0WrWJ5bQaiS6hxjiyRuZFml76nTkLeJsC9333eq
       kUPQDWPCqaDwnOe4qBvg8zMwVGPtBxDBbfu3AHNwQOfRIPqnfpOIJ59rXebT
-      bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=  matrix:
+      bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=
+  matrix:
   - LEARNERY_THEME=default
   - LEARNERY_THEME=railsgirls
   - LEARNERY_THEME=webdev
