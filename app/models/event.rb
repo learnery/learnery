@@ -48,5 +48,9 @@ class Event < ActiveRecord::Base
     rsvp.maybe.map(&:user)
   end
 
+  # get rsvp of this user
+  def rsvp_of(user)
+    rsvp.where(:user => user).first || rsvp.build
+  end
 
 end

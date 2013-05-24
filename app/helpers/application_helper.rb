@@ -2,7 +2,13 @@ module ApplicationHelper
 
   def horizontal_form_for(name, *args, &block)
      options = args.extract_options!
-     extra_options = {:builder => BootstrapFormBuilder, :html => { :class => 'form-horizontal' } }
+     extra_options = {:builder => HorizontalBootstrapFormBuilder, :html => { :class => 'form-horizontal' } }
+     form_for(name, *(args << options.merge(extra_options)), &block)
+  end
+
+  def inline_form_for(name, *args, &block)
+     options = args.extract_options!
+     extra_options = {:builder => BootstrapFormBuilder, :html => { :class => 'form-inline' } }
      form_for(name, *(args << options.merge(extra_options)), &block)
   end
 
@@ -48,6 +54,12 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
   def submit(attribute, options={})
     options[:class] = 'btn btn-primary'
+    super(attribute,options)
+  end
+end
+
+class HorizontalBootstrapFormBuilder < BootstrapFormBuilder
+  def submit(attribute, options={})
     @template.content_tag(:div, super(attribute,options), :class => "form-actions")
   end
 end

@@ -38,6 +38,10 @@ class EventTest < ActiveSupport::TestCase
      
     end
 
+    it "can find rsvp of single user" do
+      @e.rsvp_of( @u1 ).must_equal @r1
+    end
+
     context "can find them" do
       it { @e.rsvp.must_equal [ @r1, @r2, @r3 ] }
       it { @e.users_who_rsvped.must_equal       [ @u1,  @u2, @u3 ] }
