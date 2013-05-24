@@ -17,7 +17,7 @@ Here are some example installations with different themes:
 [learnery with blank theme](http://learnery-staging.herokuapp.com/)
 
 
-![learnery with theme webdev](http://learnery-staging-webdev.github.io/images/screenshot-2.png)
+![learnery with theme webdev](http://learnery.github.io/images/screenshot-2.png)
 
 [learnery with theme webdev](http://learnery-staging-webdev.herokuapp.com/)
 
