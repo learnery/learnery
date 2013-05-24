@@ -1,8 +1,23 @@
+---
 language: ruby
 rvm:
-  - 2.0.0
-gemfile:
-  - Gemfile
-  - gemfiles/Gemfile.coderdojo
-  - gemfiles/Gemfile.railsgirls
-  - gemfiles/Gemfile.webdev
+- 2.0.0
+env:
+  global:
+  - secure: |-
+      JpT5DR1eHjgt6v9W3/CbD0WrWJ5bQaiS6hxjiyRuZFml76nTkLeJsC9333eq
+      kUPQDWPCqaDwnOe4qBvg8zMwVGPtBxDBbfu3AHNwQOfRIPqnfpOIJ59rXebT
+      bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=
+  matrix:
+  - LEARNERY_THEME=default
+  - LEARNERY_THEME=railsgirls
+  - LEARNERY_THEME=webdev
+  - LEARNERY_THEME=coderdojo
+before_install:
+- ci/copytheme.sh
+before_script:
+- ci/commit_Gemfile_lock.sh
+script:
+- rake
+- bundle exec ruby ci/travis-deploy.rb > herokuoutput.log
+- ci/check_heroku_output.rb
