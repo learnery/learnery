@@ -3,6 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
 
+# TODO: move me somewhere
 module LoginHelper
   def login_user(user)
     visit "/users/sign_in"
@@ -30,7 +31,7 @@ end
 DatabaseCleaner.strategy = :truncation
 
 class ActionDispatch::IntegrationTest
-  # Make the Capybara DSL available in all integration tests
+  include Rails.application.routes.url_helpers
   include Capybara::DSL
   include LoginHelper
 

@@ -1,6 +1,8 @@
-class CreateAndEditEventsTest < ActionDispatch::IntegrationTest
+require "test_helper"
+
+describe "Event Creation Integration Test" do
  
-  test "cannot create without name" do
+  it "cannot create without name" do
     visit "/events/new"
 
     page.must_have_content('New')
@@ -13,7 +15,7 @@ class CreateAndEditEventsTest < ActionDispatch::IntegrationTest
   end
 
  
-  test "cannot create without start time" do
+  it "cannot create without start time" do
     visit "/events/new"
 
     page.must_have_content('New')
@@ -26,7 +28,7 @@ class CreateAndEditEventsTest < ActionDispatch::IntegrationTest
   end
 
  
-  test "can create event" do
+  it "can create event" do
     visit "/events/new"
 
     page.must_have_content('New')
@@ -38,10 +40,5 @@ class CreateAndEditEventsTest < ActionDispatch::IntegrationTest
 
     page.must_have_content("Event was successfully created.")
   end
-
- 
- 
- 
- 
  
 end

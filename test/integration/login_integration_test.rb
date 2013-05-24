@@ -1,6 +1,8 @@
-class LoginLogoutTest < ActionDispatch::IntegrationTest
+require "test_helper"
+
+describe "Login Integration Test" do
  
-  test "sign up" do
+  it "sign up" do
     email_address = 'user@example.com'
 
     visit root_path
@@ -18,14 +20,14 @@ class LoginLogoutTest < ActionDispatch::IntegrationTest
     page.must_have_content("Logged in as #{email_address}")
   end
  
-  test "log in" do
+  it "log in" do
     user = User.create!( :email => 'user@example.com', :password => '12345678')
     login_user( user )
     page.must_have_content('Signed in successfully')
     page.must_have_content("Logged in as #{user.email}")
   end
 
-  test "log out" do
+  it "log out" do
     user = User.create!( :email => 'user@example.com', :password => '12345678')
     login_user( user )
 
@@ -35,7 +37,5 @@ class LoginLogoutTest < ActionDispatch::IntegrationTest
     click_link('Logout')
     page.must_have_content('Signed out successfully.')
   end
- 
- 
  
 end
