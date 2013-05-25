@@ -8,8 +8,9 @@ class Rsvp < ActiveRecord::Base
   belongs_to :event
 
   # and carries some attributes: answer can be yes, no, maybe
-  validates :answer, inclusion: { in: ANSWERS, message: "%{value} is not a valid rsvp answer (yes, no, maybe)" }
-
+  validates :answer, inclusion: { in: ANSWERS,
+    message: "%{value} is not a valid rsvp answer (#{ANSWERS.join(", ")})" }
+  # tbd: bk: this is a duplication of the enumeration
   scope :yes,    -> { where( :answer => 'yes'   ) }
   scope :no,     -> { where( :answer => 'no'    ) }
   scope :maybe,  -> { where( :answer => 'maybe' ) }

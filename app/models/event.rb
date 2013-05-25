@@ -15,12 +15,16 @@ class Event < ActiveRecord::Base
   has_many :rsvp
   has_many :users, :through => :rsvp
 
+  # bk-tbd
+  # event knows about answers enumeration; it is duplicated here.
+  # I think all of this functionality belongs in rsvp.
+
   # can count rsvps or access them
   def count_rsvps
     rsvp.count
   end
 
-  def users_who_rsvped 
+  def users_who_rsvped
     rsvp.map(&:user)
   end
 
@@ -39,7 +43,7 @@ class Event < ActiveRecord::Base
   def users_who_rsvped_no
     rsvp.no.map(&:user)
   end
-  
+
   # can count users who rsvped maybe,  or access them
   def count_maybe
     rsvp.maybe.count

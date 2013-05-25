@@ -1,3 +1,5 @@
+This software is work in progress and has not been released yet!
+
 [![Build Status](https://travis-ci.org/learnery/learnery.png?branch=master)](https://travis-ci.org/learnery/learnery)
 
 [![Code Climate](https://codeclimate.com/github/learnery/learnery.png)](https://codeclimate.com/github/learnery/learnery)
@@ -33,7 +35,7 @@ Here are some example installations with different themes:
 
 
 
-INSTALL
+Installation
 ======
 
 Clone this repository and start your rails server:
@@ -47,9 +49,9 @@ Clone this repository and start your rails server:
 and play around with it on http://localhost:3000/
 
 
-### deploying to heroku
+### Deploying To Heroku
 
-You can deploy to heroku:
+You can deploy to heroku: (if you don't have a heroku account yet, go to [https://get.heroku.com](https://get.heroku.com) and get one first)
 
     heroku create
     git push heroku master
@@ -59,18 +61,19 @@ You can deploy to heroku:
 congratulations, your site is online!
 
 
-### switching themes
+### Switching Themes
 
 You can try one of the ready made themes from https://github.com/learnery :
-Edit the Gemfile.theme to use another Theme:
 
-    gem 'learnery-theme', :git => 'https://github.com/learnery/theme-blank.git'
-    gem 'learnery-theme', :git => 'https://github.com/learnery/theme-webdev.git'
-    gem 'learnery-theme', :git => 'https://github.com/learnery/theme-coderdojo.git'
-    gem 'learnery-theme', :git => 'https://github.com/learnery/theme-railsgirls.git'
+Edit Gemfile.theme to use another theme:
+
+    gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
+    gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme-webdev.git'
+    gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme-coderdojo.git'
+    gem 'learnery-theme', :git => 'https://github.com/learnery/https://github.com/learnery/learnery-theme-railsgirls.git'
 
 
-### modifying a theme
+### Creating your own Theme
 
 To make your own theme fork one of the themes mentioned above.
 Clone the repository and edit the files:
@@ -100,7 +103,7 @@ push your gem to a public repository, and change the reference in Gemfile.theme 
 
     gem 'learnery-theme', :git => 'https://github.com/MYNAME/theme-MYTHEME.git'
 
-
+(bk tbd: it should be possible to use bundler groups here)
 
 
 WORK IN PROGRESS

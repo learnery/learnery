@@ -9,10 +9,13 @@ class ApplicationController < ActionController::Base
 protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:account_update) do |u| 
-      u.permit(:email, :nickname, :firstname, :lastname, :password, :password_confirmation, :current_password ) 
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:email, :nickname, :firstname, :lastname, :password, :password_confirmation, :current_password )
     end
   end
+
+  # bk tbd: as this is static, it should be possible to move it to config/application.rb
+  # see http://stackoverflow.com/questions/10864108/how-to-prepend-rails-view-paths-in-rails-3-2-actionviewpathset
 
   # TODO: find a better place to manipulate the view path - maybe in config somewhere?
   def prepend_theme_in_view_path
