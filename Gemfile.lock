@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: https://github.com/drblinken/heroku-headless.git
-  revision: 02f4f6974229d98c836a2d246f058c3bc1736d34
+  revision: 8fac734f844690a85ad91a39fb26421ceaa4013f
   specs:
     heroku-headless (0.2.0)
       heroku-api
