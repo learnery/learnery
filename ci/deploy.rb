@@ -25,8 +25,6 @@ else
     end
   end
 
-  app_name = 'drblinken'
-
   puts "deploying to heroku app #{app_name}"
   remote_name = "headlessheroku"
   HerokuHeadless.configure do | config |
