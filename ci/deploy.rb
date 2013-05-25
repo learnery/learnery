@@ -22,6 +22,8 @@ else
     app_name = "#{app_name}-#{ENV['LEARNERY_THEME']}"
   end
 
+  app_name = 'drblinken-railsgirls'
+
   puts "deploying to heroku app #{app_name}"
   remote_name = "headlessheroku"
   HerokuHeadless.configure do | config |
