@@ -33,6 +33,8 @@ else
     config.post_deploy_commands = ['rake db:migrate']
     config.pre_deploy_git_commands = [
       "git remote -v",
+      "git config --global user.email \"drblinken@gmail.com\"",
+      "git config --global user.name \"Travis CI\"",
       "git checkout master",
       "git commit -am  \"changes from headless deploy\" ",
       "git remote add #{remote_name} git@heroku.com:#{app_name}.git",
