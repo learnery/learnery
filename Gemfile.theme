@@ -1,2 +1,2 @@
 
-gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
+gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme-railsgirls.git'
