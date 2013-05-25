@@ -22,7 +22,7 @@ else
     app_name = "#{app_name}-#{ENV['LEARNERY_THEME']}"
   end
 
-  app_name = 'drblinken-railsgirls'
+  app_name = 'drblinken'
 
   puts "deploying to heroku app #{app_name}"
   remote_name = "headlessheroku"
