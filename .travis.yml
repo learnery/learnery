@@ -16,5 +16,4 @@ before_script:
 - ci/commit_Gemfile_lock.sh
 script:
 - rake
-- bundle exec ruby ci/travis-deploy.rb
-- ci/check_heroku_output.rb
+- bundle exec ruby ci/travis-deploy.rb learnery-drblinken-nonexistent
