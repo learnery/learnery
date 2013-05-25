@@ -16,10 +16,13 @@ end
 if ENV['TRAVIS_TEST_RESULT'] != "0"
   puts "skipping deploy."
 else
-  app_name = ARGV[0] ? ARGV[0] : 'learnery-staging'
-
-  unless 'default' == ENV['LEARNERY_THEME']
-    app_name = "#{app_name}-#{ENV['LEARNERY_THEME']}"
+  if ARGV[0]
+    app_name = ARGV[0]
+  else
+    app_name = 'learnery-staging'
+    unless 'default' == ENV['LEARNERY_THEME']
+      app_name = "#{app_name}-#{ENV['LEARNERY_THEME']}"
+    end
   end
 
   puts "deploying to heroku app #{app_name}"
