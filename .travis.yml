@@ -5,19 +5,16 @@ rvm:
 env:
   global:
   - secure: |-
-      JpT5DR1eHjgt6v9W3/CbD0WrWJ5bQaiS6hxjiyRuZFml76nTkLeJsC9333eq
-      kUPQDWPCqaDwnOe4qBvg8zMwVGPtBxDBbfu3AHNwQOfRIPqnfpOIJ59rXebT
-      bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=
+      R6zMTXIhhtTVYuuPa0nkfn/D2HLdC5o6aQv+n5c4p8xwSyTpEuyT9Vlr0YPt
+      M/mQzGuIq6/mc4zj5Hsja8J0NnOF2I2Ci1j2cJ0xl000FiFvOKOyK2mHtETy
+      Q8ek81AXJaLYyhIHpUEByfzPL264kERavPTRfG90wIt0+rPivi4=
   matrix:
   - LEARNERY_THEME=default
   - LEARNERY_THEME=railsgirls
-  - LEARNERY_THEME=webdev
-  - LEARNERY_THEME=coderdojo
 before_install:
 - ci/copytheme.sh
 before_script:
 - ci/commit_Gemfile_lock.sh
 script:
 - rake
-- bundle exec ruby ci/travis-deploy.rb
-- ci/check_heroku_output.rb
+- bundle exec ruby ci/deploy.rb learnery-drblinken
