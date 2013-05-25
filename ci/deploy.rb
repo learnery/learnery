@@ -16,10 +16,13 @@ end
 if ENV['TRAVIS_TEST_RESULT'] != "0"
   puts "skipping deploy."
 else
-  app_name = ARGV[0] ? ARGV[0] : 'learnery-staging'
-
-  unless 'default' == ENV['LEARNERY_THEME']
-    app_name = "#{app_name}-#{ENV['LEARNERY_THEME']}"
+  if ARGV[0]
+    app_name = ARGV[0]
+  else
+    app_name = 'learnery-staging'
+    unless 'default' == ENV['LEARNERY_THEME']
+      app_name = "#{app_name}-#{ENV['LEARNERY_THEME']}"
+    end
   end
 
   app_name = 'drblinken'
@@ -34,7 +37,10 @@ else
       "git commit -am  \"changes from headless deploy\" ",
       "git remote add #{remote_name} git@heroku.com:#{app_name}.git",
       "git fetch #{remote_name}",
-      "git merge -m \"merged by automatic deploy\" #{remote_name}/master"]
+      "git merge -m \"merged by automatic deploy\" #{remote_name}/master",
+      "git checkout  --ours .",
+      "git add . ",
+      "git commit -m \" overwrite with new ci version\" "]
   end
 
   result = HerokuHeadless::Deployer.deploy( app_name )
