@@ -13,8 +13,9 @@ end
 #export LEARNERY_THEME=default
 #export TRAVIS_TEST_RESULT="0"
 
-if ENV['TRAVIS_TEST_RESULT'] == "0"
-
+if ENV['TRAVIS_TEST_RESULT'] != "0"
+  puts "skipping deploy."
+else
   app_name = ARGV[0] ? ARGV[0] : 'learnery-staging'
   puts app_name
 
@@ -26,6 +27,7 @@ if ENV['TRAVIS_TEST_RESULT'] == "0"
 
   HerokuHeadless.configure do | config |
     config.post_deploy_commands = ['rake db:migrate']
+    config.pre_deploy_git_commands = []
   end
   result = HerokuHeadless::Deployer.deploy( app_name )
   exit result ? 0 : 1
