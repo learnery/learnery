@@ -19,8 +19,8 @@ GIT
       rendezvous
 
 GIT
-  remote: https://github.com/learnery/learnery-theme.git
-  revision: 3f355b699a8ec1d1c9b5569429977c76c3b9bad6
+  remote: https://github.com/learnery/learnery-theme-webdev.git
+  revision: 286f3eac55c0ea0c95a193af9ad9f35e1b4088ed
   specs:
     learnery-theme (0.0.1)
 
