@@ -6,8 +6,8 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-<%= horizontal_form_for(resource, :as => resource_name, 
-                       :url => registration_path(resource_name), 
+<%= horizontal_form_for(resource, :as => resource_name,
+                       :url => registration_path(resource_name),
                        :html => { :method => :put }
             ) do |f| %>
 
@@ -15,12 +15,14 @@
   <%= f.text_field  :nickname %>
   <%= f.text_field  :firstname %>
   <%= f.text_field  :lastname %>
-  <%= f.password_field :password, 
-                       :autocomplete => "off", 
+  <%= f.password_field :password,
+                       :autocomplete => "off",
                        :help => "leave blank if you don't want to change it" %>
   <%= f.password_field :password_confirmation %>
-  <%= f.password_field :current_password, 
+  <% if f.object.encrypted_password.present?%>
+  <%= f.password_field :current_password,
                        :help => "we need your current password to confirm your changes" %>
+  <% end %>
   <%= f.submit "Update" %>
 <% end %>
 

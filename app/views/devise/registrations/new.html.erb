@@ -3,8 +3,10 @@
 <%= horizontal_form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f| %>
 
   <%= f.email_field :email, :autofocus => true %>
+  <% if f.object.password_required? %>
   <%= f.password_field :password %>
   <%= f.password_field :password_confirmation %>
+  <% end %>
   <%= f.submit "Sign up" %>
 
 <% end %>
