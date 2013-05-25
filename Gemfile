@@ -10,7 +10,7 @@ eval(File.read('Gemfile.theme'),binding)
 group :test do
   # forked for now because we need this:
   # https://github.com/learnery/heroku-headless/commit/b5179227c710ac84e871b91699fd0fc355d43b28
-  gem 'heroku-headless', :git => 'https://github.com/learnery/heroku-headless.git'
+  gem 'heroku-headless', :git => 'https://github.com/drblinken/heroku-headless.git'
 end
 
 
