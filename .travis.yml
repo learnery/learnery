@@ -10,6 +10,7 @@ env:
       Q8ek81AXJaLYyhIHpUEByfzPL264kERavPTRfG90wIt0+rPivi4=
   matrix:
   - LEARNERY_THEME=default
+  - LEARNERY_THEME=railsgirls
 before_install:
 - ci/copytheme.sh
 before_script:
