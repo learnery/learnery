@@ -15,8 +15,6 @@ env:
   - LEARNERY_THEME=coderdojo
 before_install:
 - ci/copytheme.sh
-before_script:
-- ci/commit_Gemfile_lock.sh
 script:
 - rake
 - bundle exec ruby ci/deploy.rb
