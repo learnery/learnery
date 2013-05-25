@@ -2,7 +2,12 @@
 # this is called by travis ci
 require 'heroku-headless'
 
-%w(HEROKU_API_KEY LEARNERY_THEME TRAVIS_TEST_RESULT)
+required = %w(HEROKU_API_KEY LEARNERY_THEME TRAVIS_TEST_RESULT)
+undefined = required.select{|v| !ENV[v]}
+unless undefined.size == 0
+  puts "Please define #{required.join(", ")} as environment variables"
+  exit 1
+end
 
 #export HEROKU_API_KEY=<secret>
 #export LEARNERY_THEME=default
