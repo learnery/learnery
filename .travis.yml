@@ -16,4 +16,4 @@ before_script:
 - ci/commit_Gemfile_lock.sh
 script:
 - rake
-- bundle exec ruby ci/travis-deploy.rb learnery-drblinken-nonexistent
+- bundle exec ruby ci/travis-deploy.rb learnery-drblinken
