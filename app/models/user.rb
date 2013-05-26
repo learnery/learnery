@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
          :omniauthable
   has_many :rsvp
 
+  def user_info
+    email_required? ? email : nickname
+  end
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
@@ -27,6 +30,9 @@ class User < ActiveRecord::Base
   end
 
   def password_required?
+    super && provider.blank?
+  end
+  def email_required?
     super && provider.blank?
   end
 
