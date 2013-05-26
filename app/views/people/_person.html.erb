@@ -1,0 +1,15 @@
+<div class="person" id="person_<%= person.id %>">
+
+  <h3><%= person.nickname || person.email %></h3>
+
+  <ul>
+    <li>Spitzname: <%= person.nickname %></li>
+    <li>Firstname: <%= person.firstname %></li>
+    <li>Lastname: <%= person.lastname %></li>
+    <li>E-Mail: <%= person.email %></li>
+    <% if person.admin? then %><li>Admin!</li><% end %>
+  </ul>
+
+  <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_person_path(person), :class => 'btn' %>
+
+</div>

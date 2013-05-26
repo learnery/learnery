@@ -10,7 +10,11 @@ protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:email, :nickname, :firstname, :lastname, :password, :password_confirmation, :current_password )
+      if  User.can_become_admin? or ( current_user and current_user.admin? )
+        u.permit(:email, :nickname, :firstname, :lastname, :password, :password_confirmation, :current_password, :admin )
+      else
+        u.permit(:email, :nickname, :firstname, :lastname, :password, :password_confirmation, :current_password )
+      end
     end
   end
 

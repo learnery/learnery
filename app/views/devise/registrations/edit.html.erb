@@ -15,6 +15,7 @@
   <%= f.text_field  :nickname %>
   <%= f.text_field  :firstname %>
   <%= f.text_field  :lastname %>
+  <%= if User.can_become_admin? then f.check_box :admin end %>
   <%= f.password_field :password,
                        :autocomplete => "off",
                        :help => "leave blank if you don't want to change it" %>

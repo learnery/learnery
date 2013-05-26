@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130525134919) do
+ActiveRecord::Schema.define(version: 20130526154831) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20130525134919) do
   add_index "rsvps", ["user_id", "event_id"], name: "index_rsvps_on_user_id_and_event_id", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20130525134919) do
     t.string   "lastname"
     t.string   "provider"
     t.string   "uid"
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

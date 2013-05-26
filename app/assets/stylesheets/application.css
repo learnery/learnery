@@ -13,6 +13,9 @@
  *= require_tree .
  */
 
+.row-fluid {
+  margin-bottom: 50px;
+}
 .navbar-fixed-bottom {
   background-color:white;
   padding: 10px 5px;
@@ -24,3 +27,5 @@
   margin-bottom: 0;
   margin-left: 5px;
 }
+
+

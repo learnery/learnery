@@ -7,6 +7,13 @@ class User < ActiveRecord::Base
          :omniauthable
   has_many :rsvp
 
+  # for bootstrapping your app:
+  # if there aren't any admins yet,
+  # then anyone can become an admin
+  def self.can_become_admin?
+    where(:admin => true).count == 0 
+  end
+
   def user_info
     email_required? ? email : nickname
   end
