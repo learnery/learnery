@@ -1,15 +1,31 @@
 module ApplicationHelper
 
+  def event_rsvp_numbers
+    case @event.count_yes
+      when 0 then "noone is attending yet - be the first to rsvp!"
+      when 1 then "one person will attend: " 
+      else "#{@event.count_yes} people will attend: " 
+    end
+  end
+
+  def event_rsvp_list_names
+    @event.users_who_rsvped_yes.map{ |u| u.nickname }.join(", ")
+  end
+
+  def current_rsvp_status
+    if @rsvp and @rsvp.id then "You said #{@rsvp.answer}." end
+  end
+
   def horizontal_form_for(name, *args, &block)
-     options = args.extract_options!
-     extra_options = {:builder => HorizontalBootstrapFormBuilder, :html => { :class => 'form-horizontal' } }
-     form_for(name, *(args << options.merge(extra_options)), &block)
+    options = args.extract_options!
+    extra_options = {:builder => HorizontalBootstrapFormBuilder, :html => { :class => 'form-horizontal' } }
+    form_for(name, *(args << options.merge(extra_options)), &block)
   end
 
   def inline_form_for(name, *args, &block)
-     options = args.extract_options!
-     extra_options = {:builder => BootstrapFormBuilder, :html => { :class => 'form-inline' } }
-     form_for(name, *(args << options.merge(extra_options)), &block)
+    options = args.extract_options!
+    extra_options = {:builder => BootstrapFormBuilder, :html => { :class => 'form-inline' } }
+    form_for(name, *(args << options.merge(extra_options)), &block)
   end
 
 end
@@ -21,9 +37,9 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     help = options.delete(:help)
     help = @template.content_tag(:span, help, :class => 'help-inline') if help
     @template.content_tag(:div, 
-      label(attribute, :class => 'control-label') + 
-      @template.content_tag(:div, result_of_super + help, :class => "controls"), 
-    :class => "control-group")
+                          label(attribute, :class => 'control-label') + 
+                          @template.content_tag(:div, result_of_super + help, :class => "controls"), 
+                          :class => "control-group")
   end
 
   def password_field(attribute, options={})
@@ -48,8 +64,8 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     help = options.delete(:help)
     help = @template.content_tag(:span, help, :class => 'help-inline') if help
     @template.content_tag(:div, 
-      @template.content_tag(:div, super + label(attribute) + help, :class => "controls"), 
-    :class => "control-group")
+                          @template.content_tag(:div, super + label(attribute) + help, :class => "controls"), 
+                          :class => "control-group")
   end
 
   def submit(attribute, options={})
