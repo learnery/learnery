@@ -106,7 +106,37 @@ push your gem to a public repository, and change the reference in Gemfile.theme 
 (bk tbd: it should be possible to use bundler groups here)
 
 
-WORK IN PROGRESS
+### Continuous Deployment
+
+The app contains a script that deploys to heroku automatically from travis ci:
+
+    ci/deploy.rb
+
+As travis ci does truncate the git repo, run the first deploy from your own, complete repo like this:
+
+    export HEROKU_API_KEY=xxxx
+    export TRAVIS_TEST_RESULT="0"
+    export LEARNERY_THEME=default
+
+    ci/copytheme.sh
+    bundle
+    bundle exec ci/deploy.rb <herokuappname>
+
+### Configuring Twitter Authorization
+
+If you want to use Twitter Authorization, you need to register your app / instance of learnery with twitter at https://dev.twitter.com/apps/new
+
+To test locally, set the environment variables before running rails server (pick up your keys from http://dev.twitter.com !)
+
+    export TWITTER_CONSUMER_KEY=xxx
+    export TWITTER_CONSUMER_SECRET=xxx
+
+And finally make these keys known to heroku with
+
+    heroku config:set --app learnery-staging TWITTER_CONSUMER_KEY=xxx TWITTER_CONSUMER_SECRET=xxx
+
+
+FURTHER INFORMATION
 ==============
 
 Backlog
