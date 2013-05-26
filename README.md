@@ -1,4 +1,4 @@
-This software is work in progress and has not been released yet!
+This software is work in progress and has not been released yet! 
 
 [![Build Status](https://travis-ci.org/learnery/learnery.png?branch=master)](https://travis-ci.org/learnery/learnery)
 
