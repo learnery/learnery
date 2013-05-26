@@ -141,7 +141,7 @@ FURTHER INFORMATION
 
 Backlog
 ---------------
-moved to [Pivotaltracker](https://www.pivotaltracker.com/s/projects/829661)
+on Github, with [issues](https://github.com/learnery/learnery/issues?state=open)
 
 
 Heroku
