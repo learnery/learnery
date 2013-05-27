@@ -4,6 +4,7 @@ describe "Rsvp Integration Test" do
  
   context "seeing rsvp status for a future event" do
 
+
     before do
       @e = Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
       @u1 = User.create!( :email => 'user1@example.com', :password => '12345678')
@@ -18,6 +19,8 @@ describe "Rsvp Integration Test" do
     end
  
     it "noone is attending" do
+      # TODO: find a way to test this in some themes, and not test it in others
+      skip "only applies to some themes"
       @r1.answer = :no
       @r1.save!
       visit event_path(@e)
@@ -25,11 +28,15 @@ describe "Rsvp Integration Test" do
     end
 
     it "one person is attending" do
+      # TODO: find a way to test this in some themes, and not test it in others
+      skip "only applies to some themes"
       visit event_path(@e)
       page.must_have_content "one person will attend"
     end
 
     it "one person is attending" do
+      # TODO: find a way to test this in some themes, and not test it in others
+      skip "only applies to some themes"
       @r2.answer = :yes
       @r2.save!
       visit event_path(@e)

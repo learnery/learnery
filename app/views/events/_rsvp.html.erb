@@ -1,17 +1,5 @@
 <p>
-  <%= case @event.count_yes 
-      when 0 then "noone is attending yet - be the first to rsvp!" 
-      when 1 then "one person will attend." 
-      else "#{@event.count_yes} people will attend." 
-      end
-  %>
-  <%= if @rsvp and @rsvp.id then " You said #{@rsvp.answer}." end %>
-  <% if current_user %>
-    <%= inline_form_for @rsvp do |f| %>
-       <%= f.hidden_field( :event_id ) %>
-       <% o = Rsvp::ANSWERS.map{|x|[x,x]} %>
-       <%= f.select( :answer,  options_for_select(o), :class => 'span1') %>
-       <%= f.submit nil, :class => '' %>
-    <% end %>
-  <% end %>
+  <%= event_rsvp_numbers %>
+  <%= current_rsvp_status %>
+  <%= render 'rsvp_form' %>
 </p>
