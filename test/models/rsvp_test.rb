@@ -37,7 +37,7 @@ class RsvpTest < ActiveSupport::TestCase
     end
 
     it "but cannot rsvp twice" do
-      assert_raise ActiveRecord::RecordNotUnique do
+      assert_raise ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid do
         Rsvp.create!( :user => @user, :event => @event )
         Rsvp.create!( :user => @user, :event => @event )
       end
