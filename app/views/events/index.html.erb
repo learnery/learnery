@@ -5,7 +5,9 @@
   <div class="hero-unit">
     <h1>Nothing Planned</h1>
     <p>there are no event planned just now...</p>
-    <p><%= link_to t('.new', :default => t("helpers.links.new")), new_event_path, class: 'btn btn-primary' %></p>
+    <% if user_signed_in? %>
+      <p><%= link_to t('.new', :default => t("helpers.links.new")), new_event_path, class: 'btn btn-primary' %></p>
+    <% end %>
   </div>
 
 
@@ -20,7 +22,9 @@
     <%= render "list" %>
 
 
-    <%= link_to t('.new', :default => t("helpers.links.new")), new_event_path, :class => 'btn btn-primary' %>
+    <% if user_signed_in? %>
+      <%= link_to t('.new', :default => t("helpers.links.new")), new_event_path, :class => 'btn btn-primary' %>
+    <% end %>
 
   <% end # if @events %>
 

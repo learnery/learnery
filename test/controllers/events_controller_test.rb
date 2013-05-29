@@ -3,49 +3,92 @@ require 'test_helper'
 class EventsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
-  setup do
+  before do
     @event = events(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:events)
-  end
+  context "public actions" do
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+    it "should get index" do
+      get :index
+      assert_response :success
+      assert_not_nil assigns(:events)
+    end
 
-  test "should create event" do
-    assert_difference('Event.count') do
+    it "should show event" do
+      get :show, id: @event
+      assert_response :success
+    end
+
+  end # /context public actions
+
+  context "admin actions should not be publicly availabe" do
+
+    it "should get new" do
+      get :new
+      assert_response 302
+    end
+
+    it "should create event" do
       post :create, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+      assert_response 302
     end
 
-    assert_redirected_to event_path(assigns(:event))
-  end
+    it "should get edit" do
+      get :edit, id: @event
+      assert_response 302
+    end
 
-  test "should show event" do
-    get :show, id: @event
-    assert_response :success
-  end
+    it "should update event" do
+      patch :update, id: @event, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+      assert_response 302
+    end
 
-  test "should get edit" do
-    get :edit, id: @event
-    assert_response :success
-  end
-
-  test "should update event" do
-    patch :update, id: @event, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
-    assert_redirected_to event_path(assigns(:event))
-  end
-
-  test "should destroy event" do
-    assert_difference('Event.count', -1) do
+    it "should destroy event" do
       delete :destroy, id: @event
+      assert_response 302
     end
 
-    assert_redirected_to events_path
-  end
+  end # /context admin action not publicly available
+
+
+
+  context "admin actions" do
+    before do
+      u1 = User.create!( :email => 'user1@example.com', :password => '12345678', :admin => true)
+      sign_in( u1 )
+    end
+
+    it "should get new" do
+      get :new
+      assert_response :success
+    end
+
+    it "should create event" do
+      assert_difference('Event.count') do
+        post :create, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+      end
+
+      assert_redirected_to event_path(assigns(:event))
+    end
+
+    it "should get edit" do
+      get :edit, id: @event
+      assert_response :success
+    end
+
+    it "should update event" do
+      patch :update, id: @event, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+      assert_redirected_to event_path(assigns(:event))
+    end
+
+    it "should destroy event" do
+      assert_difference('Event.count', -1) do
+        delete :destroy, id: @event
+      end
+
+      assert_redirected_to events_path
+    end
+
+  end # /context admin actions
 end

@@ -27,4 +27,8 @@ protected
    prepend_view_path( learnery_theme_paths )
   end
 
+  def admin_only
+    # raise "admin only"
+    redirect_to root_path, :notice => "You need to sign in as an admin before continuing."  unless current_user and current_user.admin?
+  end
 end

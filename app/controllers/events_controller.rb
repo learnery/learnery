@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_only,  :only => [ :new, :edit, :create, :update, :destroy ]
 
   # `GET /events`            shows future events in @events, the next event is featured as @event
   # `GET /events?past=true`  shows past events in @events

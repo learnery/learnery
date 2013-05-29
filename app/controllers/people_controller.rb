@@ -23,9 +23,6 @@ class PeopleController < ApplicationController
 
   private
 
-  def admin_only
-    raise AuthenticatinError unless current_user.admin? 
-  end
 
   def find_person
     @person = User.find(params[:id])
