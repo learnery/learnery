@@ -3,7 +3,7 @@
     <p><%= @event.description %></p>
     <%= render "rsvp" %>
     <p><%= 
-           link_to_unless_current("Learn more", event_path( @event )) do
+           link_to_unless_current(t(:learn_more), event_path( @event )) do
              
            end
         %></p>

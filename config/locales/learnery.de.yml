@@ -1,0 +1,35 @@
+# Erste Übersetzungen für Learnery
+
+de:
+  past_events: Alte Veranstaltungene
+  login: Login
+  sign_up: Anmelden
+  sign_up_twitter: Anmelden mit Twitter
+  logged_in_as: Eingelogget als %{user}
+  log_out: Logout
+  learn_more: Mehr darüber
+  nothing_planned: Nichts geplant
+  not_right_now: derzeit sind keine weiteren Veranstaltungen geplant...
+  create: Erstellen
+  new: Neu anlegen
+  edit: Editieren
+  destroy: Löschen
+  back: Zurück
+  people: Leute
+  rsvp_0: niemand ist angemeldet - sei der/die Erste!
+  rsvp_1: eine Person ist angemeldet
+  rsvp_n: "%{count} Leute sind angemeldet"
+  do_rsvp: Ansage speichern
+  events:
+    new:
+      title: Neue Veranstaltung
+  activerecord:
+    models:
+      event: Veranstaltung
+    attributes:
+      event:
+        name: Name
+        starts: Beginn
+        ends: Ende
+        venue: Veranstaltungsort
+    

@@ -1,0 +1,34 @@
+# english texts for learnery
+
+en:
+  past_events: Past Events
+  login: Login
+  sign_up: Sign Up
+  sign_up_twitter: Sign Up with Twitter
+  logged_in_as: "Logged in as #{user}"
+  log_out: Log out
+  learn_more: Learn more
+  nothing_planned: Nothing planned
+  not_right_now: there are no event planned just now...
+  new: New
+  edit: Edit
+  create: Create
+  destroy: Delete
+  back: Back
+  people: People
+  rsvp_0: noone is attending yet - be the first to rsvp!
+  rsvp_1: one person will attend
+  rsvp_n: "%{count} people will attend"
+  do_rsvp: rsvp
+  events:
+    new:
+      title: New Event
+  activerecord:
+    models:
+      event: event
+    attributes:
+      event:
+        name: name
+        starts: starts
+        ends: ends
+        venue: venue

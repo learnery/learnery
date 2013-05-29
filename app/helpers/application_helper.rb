@@ -2,9 +2,9 @@ module ApplicationHelper
 
   def event_rsvp_numbers
     case @event.count_yes
-      when 0 then "noone is attending yet - be the first to rsvp!"
-      when 1 then "one person will attend: " 
-      else "#{@event.count_yes} people will attend: " 
+      when 0 then t :rsvp_0
+      when 1 then t :rsvp_1
+      else        t :rsvp_n, :count => @event.count_yes
     end
   end
 
