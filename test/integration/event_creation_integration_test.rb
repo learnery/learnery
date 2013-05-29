@@ -4,8 +4,12 @@ describe "Event Creation Integration Test" do
 
   context "as an visitor" do
     it "do not see links to new event on homepage" do
+      past_event   = Event.create!( :name => "event in the past",   :starts => Date.today - 10 )
       visit "/"
       page.wont_have_link("New")
+      page.wont_have_link("Edit")
+      visit "/events?past=true"
+      page.wont_have_link("Edit")
     end
 
     it "do not see links to edit an event" do
