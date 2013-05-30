@@ -1,3 +1,1 @@
-
-#gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
-gem 'learnery-theme', :path => '/Developer/Webmirror/learnery/learnery-theme'
+gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
