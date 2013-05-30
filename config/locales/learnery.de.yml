@@ -26,10 +26,19 @@ de:
   activerecord:
     models:
       event: Veranstaltung
+      user: Person
     attributes:
       event:
         name: Name
         starts: Beginn
         ends: Ende
         venue: Veranstaltungsort
+      user:
+        email: E-Mail
+        firstname: Vorname
+        lastname: Nachname
+        nickname: Spitzname
+        password: Passwort
+        password_confirmation: Passwort noch einmal
+        current_password: Aktuelles passwort
     

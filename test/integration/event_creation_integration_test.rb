@@ -2,11 +2,6 @@ require "test_helper"
 
 describe "Event Creation Integration Test" do
 
-  def create_button_for(klass)
-    return "#{klass.model_name.human} #{t(:create).downcase}" if I18n.locale == :de
-    return "#{t(:create)} #{klass.model_name.human}"
-  end
-
   context "as an visitor" do
     it "do not see links to new event on homepage" do
       past_event   = Event.create!( :name => "event in the past",   :starts => Date.today - 10 )

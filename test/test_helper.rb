@@ -7,9 +7,9 @@ require 'capybara/rails'
 module LoginHelper
   def login_user(user)
     visit "/users/sign_in"
-    fill_in 'Email', :with => user.email
-    fill_in 'Password', :with => user.password
-    click_button 'Sign in'
+    fill_in t('activerecord.attributes.user.email'), :with => user.email
+    fill_in t('activerecord.attributes.user.password'), :with => user.password
+    click_button t :sign_in
   end
 end
 
@@ -44,9 +44,26 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver # Revert Capybara.current_driver to Capybara.default_driver
   end
 
+  # helpers for i18n
+  # use the 't' method in test directly
   def t(x)
     I18n.t(x)
   end
+
+  # create the text on the standard buttons (new, create)
+  def create_button_for(klass)
+    return "#{klass.model_name.human} #{t(:create).downcase}" if I18n.locale == :de
+    return "#{t(:create)} #{klass.model_name.human}"
+  end
+  def new_button_for(klass)
+    return "#{klass.model_name.human} #{t(:new).downcase}" if I18n.locale == :de
+    return "#{t(:new)} #{klass.model_name.human}"
+  end
+  def update_button_for(klass)
+    return "#{klass.model_name.human} #{t(:update).downcase}" if I18n.locale == :de
+    return "#{t(:update)} #{klass.model_name.human}"
+  end
+
 end
 
 class ActionController::TestCase

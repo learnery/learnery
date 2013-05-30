@@ -62,8 +62,8 @@ describe "Rsvp Integration Test" do
       login_user( @u )
       visit event_path( @e )
 
-      page.must_have_button('Create Rsvp')
-      click_button 'Create Rsvp' 
+      page.must_have_button create_button_for(Rsvp)
+      click_button create_button_for(Rsvp)
       page.must_have_content('You said yes.')
 
       page.must_have_button('Update Rsvp')

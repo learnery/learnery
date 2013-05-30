@@ -26,9 +26,18 @@ en:
   activerecord:
     models:
       event: event
+      user: user
     attributes:
       event:
         name: name
         starts: starts
         ends: ends
         venue: venue
+      user:
+        email: E-Mail
+        firstname: Firstname
+        lastname: Lastname
+        nickname: Nickname
+        password: Password
+        password_confirmation: Password again
+        current_password: Current password

@@ -19,7 +19,7 @@ GIT
       rendezvous
 
 PATH
-  remote: ../learnery-theme
+  remote: ../learnery-theme-de
   specs:
     learnery-theme (0.0.1)
 
