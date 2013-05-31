@@ -7,8 +7,8 @@ module ApplicationHelper
     redcarpet.render(text).html_safe
   end
 
-  def rsvp_options
-    Rsvp::ANSWERS.map{|x|[t(x, :scope => 'activerecord.attributes.rsvp.answer'),x]}
+  def rsvp_options(o)
+    o.class.state_machines[:answer].states.map(&:name).map{|x|[t(x, :scope => 'activerecord.attributes.rsvp.answer'),x]}
   end
 
   def event_rsvp_numbers

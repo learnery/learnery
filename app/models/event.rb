@@ -54,7 +54,7 @@ class Event < ActiveRecord::Base
 
   # get rsvp of this user
   def rsvp_of(user)
-    rsvp.where(:user => user).first || rsvp.build
+    rsvp.where(:user => user).first || OpenRsvp.new(:user => user, :event => self)
   end
 
 end

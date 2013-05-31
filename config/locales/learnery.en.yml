@@ -56,5 +56,5 @@ en:
         answer: Answer
         answer:
           maybe: Maybe
-          "yes": Yes
-          "no": No
+          'yes': 'Yes'
+          'no': 'No'

@@ -66,9 +66,9 @@ class EventTest < ActiveSupport::TestCase
       @u3 = User.create!( :email => 'user3@example.com', :password => '12345678')
       @u4 = User.create!( :email => 'user4@example.com', :password => '12345678')
 
-      @r1 = Rsvp.create!( event: @e, user: @u1, answer: :yes    )
-      @r2 = Rsvp.create!( event: @e, user: @u2, answer: :no     )
-      @r3 = Rsvp.create!( event: @e, user: @u3, answer: :maybe  )
+      @r1 = OpenRsvp.create!( event: @e, user: @u1, answer: :yes    )
+      @r2 = OpenRsvp.create!( event: @e, user: @u2, answer: :no     )
+      @r3 = OpenRsvp.create!( event: @e, user: @u3, answer: :maybe  )
      
     end
 

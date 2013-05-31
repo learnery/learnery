@@ -19,7 +19,7 @@ gem 'devise', '3.0.0.rc'
 gem 'omniauth-twitter'
 gem 'nokogiri'
 gem 'redcarpet'
-
+gem 'state_machine'
 
 group :development, :test do
   gem 'sqlite3'
