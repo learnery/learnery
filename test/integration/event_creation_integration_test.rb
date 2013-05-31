@@ -3,6 +3,17 @@ require "test_helper"
 describe "Event Creation Integration Test" do
 
   context "as an visitor" do
+
+    it "displays markdown event-descriptions as html" do
+      future_event = Event.create!( :name => "event in the future", :starts => Date.today + 30, :description => "## important" )
+      visit event_path( future_event )
+      page.must_have_css( 'h2' )
+      within 'h2' do
+        must_have_content "important"
+        wont_have_content "Starts"
+      end
+    end
+
     it "do not see links to new event on homepage" do
       past_event   = Event.create!( :name => "event in the past",   :starts => Date.today - 10 )
       visit "/"
@@ -54,13 +65,16 @@ describe "Event Creation Integration Test" do
     end
 
 
-    it "can create event" do
+    it "can create event with everything" do
       visit "/events/new"
 
       page.must_have_content('New')
       within('#new_event') do
         fill_in 'Name',   with: 'Some Event'
         fill_in 'Starts', with: '2013-03-23 13:19'
+        fill_in 'Ends', with: '2013-03-23 14:19'
+        fill_in 'Venue',  with: 'here'
+        fill_in 'Description',  with: 'this is a really long test'
         click_button 'Create Event'
       end
 

@@ -1,6 +1,8 @@
   <div class="hero-unit">
     <h1><%= @event.name %> <small><%=l @event.starts, format: :short %></small></h1>
-    <p><%= @event.description %></p>
+
+    <%=md  @event.description %>
+
     <%= render "rsvp" %>
     <p><%= 
            link_to_unless_current("Learn more", event_path( @event )) do

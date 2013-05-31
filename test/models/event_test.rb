@@ -2,6 +2,40 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
 
+  context "can create" do
+
+    it "cannot be created without starts" do
+      event   = Event.create( :name => "next event" )
+      event.valid?.must_equal false
+    end
+
+    it "cannot be created without name" do
+      event   = Event.create( :starts => Date.today + 10 )
+      event.valid?.must_equal false
+    end
+
+    it "can be created with everything" do
+      event_data = {
+          :name => "next event",
+          :description => "mighty long text" * 10,
+          :starts => Date.today + 10,
+          :ends => Date.today + 11,
+          :venue => "here"
+      }
+
+      event   = Event.create( event_data )
+      event.valid?.must_equal true
+      event.save!
+      event.reload
+      event.name.must_equal event_data[:name]
+      event.description.must_equal event_data[:description]
+      event.starts.must_equal event_data[:starts]
+      event.ends.must_equal event_data[:ends]
+      event.venue.must_equal event_data[:venue]
+    end
+
+  end
+
   context "can find" do
     before do
       @past_event   = Event.create!( :name => "past event",   :starts => Date.today - 10 )

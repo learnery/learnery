@@ -1,10 +1,17 @@
 module ApplicationHelper
 
+  def md(text)
+    renderer = Redcarpet::Render::HTML.new
+    extensions = {filter_html: true}
+    redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+    redcarpet.render(text).html_safe
+  end
+
   def event_rsvp_numbers
     case @event.count_yes
-      when 0 then "noone is attending yet - be the first to rsvp!"
-      when 1 then "one person will attend: " 
-      else "#{@event.count_yes} people will attend: " 
+    when 0 then "noone is attending yet - be the first to rsvp!"
+    when 1 then "one person will attend: " 
+    else "#{@event.count_yes} people will attend: " 
     end
   end
 

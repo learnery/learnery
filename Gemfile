@@ -18,7 +18,7 @@ end
 gem 'devise', '3.0.0.rc'
 gem 'omniauth-twitter'
 gem 'nokogiri'
-
+gem 'redcarpet'
 
 
 group :development, :test do
