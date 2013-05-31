@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Erste Übersetzungen für Learnery
 
 de:
@@ -5,8 +6,14 @@ de:
   login: Login
   sign_up: Anmelden
   sign_up_twitter: Anmelden mit Twitter
-  logged_in_as: Eingelogget als %{user}
+  sign_up_with: "Anmelden mit %{provider}"
+  logged_in_as: "Eingelogget als %{user}"
   log_out: Logout
+  forgot_password: Passwort vergessen?
+  missing_confirmation: Keine Bestätigungs-Mail erhalten?
+  missing_unlock: Keine Entsperrungs-Mail erhalten?
+  login_with: "Login mit %{provider}"
+  admin_only: "Du musst mit Administrations-Rechten eingeloggt sein bevor Du das tun kannst."
   learn_more: Mehr darüber
   nothing_planned: Nichts geplant
   not_right_now: derzeit sind keine weiteren Veranstaltungen geplant...
@@ -41,4 +48,5 @@ de:
         password: Passwort
         password_confirmation: Passwort noch einmal
         current_password: Aktuelles passwort
+        remember_me: Eingeloggt bleiben
     

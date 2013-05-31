@@ -5,8 +5,15 @@ en:
   login: Login
   sign_up: Sign Up
   sign_up_twitter: Sign Up with Twitter
-  logged_in_as: "Logged in as #{user}"
+  sign_up_with: "Sign Up with %{provider}"
+  logged_in_as: "Logged in as %{user}"
   log_out: Log out
+  remember_me: Remember me
+  forgot_password: Forgot your password?
+  missing_confirmation: "Didn't receive confirmation instructions?"
+  missing_unlock: "Didn't receive unlock instructions?"
+  login_with: "Login with %{provider}"
+  admin_only: "You need to sign in as an admin before continuing."
   learn_more: Learn more
   nothing_planned: Nothing planned
   not_right_now: there are no event planned just now...

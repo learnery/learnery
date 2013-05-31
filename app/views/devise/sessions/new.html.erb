@@ -1,4 +1,4 @@
-<h2>Sign in</h2>
+<h2><%= t :login %></h2>
 
 <%= horizontal_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= f.email_field :email, :autofocus => true %>
@@ -8,7 +8,7 @@
     <%= f.check_box :remember_me %>
   <% end -%>
 
-  <%= f.submit "Sign in" %>
+  <%= f.submit t(:login) %>
 <% end %>
 
 <%= render "devise/shared/links" %>

@@ -5,11 +5,17 @@ require 'capybara/rails'
 
 # TODO: move me somewhere
 module LoginHelper
+  delegate :t, :to => I18n
   def login_user(user)
+
+
+    
     visit "/users/sign_in"
-    fill_in t('activerecord.attributes.user.email'), :with => user.email
-    fill_in t('activerecord.attributes.user.password'), :with => user.password
-    click_button t :sign_in
+    within "#new_user" do
+      fill_in t('activerecord.attributes.user.email'), :with => user.email
+      fill_in t('activerecord.attributes.user.password'), :with => user.password
+      click_button "Login"
+    end
   end
 end
 
@@ -46,9 +52,11 @@ class ActionDispatch::IntegrationTest
 
   # helpers for i18n
   # use the 't' method in test directly
-  def t(x)
-    I18n.t(x)
-  end
+
+  delegate :t, :to => I18n
+  #def t(*x)
+  #  I18n.t(x)
+  #end
 
   # create the text on the standard buttons (new, create)
   def create_button_for(klass)

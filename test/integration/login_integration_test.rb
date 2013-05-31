@@ -8,7 +8,7 @@ describe "Login Integration Test" do
     visit root_path
     page.must_have_link t(:sign_up) 
     click_link t(:sign_up) 
-    page.must_have_content('Password confirmation')
+    page.must_have_content(t 'activerecord.attributes.user.password_confirmation')
 
     within('#new_user') do
       fill_in t('activerecord.attributes.user.email'), :with => email_address
@@ -16,15 +16,15 @@ describe "Login Integration Test" do
       fill_in t('activerecord.attributes.user.password_confirmation'), :with => '12345678'
       click_button t(:sign_up)
     end
-    page.must_have_content t(:signed_in)
-    page.must_have_content t(:user_sigend_in, :name => email_address)
+    page.must_have_content t('devise.registrations.signed_up')
+    page.must_have_content t(:logged_in_as, :user => email_address)
   end
  
   it "log in" do
     user = User.create!( :email => 'user@example.com', :password => '12345678')
     login_user( user )
-    page.must_have_content('Signed in successfully')
-    page.must_have_content t(:logged_in_as, :name => user.email)
+    page.must_have_content t('devise.sessions.signed_in')
+    page.must_have_content t(:logged_in_as, :user => user.email)
   end
 
   it "log out" do
@@ -33,9 +33,9 @@ describe "Login Integration Test" do
 
     visit root_path
 
-    page.must_have_link t :logout
-    click_link :logout
-    page.must_have_content t :signed_out
+    page.must_have_link t :log_out
+    click_link t :log_out
+    page.must_have_content t 'devise.sessions.signed_out'
   end
  
 end
