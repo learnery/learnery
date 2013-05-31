@@ -5,11 +5,11 @@ describe "Admin Integration Test" do
   it "first user can become admin" do
     user = User.create!( :email => 'user@example.com', :password => '12345678')
     login_user( user )
-    page.must_have_content "Logged in as #{user.email}"
-    click_link "Logged in as #{user.email}"
+    page.must_have_content  t(:logged_in_as, user.email)
+    click_link t(:logged_in_as, user.email)
 
-    check "Admin"
-    fill_in "Current password", :with => '12345678'
+    check   t("activerecord.attributes.user.admin")
+    fill_in t("activerecord.attributes.user.current_password"), :with => '12345678'
 
     click_button "Update"
 
@@ -23,7 +23,7 @@ describe "Admin Integration Test" do
     user  = User.create!( :email => 'user@example.com',  :password => '12345678')
     login_user( user )
 
-    click_link "Logged in as #{user.email}"
+    click_link t(:logged_in_as, user.email)
 
     page.wont_have_content "Admin"
   end
@@ -33,7 +33,7 @@ describe "Admin Integration Test" do
     user  = User.create!( :email => 'user@example.com',  :password => '12345678')
     login_user( admin )
 
-    click_link "Logged in as #{admin.email}"
+    click_link t(:logged_in_as, admin.email)
 
     page.must_have_link "People"
     click_link "People"

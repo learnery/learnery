@@ -1,8 +1,7 @@
 <% if current_user then %>
   <%= inline_form_for @rsvp do |f|  %>
     <%= f.hidden_field( :event_id )  %>
-    <% o = Rsvp::ANSWERS.map{|x|[x,x]}  %>
-    <%= f.select( :answer,  options_for_select(o), :class => 'span1')  %>
+    <%= f.select( :answer,  options_for_select( rsvp_options ), :class => 'span1')  %>
     <%= f.submit t(:do_rsvp), :class => ''  %>
   <% end  %>
 <% end  %>

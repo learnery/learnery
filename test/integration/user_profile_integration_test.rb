@@ -21,7 +21,7 @@ describe "User Profile Integration Test" do
 
       page.must_have_content('Edit User')
       within('#edit_user') do
-        fill_in 'Email', :with => 'some@new.address'
+        fill_in t('activerecord.attributes.user.email'), :with => 'some@new.address'
         click_button 'Update'
       end
 

@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def rsvp_options
+    Rsvp::ANSWERS.map{|x|[t(x, :scope => 'activerecord.attributes.rsvp.answer'),x]}
+  end
+
   def event_rsvp_numbers
     case @event.count_yes
       when 0 then t :rsvp_0
