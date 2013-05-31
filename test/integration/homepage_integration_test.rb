@@ -4,7 +4,7 @@ describe "Homepage Integration Test" do
  
   it "may be empty" do
     visit root_path
-    page.must_have_content('Nothing Planned')
+    page.must_have_content(t :nothing_planned)
   end
 
   context "with events" do

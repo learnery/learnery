@@ -29,6 +29,6 @@ protected
 
   def admin_only
     # raise "admin only"
-    redirect_to root_path, :notice => "You need to sign in as an admin before continuing."  unless current_user and current_user.admin?
+    redirect_to root_path, :notice => t(:admin_only)  unless current_user and current_user.admin?
   end
 end

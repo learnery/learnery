@@ -5,15 +5,15 @@ describe "Admin Integration Test" do
   it "first user can become admin" do
     user = User.create!( :email => 'user@example.com', :password => '12345678')
     login_user( user )
-    page.must_have_content "Logged in as #{user.email}"
-    click_link "Logged in as #{user.email}"
+    page.must_have_content  t(:logged_in_as, :user => user.email)
+    click_link t(:logged_in_as, :user => user.email)
 
-    check "Admin"
-    fill_in "Current password", :with => '12345678'
+    check   t("activerecord.attributes.user.admin")
+    fill_in t("activerecord.attributes.user.current_password"), :with => '12345678'
 
-    click_button "Update"
+    click_button t(:update)
 
-    page.must_have_content "You updated your account successfully"
+    page.must_have_content t('devise.registrations.updated')
     user.reload
     assert user.admin, "user is now an admin"
   end
@@ -23,7 +23,7 @@ describe "Admin Integration Test" do
     user  = User.create!( :email => 'user@example.com',  :password => '12345678')
     login_user( user )
 
-    click_link "Logged in as #{user.email}"
+    click_link t(:logged_in_as, :user => user.email)
 
     page.wont_have_content "Admin"
   end
@@ -33,20 +33,19 @@ describe "Admin Integration Test" do
     user  = User.create!( :email => 'user@example.com',  :password => '12345678')
     login_user( admin )
 
-    click_link "Logged in as #{admin.email}"
+    click_link t(:logged_in_as, :user => admin.email)
 
-    page.must_have_link "People"
-    click_link "People"
+    page.must_have_link t("people")
+    click_link t("people")
 
     within "#person_#{user.id}" do
-      click_link "Edit"
+      must_have_content t(:edit)
+      click_link t(:edit)
     end
 
-    check "Admin"
+    check t("activerecord.attributes.user.admin")
 
-    click_button "Update"
-
-    page.must_have_content "Person was successfully updated."
+    click_button t(:update)
     user.reload
     assert user.admin, "user is now an admin"
   end

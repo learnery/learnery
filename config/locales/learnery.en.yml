@@ -1,0 +1,60 @@
+# english texts for learnery
+
+en:
+  past_events: Past Events
+  login: Login
+  sign_up: Sign Up
+  sign_up_twitter: Sign Up with Twitter
+  sign_up_with: "Sign Up with %{provider}"
+  logged_in_as: "Logged in as %{user}"
+  log_out: Log out
+  remember_me: Remember me
+  forgot_password: Forgot your password?
+  missing_confirmation: "Didn't receive confirmation instructions?"
+  missing_unlock: "Didn't receive unlock instructions?"
+  login_with: "Login with %{provider}"
+  admin_only: "You need to sign in as an admin before continuing."
+  learn_more: Learn more
+  nothing_planned: Nothing planned
+  not_right_now: there are no event planned just now...
+  new: New
+  edit: Edit
+  create: Create
+  update: Update
+  destroy: Delete
+  back: Back
+  people: People
+  rsvp_0: noone is attending yet - be the first to rsvp!
+  rsvp_1: one person will attend
+  rsvp_n: "%{count} people will attend"
+  do_rsvp: rsvp
+  events:
+    new:
+      title: New Event
+  activerecord:
+    models:
+      event: event
+      user: user
+    attributes:
+      event:
+        name: name
+        starts: starts
+        ends: ends
+        venue: venue
+        description: description
+      user:
+        email: E-Mail
+        firstname: Firstname
+        lastname: Lastname
+        nickname: Nickname
+        password: Password
+        password_confirmation: Password again
+        current_password: Current password
+        admin: Admin
+        remember_me: Remember me
+      rsvp:
+        answer: Answer
+        answer:
+          maybe: Maybe
+          "yes": Yes
+          "no": No
