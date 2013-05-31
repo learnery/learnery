@@ -11,7 +11,7 @@ describe "User Profile Integration Test" do
 
     it "cannot edit profile without login" do
       visit "/users/edit"
-      page.must_have_content 'You need to sign in or sign up before continuing'
+      page.must_have_content t('devise.failure.unauthenticated')
     end
 
     it "cannot edit profile without supplying old password" do
@@ -22,10 +22,10 @@ describe "User Profile Integration Test" do
       page.must_have_content('Edit User')
       within('#edit_user') do
         fill_in t('activerecord.attributes.user.email'), :with => 'some@new.address'
-        click_button 'Update'
+        click_button t('update')
       end
 
-      page.must_have_content "Current passwordcan't be blank"
+      page.must_have_content t('errors.messages.blank')
     end
 
     it "can edit name" do
@@ -38,14 +38,13 @@ describe "User Profile Integration Test" do
 
       page.must_have_content('Edit User')
       within('#edit_user') do
-        fill_in 'Nickname',  :with => nick
-        fill_in 'Firstname', :with => first
-        fill_in 'Lastname',  :with => last
-        fill_in 'Current password',  :with => @pw
-        click_button 'Update'
+        fill_in t('activerecord.attributes.user.nickname'),  :with => nick
+        fill_in t('activerecord.attributes.user.firstname'), :with => first
+        fill_in t('activerecord.attributes.user.lastname'),  :with => last
+        fill_in t('activerecord.attributes.user.current_password'),  :with => @pw
+        click_button t('update')
       end
-      page.wont_have_content "Current passwordcan't be blank"
-      page.must_have_content 'You updated your account successfully.'
+      page.must_have_content t('devise.registrations.updated')
 
     end
    

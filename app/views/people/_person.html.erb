@@ -10,6 +10,6 @@
     <% if person.admin? then %><li><%= t :admin %></li><% end %>
   </ul>
 
-  <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_person_path(person), :class => 'btn' %>
+  <%= link_to t('edit'), edit_person_path( person ), :class => 'btn' %>
 
 </div>

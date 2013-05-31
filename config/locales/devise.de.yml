@@ -9,7 +9,6 @@ de:
         one: "Konnte %{resource} nicht speichern: ein Fehler."
         other: "Konnte %{resource} nicht speichern: %{count} Fehler."
       confirmation_period_expired: "Du musst erst den Bestätigungslink in unserem Email anklicken. Oder fordere ein weiteres Email zum Bestätigen von deinem Account an."
-
   devise:
     failure:
       already_authenticated: "Du bist schon angemeldet."

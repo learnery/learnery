@@ -20,6 +20,7 @@ en:
   new: New
   edit: Edit
   create: Create
+  update: Update
   destroy: Delete
   back: Back
   people: People
@@ -48,6 +49,8 @@ en:
         password: Password
         password_confirmation: Password again
         current_password: Current password
+        admin: Admin
+        remember_me: Remember me
       rsvp:
         answer: Answer
         answer:

@@ -18,6 +18,7 @@ de:
   nothing_planned: Nichts geplant
   not_right_now: derzeit sind keine weiteren Veranstaltungen geplant...
   create: Erstellen
+  update: Speichern
   new: Neu anlegen
   edit: Editieren
   destroy: Löschen
@@ -49,6 +50,7 @@ de:
         password: Passwort
         password_confirmation: Passwort noch einmal
         current_password: Aktuelles passwort
+        admin: Admin
         remember_me: Eingeloggt bleiben
       rsvp:
         answer: Antwort
