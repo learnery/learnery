@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
     where(:admin => true).count == 0 
   end
 
+  def name
+    email || nickname || firstname || lastname
+  end
+
   def user_info
     email_required? ? email : nickname
   end

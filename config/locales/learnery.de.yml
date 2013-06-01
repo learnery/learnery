@@ -1,0 +1,61 @@
+# encoding: utf-8
+# Erste Übersetzungen für Learnery
+
+de:
+  past_events: Alte Veranstaltungene
+  login: Login
+  sign_up: Anmelden
+  sign_up_twitter: Anmelden mit Twitter
+  sign_up_with: "Anmelden mit %{provider}"
+  logged_in_as: "Eingelogget als %{user}"
+  log_out: Logout
+  forgot_password: Passwort vergessen?
+  missing_confirmation: Keine Bestätigungs-Mail erhalten?
+  missing_unlock: Keine Entsperrungs-Mail erhalten?
+  login_with: "Login mit %{provider}"
+  admin_only: "Du musst mit Administrations-Rechten eingeloggt sein bevor Du das tun kannst."
+  learn_more: Mehr darüber
+  nothing_planned: Nichts geplant
+  not_right_now: derzeit sind keine weiteren Veranstaltungen geplant...
+  create: Erstellen
+  update: Speichern
+  new: Neu anlegen
+  edit: Editieren
+  destroy: Löschen
+  back: Zurück
+  people: Leute
+  rsvp_0: niemand ist angemeldet - sei der/die Erste!
+  rsvp_1: eine Person ist angemeldet
+  rsvp_n: "%{count} Leute sind angemeldet"
+  do_rsvp: Ansage speichern
+  events:
+    new:
+      title: Neue Veranstaltung
+  activerecord:
+    models:
+      event: Veranstaltung
+      user: Person
+      rsvp: Ansage
+    attributes:
+      event:
+        name: Name
+        starts: Beginn
+        ends: Ende
+        venue: Veranstaltungsort
+        description: Beschreibung
+      user:
+        email: E-Mail
+        firstname: Vorname
+        lastname: Nachname
+        nickname: Spitzname
+        password: Passwort
+        password_confirmation: Passwort noch einmal
+        current_password: Aktuelles passwort
+        admin: Admin
+        remember_me: Eingeloggt bleiben
+      rsvp:
+        answer: Antwort
+        answer:
+          maybe: Vielleicht
+          "yes": Ja
+          "no": Nein
