@@ -36,15 +36,15 @@ group :production do
 end
 
 
-# for travis, see http://about.travis-ci.org/docs/user/languages/ruby/
 group :test do
-  gem 'rake'
+  gem 'rake' # for travis, see http://about.travis-ci.org/docs/user/languages/ruby/
   gem 'minitest-spec-rails'
   gem 'capybara'
   gem 'capybara_minitest_spec'
   gem 'database_cleaner'
 end
 
+gem "twitter-bootstrap-rails"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
