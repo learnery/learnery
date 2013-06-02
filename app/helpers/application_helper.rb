@@ -7,6 +7,10 @@ module ApplicationHelper
     redcarpet.render(text).html_safe
   end
 
+  def rsvp_type_options
+    Rsvp.implementations.map(&:to_s).map{|x|[t(x, :scope => 'activerecord.models'),x]}
+  end
+
   def rsvp_options(o)
     o.class.state_machines[:answer].states.map(&:name).map{|x|[t(x, :scope => 'activerecord.attributes.rsvp.answer'),x]}
   end
@@ -66,6 +70,10 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     wrap(attribute, options, super)
   end
   def text_area(attribute, options={})
+    help = options.delete(:help)
+    wrap(attribute, options, super)
+  end
+  def select(attribute, o, options={})
     help = options.delete(:help)
     wrap(attribute, options, super)
   end

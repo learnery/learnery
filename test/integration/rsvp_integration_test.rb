@@ -67,7 +67,7 @@ describe "Rsvp Integration Test" do
       page.must_have_content 'You said yes.'
 
       page.must_have_button t :do_rsvp
-      select t "activerecord.attributes.rsvp.answer.no"
+      select t "activerecord.values.rsvp.answer.no"
       click_button t :do_rsvp
       page.must_have_content 'You said no.'
     end

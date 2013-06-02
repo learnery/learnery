@@ -1,4 +1,4 @@
-class Rsvp < ActiveRecord::Base
+class Rsvp < ActiveRecord::Base 
 
   # models the many-to-many relation between users and events
   # the DATABASE ensures that there is only one rsvp per ( user x event )
@@ -16,7 +16,12 @@ class Rsvp < ActiveRecord::Base
 
   # all subtypes should implement a state machine!
 
+  def self.implementations
+    [ OpenRsvp, RsvpWithWaitlist ]
+  end
+
   def initialize(*)
     super
   end
+
 end

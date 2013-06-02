@@ -28,6 +28,7 @@ en:
   rsvp_1: one person will attend
   rsvp_n: "%{count} people will attend"
   do_rsvp: rsvp
+  max_attendees_zero_is_unlimited: set to 0 for no limit
   events:
     new:
       title: New Event
@@ -35,6 +36,9 @@ en:
     models:
       event: event
       user: user
+      rsvp: rsvp
+      OpenRsvp: open rsvp
+      RsvpWithWaitlist: rsvp with maximum attendees and waitlist
     attributes:
       event:
         name: name
@@ -42,6 +46,7 @@ en:
         ends: ends
         venue: venue
         description: description
+        rsvp_type: How to Rsvp
       user:
         email: E-Mail
         firstname: Firstname
@@ -54,6 +59,8 @@ en:
         remember_me: Remember me
       rsvp:
         answer: Answer
+    values:
+      rsvp:
         answer:
           maybe: Maybe
           "yes": "Yes"

@@ -75,6 +75,7 @@ describe "Event Creation Integration Test" do
         fill_in t('activerecord.attributes.event.ends'), with: '2013-03-24 13:19'
         fill_in t('activerecord.attributes.event.venue'), with: 'here'
         fill_in t('activerecord.attributes.event.description'), with: 'this is areally long test'
+        select t('activerecord.models.OpenRsvp')
         click_button create_button_for(Event)
       end
 

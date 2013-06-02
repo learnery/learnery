@@ -28,6 +28,7 @@ de:
   rsvp_1: eine Person ist angemeldet
   rsvp_n: "%{count} Leute sind angemeldet"
   do_rsvp: Ansage speichern
+  max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
   events:
     new:
       title: Neue Veranstaltung
@@ -36,6 +37,8 @@ de:
       event: Veranstaltung
       user: Person
       rsvp: Ansage
+      open_rsvp: Freie Anmeldung
+      rsvp_with_waitlist: Freie Anmeldung mit Maximum und Warteliste
     attributes:
       event:
         name: Name
@@ -43,6 +46,7 @@ de:
         ends: Ende
         venue: Veranstaltungsort
         description: Beschreibung
+        rsvp_type: Art der Anmeldung
       user:
         email: E-Mail
         firstname: Vorname
@@ -55,6 +59,8 @@ de:
         remember_me: Eingeloggt bleiben
       rsvp:
         answer: Antwort
+    values:
+      rsvp:
         answer:
           maybe: Vielleicht
           "yes": Ja

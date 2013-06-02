@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   # Every event has a name and start time
   # you can find the future and past events by start time with Event.future and Event.past
 
-  validates :name, :starts, :presence => true
+  validates :name, :starts, :rsvp_type, :presence => true
 
   default_scope { order(:starts) }
 
@@ -11,13 +11,18 @@ class Event < ActiveRecord::Base
   scope :past, -> { where( "starts < ?", Time.zone.now ) }
 
   # Users can rsvp for events
-
-  has_many :rsvp
+  # this is actually always 
+  has_many :rsvp, :before_add => :check_rsvp_type
   has_many :users, :through => :rsvp
 
   # bk-tbd
   # event knows about answers enumeration; it is duplicated here.
   # I think all of this functionality belongs in rsvp.
+
+  # 
+  def check_rsvp_type(rsvp)
+    raise "Incompatible RSVP, should be #{rsvp_type}" unless rsvp.class.to_s == rsvp_type
+  end
 
   # can count rsvps or access them
   def count_rsvps
@@ -62,4 +67,7 @@ class Event < ActiveRecord::Base
     rsvp.where(:answer => :yes).count < max_attendees
   end
 
+  def rsvp_create( user )
+    rsvp_type.constantize.create!( :event => self, :user => user )
+  end
 end
