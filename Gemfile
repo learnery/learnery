@@ -18,6 +18,7 @@ end
 gem 'devise', '3.0.0.rc'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
+gem 'omniauth-steam'
 gem 'nokogiri'
 gem 'redcarpet'
 

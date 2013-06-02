@@ -6,40 +6,23 @@ describe "omniauth integration test" do
   end
 
   describe "handles callbacks from providers" do
+    Learnery::Application.config.oauth_providers.each do | oauth_provider |
+      context oauth_provider.to_s do
+        before do
+          OmniAuth.config.mock_auth[oauth_provider] = OmniAuth::AuthHash.new({
+               :provider => oauth_provider,
+               :uid => '123545',
+               :info => {:nickname => 'TheNickName' }
+          })
+        end
 
-    context "twitter" do
-      before do
-        OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-             :provider => 'twitter',
-             :uid => '123545',
-             :info => {:nickname => 'TheTwitterer' }
-        })
-      end
-
-      it "logs in user with twitter" do
-        visit root_path
-        click_link t(:login_with, provider: :twitter)
-        user = User.where(nickname: 'TheTwitterer').first
-        page.must_have_content t(:logged_in_as, :user => user.user_info)
-      end
-    end
-
-    context "github" do
-      before do
-        OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-             :provider => 'github',
-             :uid => '123545',
-             :info => {:nickname => 'TheTwitterer' }
-        })
-      end
-
-      it "logs in user with github" do
-        visit root_path
-        click_link t(:login_with, provider: :twitter)
-        user = User.where(nickname: 'TheTwitterer').first
-        page.must_have_content t(:logged_in_as, :user => user.user_info)
+        it "logs in user with twitter" do
+          visit root_path
+          click_link t(:login_with, provider: oauth_provider)
+          user = User.where(nickname: 'TheNickName').first
+          page.must_have_content t(:logged_in_as, :user => user.user_info)
+        end
       end
     end
-
   end
 end

@@ -13,6 +13,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
-  alias_method :twitter, :all
-  alias_method :github, :all
+  Learnery::Application.config.oauth_providers.each do | oauth_provider |
+    alias_method oauth_provider, :all
+  end
 end

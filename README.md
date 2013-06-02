@@ -1,4 +1,4 @@
-This software is work in progress and has not been released yet! 
+This software is work in progress and has not been released yet!
 
 [![Build Status](https://travis-ci.org/learnery/learnery.png?branch=master)](https://travis-ci.org/learnery/learnery)
 
@@ -122,7 +122,16 @@ As travis ci does truncate the git repo, run the first deploy from your own, com
     bundle
     bundle exec ci/deploy.rb <herokuappname>
 
-### Configuring Twitter Authorization
+### Configuring OAuth Authorizations
+Learnery has oauth authorizations for twitter, github and steam.
+To active them on your page, you have to register you app and get oauth keys from the providers, then make them known to your app via environment variables on the server.
+#### Steam
+
+ * http://steamcommunity.com/dev/apikey
+  * Follow the link on https://github.com/reu/omniauth-steam to get an oauth key.
+  *
+
+#### Configuring Twitter Authorization
 
 If you want to use Twitter Authorization, you need to register your app / instance of learnery with twitter at https://dev.twitter.com/apps/new
 
@@ -134,6 +143,8 @@ To test locally, set the environment variables before running rails server (pick
 And finally make these keys known to heroku with
 
     heroku config:set --app learnery-staging TWITTER_CONSUMER_KEY=xxx TWITTER_CONSUMER_SECRET=xxx
+
+
 
 
 FURTHER INFORMATION
