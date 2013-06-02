@@ -14,7 +14,6 @@ class Rsvp < ActiveRecord::Base
     self[:answer] = value.to_s
   end
 
-
   # all subtypes should implement a state machine!
 
   def initialize(*)

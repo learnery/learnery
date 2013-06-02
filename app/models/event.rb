@@ -57,4 +57,9 @@ class Event < ActiveRecord::Base
     rsvp.where(:user => user).first || OpenRsvp.new(:user => user, :event => self)
   end
 
+  def places_available?
+    return true if max_attendees == 0
+    rsvp.where(:answer => :yes).count < max_attendees
+  end
+
 end

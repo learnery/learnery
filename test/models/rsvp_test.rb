@@ -30,10 +30,10 @@ class RsvpTest < ActiveSupport::TestCase
     end
 
 
-    it " answer defaults to yes" do
+    it " answer defaults to nil" do
       r = Rsvp.new( :user => @user, :event => @event )
       r.save!
-      r.answer.must_equal "yes"
+      r.answer.must_equal nil
     end
 
     it "but cannot rsvp twice" do
