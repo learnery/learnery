@@ -86,6 +86,6 @@ class Event < ActiveRecord::Base
     rsvp.where(:answer => :waiting).count
   end
   def rsvp_create( user )
-    rsvp_type.constantize.create!( :event => self, :user => user )
+    rsvp_type.constantize.create!( :event_id => id, :user_id => user.id )
   end
 end

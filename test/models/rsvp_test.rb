@@ -8,7 +8,7 @@ class RsvpTest < ActiveSupport::TestCase
       @event = Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
       @u1 = User.create!( :email => 'user1@example.com', :password => '12345678')
       @u2 = User.create!( :email => 'user2@example.com', :password => '12345678')
-      @r1 = OpenRsvp.create!( :user => @u1, :event => @event )
+      @r1 = OpenRsvp.create!( :user => @u1, :event => @event, :answer => :yes )
       @r2 = OpenRsvp.create!( :user => @u2, :event => @event, :answer => :no )
     end
 

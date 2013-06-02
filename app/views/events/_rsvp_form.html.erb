@@ -1,8 +1,8 @@
 <% if current_user then %>
-  <% Rails.logger.warn("this rsvp is #{@rsvp}") %>
-  <%= inline_form_for(@rsvp) do |f|  %>
-    <%= f.hidden_field( :event_id )  %>
-    <%= f.select( :answer,  options_for_select( rsvp_options(@rsvp) , @rsvp.answer ), :class => 'span1')  %>
-    <%= f.submit t(:do_rsvp), :class => ''  %>
+  <% @rsvp.available_events.each do |eventname|%>
+    <%= inline_form_for(@rsvp) do |f|  %>
+      <%= hidden_field_tag "rsvp[event]", eventname  %>
+      <%= f.submit t(eventname, :scope => 'activerecord.values.rsvp.answer'), :name => "", :class => ''  %>
+    <% end  %>
   <% end  %>
 <% end  %>

@@ -69,3 +69,6 @@ de:
           maybe: Vielleicht
           "yes": Ja
           "no": Nein
+          say_yes: Sage Ja
+          say_no: Sage Nein
+          say_maybe: Keine Aussage

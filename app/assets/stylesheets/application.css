@@ -28,4 +28,6 @@
   margin-left: 5px;
 }
 
-
+form.form-inline {
+  display: inline;
+}

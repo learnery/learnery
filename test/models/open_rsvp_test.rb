@@ -8,10 +8,10 @@ class OpenRsvpTest < ActiveSupport::TestCase
       @user  = User.create!( :email => 'user@example.com', :password => '12345678')
     end
 
-    it "answer defaults to yes" do
+    it "answer defaults to maybe" do
       r = OpenRsvp.new( :user => @user, :event => @event )
       r.save!
-      r.answer.must_equal "yes"
+      r.answer.must_equal "maybe"
     end
 
     it "but cannot rsvp twice" do

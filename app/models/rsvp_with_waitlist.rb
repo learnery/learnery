@@ -3,7 +3,7 @@ class RsvpWithWaitlist < Rsvp
   delegate :places_available?, :has_waitlist?, :no_on_waitlist, :to => :event
 
   def asked_now!
-    self[:asked_at] = Time.now
+    self[:asked_at] = Time.now if self[:asked_at].nil?
     self.save!
   end
 
@@ -19,17 +19,20 @@ class RsvpWithWaitlist < Rsvp
 
   state_machine :answer, :initial => :maybe do
 
-    after_transition any => :yes, :do => :asked_now!
+    after_transition :maybe => any do |rsvp, transition|
+      rsvp.asked_now!
+    end
 
     event :say_yes do
-      transition [:maybe, :no] => :yes,     :if     => :places_available?
-      transition [:maybe, :no] => :waiting
+      transition [:no, :maybe] => :yes,     :if     => :places_available?
+      transition [:no, :maybe] => :waiting
     end
     event :say_no do
-      transition [:maybe, :yes] => :no
+      transition [:yes, :no, :waiting] => :no
     end
     event :say_maybe do
-      transition [:yes, :no] => :maybe
+      transition [:yes, :no, :waiting] => :maybe
     end
   end
 end
+

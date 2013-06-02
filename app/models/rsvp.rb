@@ -23,4 +23,8 @@ class Rsvp < ActiveRecord::Base
   def has_waitlist?
     false
   end
+
+  def available_events
+    answer_transitions.map(&:event)
+  end
 end

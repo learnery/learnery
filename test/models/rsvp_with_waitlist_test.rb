@@ -31,6 +31,7 @@ class RsvpWithWaitlistTest < ActiveSupport::TestCase
       r.places_available?.must_equal true
       r.say_yes!
       r.answer.must_equal "yes"
+      r.asked_at.wont_be_nil
       r.asked_at.must_be_close_to r.created_at, 0.01
     end
 

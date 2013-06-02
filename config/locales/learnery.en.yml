@@ -69,3 +69,6 @@ en:
           maybe: Maybe
           "yes": "Yes"
           "no": "No"
+          say_yes: Say Yes
+          say_no: Say No
+          say_maybe: Say Maybe
