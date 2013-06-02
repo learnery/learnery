@@ -14,4 +14,19 @@ class UserTest < ActiveSupport::TestCase
     u = User.create!( email: 'me@somewhere.com', nickname: 'nick', firstname: 'nikolaus', lastname: 'ps', :password => '12345678' )
     assert u.valid?
   end
+
+  describe "user info" do
+    it "is username if present" do
+      user = create(:user)
+      assert user.username == user.user_info
+    end
+    it "is username if only username present" do
+      user = create(:user_only_with_username)
+      assert user.username == user.user_info
+    end
+    it "is email if no username" do
+      user = create(:user_only_with_email)
+      assert user.email == user.user_info
+    end
+  end
 end

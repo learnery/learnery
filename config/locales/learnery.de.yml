@@ -44,6 +44,7 @@ de:
         venue: Veranstaltungsort
         description: Beschreibung
       user:
+        login: Login (Username oder Email)
         email: E-Mail
         firstname: Vorname
         lastname: Nachname

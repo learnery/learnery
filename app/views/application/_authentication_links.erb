@@ -5,6 +5,8 @@
 <% else %>
   <li><%= link_to t(:sign_up), new_user_registration_path %></li>
   <li><%= link_to t(:login), new_user_session_path %></li>
-  <li><%= link_to t(:sign_up_twitter), user_omniauth_authorize_path(:twitter) %></li>
+
+  <li><%= link_to t(:login_with, provider: :twitter), user_omniauth_authorize_path(:twitter) %></li>
+  <li><%= link_to t(:login_with, provider: :github), user_omniauth_authorize_path(:github) %></li>
 <% end %>
 

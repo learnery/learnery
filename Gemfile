@@ -17,6 +17,7 @@ end
 # 3.0.0 supports rails 4.0.0
 gem 'devise', '3.0.0.rc'
 gem 'omniauth-twitter'
+gem 'omniauth-github'
 gem 'nokogiri'
 gem 'redcarpet'
 
@@ -42,6 +43,8 @@ group :test do
   gem 'capybara'
   gem 'capybara_minitest_spec'
   gem 'database_cleaner'
+  gem 'launchy' # for save_and_open_page in integration tests
+  gem 'factory_girl_rails'
 end
 
 gem "twitter-bootstrap-rails"
@@ -90,4 +93,4 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development]
