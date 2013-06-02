@@ -3,7 +3,9 @@ class Event < ActiveRecord::Base
   # Every event has a name and start time
   # you can find the future and past events by start time with Event.future and Event.past
 
-  validates :name, :starts, :rsvp_type, :presence => true
+  validates :name, :starts, :rsvp_type, :max_attendees, :presence => true
+
+  validates :rsvp_type, :inclusion => { :in => ["OpenRsvp", "RsvpWithWaitlist"], :message => "%{value} is not a valid rsvp type"  }
 
   default_scope { order(:starts) }
 
@@ -33,6 +35,14 @@ class Event < ActiveRecord::Base
     rsvp.map(&:user)
   end
 
+  # can count users with rsvp answer
+  def count_rsvps_with_answer(answer)
+    rsvp.where(:answer => answer).count
+  end
+  def users_who_rsvped_with(answer)
+    rsvp.where(:answer => answer)
+  end
+
   # can count users who rsvped yes,  or access them
   def count_yes
     rsvp.yes.count
@@ -59,7 +69,7 @@ class Event < ActiveRecord::Base
 
   # get rsvp of this user
   def rsvp_of(user)
-    rsvp.where(:user => user).first || OpenRsvp.new(:user => user, :event => self)
+    rsvp.where(:user => user).first || rsvp_create(user)
   end
 
   def places_available?
@@ -67,6 +77,14 @@ class Event < ActiveRecord::Base
     rsvp.where(:answer => :yes).count < max_attendees
   end
 
+  def has_waitlist?
+    return false if max_attendees == 0
+    rsvp.where(:answer => :waiting).count > 0
+  end
+
+  def no_on_waitlist
+    rsvp.where(:answer => :waiting).count
+  end
   def rsvp_create( user )
     rsvp_type.constantize.create!( :event => self, :user => user )
   end

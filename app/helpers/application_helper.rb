@@ -27,8 +27,18 @@ module ApplicationHelper
     @event.users_who_rsvped_yes.map{ |u| u.nickname }.join(", ")
   end
 
+  def event_rsvp_type_explanation( rsvp_type )
+    t(rsvp_type.to_s, :scope => 'activerecord.values.event.rsvp_type' )
+  end
+
   def current_rsvp_status
-    if @rsvp and @rsvp.id then "You said #{@rsvp.answer}." end
+    all = ""
+    if @rsvp and @rsvp.id then all = all + "You said #{@rsvp.answer}" end
+
+    if !@rsvp.nil? && @rsvp.has_waitlist?
+      all = all + "There are #{@rsvp.no_on_waitlist} people on the waiting list. "
+    end
+    all
   end
 
   def horizontal_form_for(name, *args, &block)

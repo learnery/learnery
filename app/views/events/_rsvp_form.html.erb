@@ -2,7 +2,7 @@
   <% Rails.logger.warn("this rsvp is #{@rsvp}") %>
   <%= inline_form_for(@rsvp) do |f|  %>
     <%= f.hidden_field( :event_id )  %>
-    <%= f.select( :answer,  options_for_select( rsvp_options(@rsvp) ), :class => 'span1')  %>
+    <%= f.select( :answer,  options_for_select( rsvp_options(@rsvp) , @rsvp.answer ), :class => 'span1')  %>
     <%= f.submit t(:do_rsvp), :class => ''  %>
   <% end  %>
 <% end  %>

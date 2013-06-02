@@ -60,6 +60,10 @@ de:
       rsvp:
         answer: Antwort
     values:
+      event:
+        rsvp_type:
+          OpenRsvp: Du kannst Dich sofort anmelden
+          RsvpWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.
       rsvp:
         answer:
           maybe: Vielleicht

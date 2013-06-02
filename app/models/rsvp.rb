@@ -20,8 +20,7 @@ class Rsvp < ActiveRecord::Base
     [ OpenRsvp, RsvpWithWaitlist ]
   end
 
-  def initialize(*)
-    super
+  def has_waitlist?
+    false
   end
-
 end

@@ -1,8 +1,6 @@
 class RsvpWithWaitlist < Rsvp 
 
-  def places_available?
-    event.places_available?
-  end
+  delegate :places_available?, :has_waitlist?, :no_on_waitlist, :to => :event
 
   def asked_now!
     self[:asked_at] = Time.now
@@ -18,7 +16,6 @@ class RsvpWithWaitlist < Rsvp
   def self.model_name
     Rsvp.model_name
   end
-
 
   state_machine :answer, :initial => :maybe do
 

@@ -60,6 +60,10 @@ en:
       rsvp:
         answer: Answer
     values:
+      event:
+        rsvp_type:
+          OpenRsvp: You can rsvp any time
+          RsvpWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.
       rsvp:
         answer:
           maybe: Maybe
