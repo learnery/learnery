@@ -43,7 +43,7 @@ en:
         venue: venue
         description: description
       user:
-        login: Login (Username or Email)
+        login: Login (Nickname or Email)
         email: E-Mail
         firstname: Firstname
         lastname: Lastname

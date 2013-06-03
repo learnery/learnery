@@ -9,10 +9,10 @@ describe "user login and logout integration test" do
   end
 
   it "logs in user with email" do
-    user = create(:user_only_with_username)
+    user = create(:user_only_with_nickname)
     login_user( user )
     page.must_have_content t('devise.sessions.signed_in')
-    page.must_have_content t(:logged_in_as, :user => user.email)
+    page.must_have_content t(:logged_in_as, :user => user.nickname)
   end
 
   it "log out" do

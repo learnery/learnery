@@ -3,7 +3,7 @@ module LoginHelper
   delegate :t, :to => I18n
   def login_user(user)
     if user.email.blank?
-      login_user_with(user.username,user.password)
+      login_user_with(user.nickname,user.password)
     else
       login_user_with(user.email,user.password)
     end

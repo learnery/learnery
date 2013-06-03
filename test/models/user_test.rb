@@ -16,15 +16,15 @@ class UserTest < ActiveSupport::TestCase
   end
 
   describe "user info" do
-    it "is username if present" do
+    it "is nickname if present" do
       user = create(:user)
-      assert user.username == user.user_info
+      assert user.nickname == user.user_info
     end
-    it "is username if only username present" do
-      user = create(:user_only_with_username)
-      assert user.username == user.user_info
+    it "is nickname if only nickname present" do
+      user = create(:user_only_with_nickname)
+      assert user.nickname == user.user_info
     end
-    it "is email if no username" do
+    it "is email if no nickname" do
       user = create(:user_only_with_email)
       assert user.email == user.user_info
     end
