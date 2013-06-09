@@ -53,11 +53,7 @@ de:
     attributes:
       topic:
         name: Name
-<<<<<<< HEAD
-        description: Description
-=======
         description: Beschreibung
->>>>>>> 167a40f7dffcec521787d92db85ac1fdb0b558b2
         suggested_by: Vorgeschlagen von
         presented_by: Vorgetragen von
       event:
