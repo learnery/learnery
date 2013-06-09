@@ -1,4 +1,6 @@
 Learnery::Application.routes.draw do
+  resources :topics
+
   resources :rsvps, only: [ :create, :update ]
   resources :people, only: [ :index, :show, :edit, :update, :destroy ]
   resources :events

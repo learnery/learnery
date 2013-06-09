@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :rsvp
+  has_many :topics_suggested, class_name: "Topic", foreign_key: "suggested_by_id"
+  has_many :topics_presented, class_name: "Topic", foreign_key: "presented_by_id"
 
   # for bootstrapping your app:
   # if there aren't any admins yet,
