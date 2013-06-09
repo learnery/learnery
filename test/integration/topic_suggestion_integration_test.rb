@@ -7,19 +7,18 @@ describe "Topic Suggestion Integration Test" do
   context "no topics for event" do
     it "displays a message" do
       visit event_path( @event )
+      save_and_open_page
       page.must_have_content(t 'topic.new.suggest')
     end
   end
 
   context "two topics for event" do
     before do
-      @
       @user = create(:user)
       login_user( @user )
     end
 
     it "sees suggest topic link" do
-
       page.must_have_link(t 'topic.new.suggest')
     end
 
