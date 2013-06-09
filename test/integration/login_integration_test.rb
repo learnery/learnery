@@ -14,6 +14,13 @@ describe "user login and logout integration test" do
     page.must_have_content t('devise.sessions.signed_in')
     page.must_have_content t(:logged_in_as, :user => user.nickname)
   end
+  it "logs in the default user" do
+    user = create(:user)
+    login_user( user )
+    page.must_have_content t('devise.sessions.signed_in')
+    page.must_have_content t(:logged_in_as, :user => user.nickname)
+  end
+
 
   it "log out" do
     user = create(:user)

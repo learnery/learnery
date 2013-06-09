@@ -16,7 +16,7 @@ en:
   admin_only: "You need to sign in as an admin before continuing."
   learn_more: Learn more
   nothing_planned: Nothing planned
-  not_right_now: there are no event planned just now...
+  not_right_now: there are no events planned just now...
   new: New
   edit: Edit
   create: Create
@@ -35,6 +35,7 @@ en:
     new:
       title: New Event
   topics:
+    none: There are no Topics for this event.
     new:
       title: Suggest a new Topic
   topic:

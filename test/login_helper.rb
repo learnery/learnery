@@ -1,6 +1,7 @@
 # TODO: move me somewhere
 module LoginHelper
   delegate :t, :to => I18n
+
   def login_user(user)
     if user.email.blank?
       login_user_with(user.nickname,user.password)
