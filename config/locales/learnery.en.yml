@@ -31,11 +31,19 @@ en:
   events:
     new:
       title: New Event
+  topic:
+    new:
+      suggest: Suggest a new Topic
   activerecord:
     models:
       event: event
       user: user
     attributes:
+      topic:
+        name: Name
+        description: Description
+        suggested_by: Suggested by
+        presented_by: Presented by
       event:
         name: name
         starts: starts
