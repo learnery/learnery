@@ -4,7 +4,8 @@ class TopicsControllerTest < ActionController::TestCase
 include Devise::TestHelpers
 
   before do
-    @topic = create(:topic)
+    @event = create(:event)
+    @topic = create(:topic, :event => @event)
   end
   context "public actions" do
     it "should get index" do
@@ -40,7 +41,7 @@ include Devise::TestHelpers
         post :create, topic: { description: @topic.description, event_id: @topic.event_id, name: @topic.name, presented_by_id: @topic.presented_by_id, suggested_by_id: @topic.suggested_by_id }
       end
 
-      assert_redirected_to topic_path(assigns(:topic))
+      assert_redirected_to event_path(assigns(:topic).event)
     end
     test "should get edit" do
       get :edit, id: @topic
