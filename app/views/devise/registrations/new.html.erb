@@ -2,8 +2,11 @@
 
 <%= horizontal_form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f| %>
 
+  <% if f.object.nickname_required? %>
+    <%= f.text_field :nickname, :autofocus => true %>
+  <% end %>
   <% if f.object.email_required? %>
-    <%= f.email_field :email, :autofocus => true %>
+    <%= f.email_field :email %>
   <% end %>
   <% if f.object.password_required? %>
     <%= f.password_field :password %>

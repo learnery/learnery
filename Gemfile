@@ -17,6 +17,8 @@ end
 # 3.0.0 supports rails 4.0.0
 gem 'devise', '3.0.0.rc'
 gem 'omniauth-twitter'
+gem 'omniauth-github'
+gem 'omniauth-steam'
 gem 'nokogiri'
 gem 'redcarpet'
 gem 'state_machine'
@@ -36,15 +38,17 @@ group :production do
 end
 
 
-# for travis, see http://about.travis-ci.org/docs/user/languages/ruby/
 group :test do
-  gem 'rake'
+  gem 'rake' # for travis, see http://about.travis-ci.org/docs/user/languages/ruby/
   gem 'minitest-spec-rails'
   gem 'capybara'
   gem 'capybara_minitest_spec'
   gem 'database_cleaner'
+  gem 'launchy' # for save_and_open_page in integration tests
+  gem 'factory_girl_rails'
 end
 
+gem "twitter-bootstrap-rails"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -90,4 +94,4 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development]

@@ -50,6 +50,7 @@ de:
         description: Beschreibung
         rsvp_type: Art der Anmeldung
       user:
+        login: Login (Nickname oder Email)
         email: E-Mail
         firstname: Vorname
         lastname: Nachname

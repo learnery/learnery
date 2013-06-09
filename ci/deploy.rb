@@ -14,7 +14,7 @@ end
 #export TRAVIS_TEST_RESULT="0"
 
 if ENV['TRAVIS_TEST_RESULT'] != "0"
-  puts "skipping deploy."
+  puts "There were errors in the build - skipping deploy."
 else
   if ARGV[0]
     app_name = ARGV[0]

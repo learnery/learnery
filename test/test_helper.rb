@@ -2,24 +2,12 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
+require 'login_helper'
 
-# TODO: move me somewhere
-module LoginHelper
-  delegate :t, :to => I18n
-  def login_user(user)
-
-
-    
-    visit "/users/sign_in"
-    within "#new_user" do
-      fill_in t('activerecord.attributes.user.email'), :with => user.email
-      fill_in t('activerecord.attributes.user.password'), :with => user.password
-      click_button "Login"
-    end
-  end
-end
 
 class ActiveSupport::TestCase
+  include FactoryGirl::Syntax::Methods
+
   ActiveRecord::Migration.check_pending!
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -40,6 +28,7 @@ class ActionDispatch::IntegrationTest
   include Rails.application.routes.url_helpers
   include Capybara::DSL
   include LoginHelper
+  include FactoryGirl::Syntax::Methods
 
   # Stop ActiveRecord from wrapping tests in transactions
   self.use_transactional_fixtures = false
@@ -77,4 +66,5 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
+
 

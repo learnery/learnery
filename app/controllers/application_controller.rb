@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 protected
 
   def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nickname, :email, :password, :password_confirmation) }
     devise_parameter_sanitizer.for(:account_update) do |u|
       if  User.can_become_admin? or ( current_user and current_user.admin? )
         u.permit(:email, :nickname, :firstname, :lastname, :password, :password_confirmation, :current_password, :admin )
@@ -31,4 +32,5 @@ protected
     # raise "admin only"
     redirect_to root_path, :notice => t(:admin_only)  unless current_user and current_user.admin?
   end
+
 end

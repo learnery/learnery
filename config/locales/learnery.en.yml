@@ -50,6 +50,7 @@ en:
         description: description
         rsvp_type: How to Rsvp
       user:
+        login: Login (Nickname or Email)
         email: E-Mail
         firstname: Firstname
         lastname: Lastname
