@@ -2,6 +2,15 @@
 # this is called by travis ci
 require 'heroku-headless'
 
+
+branch =  `git rev-parse --abbrev-ref HEAD`.strip
+deploy_only_branch = "master"
+if branch != deploy_only_branch
+  puts "current branch: (#{branch}) - not on #{deploy_only_branch}, skipping deploy."
+  exit 0
+end
+
+
 required = %w(HEROKU_API_KEY LEARNERY_THEME TRAVIS_TEST_RESULT)
 undefined = required.select{|v| !ENV[v]}
 unless undefined.size == 0
