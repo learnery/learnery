@@ -1,14 +1,14 @@
 class OpenRsvp < Rsvp 
 
-  state_machine :answer, :initial => :maybe do
+  state_machine :answer, :initial => :new do
     event :say_yes do
-      transition [:maybe, :no] => :yes
+      transition [:new, :no, :maybe] => :yes
     end
     event :say_no do
-      transition [:maybe, :yes] => :no
+      transition [:new, :yes, :maybe] => :no
     end
     event :say_maybe do
-      transition [:yes, :no] => :maybe
+      transition [:new, :yes, :no] => :maybe
     end
   end
 

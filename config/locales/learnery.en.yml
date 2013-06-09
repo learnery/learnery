@@ -84,6 +84,7 @@ en:
       rsvp:
         answer:
           maybe: Maybe
+          new: nothing yet
           "yes": "Yes"
           "no": "No"
           say_yes: Say Yes

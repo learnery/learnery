@@ -2,7 +2,7 @@ class RsvpsController < ApplicationController
 
   def create
     @event = Event.find( params[:rsvp][:event_id] )
-    @rsvp = current_user.rsvp.build( rsvp_params )
+    @rsvp = @event.rsvp_build( current_user )
 
     if @rsvp.save
       redirect_to @event, notice: 'rsvp saved.'
