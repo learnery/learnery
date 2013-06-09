@@ -31,12 +31,20 @@ de:
   events:
     new:
       title: Neue Veranstaltung
+  topic:
+    new:
+      suggest: Neues Thema vorschlagen
   activerecord:
     models:
       event: Veranstaltung
       user: Person
       rsvp: Ansage
     attributes:
+      topic:
+        name: Name
+        description: Description
+        suggested_by: Vorgeschlagen von
+        presented_by: Vorgetragen von
       event:
         name: Name
         starts: Beginn
