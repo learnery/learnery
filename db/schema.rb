@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 20130609095250) do
     t.datetime "starts"
     t.datetime "ends"
     t.string   "venue"
-    t.string   "description",               default: "",         null: false
+    t.string   "description",   default: "",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "max_attendees",             default: 0,          null: false
-    t.string   "rsvp_type",     limit: nil, default: "OpenRsvp", null: false
+    t.integer  "max_attendees", default: 0,          null: false
+    t.string   "rsvp_type",     default: "OpenRsvp", null: false
   end
 
   create_table "rsvps", force: true do |t|
