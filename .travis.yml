@@ -15,6 +15,7 @@ env:
   - LEARNERY_THEME=coderdojo
 before_install:
 - ci/copytheme.sh
+- ci/gitstatus.sh
 script:
 - rake
 - bundle exec ruby ci/deploy.rb
