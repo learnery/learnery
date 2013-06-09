@@ -4,11 +4,10 @@ describe "Topic Suggestion Integration Test" do
   before do
     @event = create(:event)
   end
-  context "no topics for event" do
-    it "displays a message" do
+  context "not logged in" do
+    it "should not see suggest topic link" do
       visit event_path( @event )
-      save_and_open_page
-      page.must_have_content(t 'topic.new.suggest')
+      page.wont_have_content(t 'topic.new.suggest')
     end
   end
 
@@ -16,9 +15,12 @@ describe "Topic Suggestion Integration Test" do
     before do
       @user = create(:user)
       login_user( @user )
+       visit event_path( @event )
+      save_and_open_page
     end
 
     it "sees suggest topic link" do
+      save_and_open_page
       page.must_have_link(t 'topic.new.suggest')
     end
 

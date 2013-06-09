@@ -1,1 +1,14 @@
+
+    <% if (@event.topics.count > 0) %>
+      <dt><strong><%= model_class.human_attribute_name(:topics) %>:</strong></dt>
+      <dd>
+        <% @event.topics.each do |topic| %>
+          <p><%= link_to topic.name.strip, topic %></p>
+        <% end %>
+      </dd>
+    <% end %>
+
+
+<% if user_signed_in? %>
 <%= link_to t('topic.new.suggest'), new_topic_path(event: @event), :class => 'btn'  %>
+<% end %>
