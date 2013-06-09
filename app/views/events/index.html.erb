@@ -12,8 +12,9 @@
 
 
 <% else %>
-
+ <div class="hero-unit">
   <%= render "intro" %>
+</div>
 
   <% if user_signed_in? %>
     <%= link_to t('events.new.title'), new_event_path, :class => 'btn btn-primary' %>

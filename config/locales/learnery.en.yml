@@ -34,6 +34,9 @@ en:
   events:
     new:
       title: New Event
+  topic:
+    new:
+      suggest: Suggest a new Topic
   activerecord:
     models:
       event: event
@@ -42,6 +45,11 @@ en:
       OpenRsvp: open rsvp
       RsvpWithWaitlist: rsvp with maximum attendees and waitlist
     attributes:
+      topic:
+        name: Name
+        description: Description
+        suggested_by: Suggested By
+        presented_by: Presented by
       event:
         name: name
         starts: starts

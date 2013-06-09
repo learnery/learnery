@@ -1,0 +1,11 @@
+<%= horizontal_form_for @topic do |f| %>
+   <%= render 'shared/flash.html', model: @topic %>
+   <%= render partial: 'form_optional', locals: { attribute: 'event', form: f} %>
+   <%= render partial: 'form_optional', locals: { attribute: 'suggested_by', form: f} %>
+
+   <%= f.text_field :name %>
+   <%= f.text_field :description %>
+   <%= f.text_field :presented_by %>
+   <%= f.submit nil %>
+<% end %>
+

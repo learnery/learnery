@@ -34,6 +34,9 @@ de:
   events:
     new:
       title: Neue Veranstaltung
+  topic:
+    new:
+      suggest: Neues Thema vorschlagen
   activerecord:
     models:
       event: Veranstaltung
@@ -42,6 +45,11 @@ de:
       OpenRsvp: Freie Anmeldung
       RsvpWithWaitlist: Freie Anmeldung mit Maximum und Warteliste
     attributes:
+      topic:
+        name: Name
+        description: Description
+        suggested_by: Vorgeschlagen von
+        presented_by: Vorgetragen von
       event:
         name: Name
         starts: Beginn

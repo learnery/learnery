@@ -16,4 +16,12 @@ FactoryGirl.define do
     password "geheim12"
     password_confirmation "geheim12"
   end
+  factory :event do
+    name "User Group"
+    starts 3.days.from_now
+    ends 2.hours.from_now + 3.days
+    description "Bla bla"
+    venue "Berlin"
+  end
+
 end
