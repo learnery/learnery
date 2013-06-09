@@ -40,6 +40,7 @@ de:
     new:
       title: Neues Thema vorschlagen
   topic:
+    none: Es gibt noch keine Themen für diese Veranstaltung.
     new:
       suggest: Neues Thema vorschlagen
   activerecord:

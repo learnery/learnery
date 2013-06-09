@@ -35,6 +35,7 @@ en:
     new:
       title: New Event
   topics:
+    none: There are no Topics for this event.
     new:
       title: Suggest a new Topic
   topic:

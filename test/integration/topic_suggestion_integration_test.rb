@@ -16,11 +16,9 @@ describe "Topic Suggestion Integration Test" do
       @user = create(:user)
       login_user( @user )
        visit event_path( @event )
-      save_and_open_page
     end
 
     it "sees suggest topic link" do
-      save_and_open_page
       page.must_have_link(t 'topic.new.suggest')
     end
 
