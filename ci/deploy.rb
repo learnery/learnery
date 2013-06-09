@@ -3,7 +3,7 @@
 require 'heroku-headless'
 
 
-branch =  `git rev-parse --abbrev-ref HEAD`.strip
+branch =  env['TRAVIS_BRANCH']
 deploy_only_branch = "master"
 if branch != deploy_only_branch
   puts "current branch: (#{branch}) - not on #{deploy_only_branch}, skipping deploy."
