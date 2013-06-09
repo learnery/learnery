@@ -2,8 +2,10 @@
 # this is called by travis ci
 require 'heroku-headless'
 
+File.new("travis_job_number","w").write(ENV['TRAVIS_JOB_NUMBER'])
 
-branch =  `git rev-parse --abbrev-ref HEAD`.strip
+
+branch =  ENV['TRAVIS_BRANCH']
 deploy_only_branch = "master"
 if branch != deploy_only_branch
   puts "current branch: (#{branch}) - not on #{deploy_only_branch}, skipping deploy."
