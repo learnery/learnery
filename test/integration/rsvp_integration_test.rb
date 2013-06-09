@@ -62,14 +62,13 @@ describe "Rsvp Integration Test" do
       login_user( @u )
       visit event_path( @e )
 
-      page.must_have_button t :do_rsvp
-      click_button t :do_rsvp
-      page.must_have_content 'You said yes.'
+      page.must_have_button t(:say_yes, :scope => 'activerecord.values.rsvp.answer')
+      click_button t(:say_yes, :scope => 'activerecord.values.rsvp.answer')
+      page.must_have_content t(:you_said, answer: t(:yes, :scope => 'activerecord.values.rsvp.answer') )
 
-      page.must_have_button t :do_rsvp
-      select t "activerecord.attributes.rsvp.answer.no"
-      click_button t :do_rsvp
-      page.must_have_content 'You said no.'
+      page.must_have_button t(:say_no, :scope => 'activerecord.values.rsvp.answer')
+      click_button t(:say_no, :scope => 'activerecord.values.rsvp.answer')
+      page.must_have_content t(:you_said, answer: t(:no, :scope => 'activerecord.values.rsvp.answer') )
     end
 
   end

@@ -21,7 +21,7 @@ gem 'omniauth-github'
 gem 'omniauth-steam'
 gem 'nokogiri'
 gem 'redcarpet'
-
+gem 'state_machine'
 
 group :development, :test do
   gem 'sqlite3'

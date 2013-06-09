@@ -18,17 +18,22 @@ ActiveRecord::Schema.define(version: 20130609095250) do
     t.datetime "starts"
     t.datetime "ends"
     t.string   "venue"
-    t.string   "description", default: "", null: false
+    t.string   "description",   default: "",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "max_attendees", default: 0,          null: false
+    t.string   "rsvp_type",     default: "OpenRsvp", null: false
   end
 
   create_table "rsvps", force: true do |t|
-    t.string   "answer",     default: "yes"
+    t.string   "answer"
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type",         default: "OpenRsvp"
+    t.datetime "asked_at"
+    t.datetime "confirmed_at"
   end
 
   add_index "rsvps", ["user_id", "event_id"], name: "index_rsvps_on_user_id_and_event_id", unique: true

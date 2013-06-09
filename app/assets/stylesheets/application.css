@@ -20,6 +20,9 @@
   background-color:white;
   padding: 10px 5px;
 }
+.debug_dump {
+  margin-bottom: 100px;
+}
 
 .controls label {
   display: inline-block;
@@ -28,4 +31,6 @@
   margin-left: 5px;
 }
 
-
+form.form-inline {
+  display: inline;
+}

@@ -8,8 +8,8 @@ class RsvpTest < ActiveSupport::TestCase
       @event = Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
       @u1 = User.create!( :email => 'user1@example.com', :password => '12345678')
       @u2 = User.create!( :email => 'user2@example.com', :password => '12345678')
-      @r1 = Rsvp.create!( :user => @u1, :event => @event )
-      @r2 = Rsvp.create!( :user => @u2, :event => @event, :answer => :no )
+      @r1 = OpenRsvp.create!( :user => @u1, :event => @event, :answer => :yes )
+      @r2 = OpenRsvp.create!( :user => @u2, :event => @event, :answer => :no )
     end
 
     it "all yes-rsvps" do
@@ -30,10 +30,10 @@ class RsvpTest < ActiveSupport::TestCase
     end
 
 
-    it " answer defaults to yes" do
+    it " answer defaults to nil" do
       r = Rsvp.new( :user => @user, :event => @event )
       r.save!
-      r.answer.must_equal "yes"
+      r.answer.must_equal nil
     end
 
     it "but cannot rsvp twice" do

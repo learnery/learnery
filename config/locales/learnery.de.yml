@@ -2,12 +2,12 @@
 # Erste Übersetzungen für Learnery
 
 de:
-  past_events: Alte Veranstaltungene
+  past_events: Alte Veranstaltungen
   login: Login
   sign_up: Anmelden
   sign_up_twitter: Anmelden mit Twitter
   sign_up_with: "Anmelden mit %{provider}"
-  logged_in_as: "Eingelogget als %{user}"
+  logged_in_as: "Eingeloggt als %{user}"
   log_out: Logout
   forgot_password: Passwort vergessen?
   missing_confirmation: Keine Bestätigungs-Mail erhalten?
@@ -28,9 +28,17 @@ de:
   rsvp_1: eine Person ist angemeldet
   rsvp_n: "%{count} Leute sind angemeldet"
   do_rsvp: Ansage speichern
+  you_said: "Dein Status ist %{answer}"
+  there_are_no_people_on_waitlist: "Es sind %{number} Leute auf der Warte Liste"
+  max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
   events:
     new:
       title: Neue Veranstaltung
+    edit:
+      title: Veranstaltung bearbeiten
+  topics:
+    new:
+      title: Neues Thema vorschlagen
   topic:
     new:
       suggest: Neues Thema vorschlagen
@@ -39,10 +47,17 @@ de:
       event: Veranstaltung
       user: Person
       rsvp: Ansage
+      OpenRsvp: Freie Anmeldung
+      RsvpWithWaitlist: Freie Anmeldung mit Maximum und Warteliste
+      topic: Thema
     attributes:
       topic:
         name: Name
+<<<<<<< HEAD
         description: Description
+=======
+        description: Beschreibung
+>>>>>>> 167a40f7dffcec521787d92db85ac1fdb0b558b2
         suggested_by: Vorgeschlagen von
         presented_by: Vorgetragen von
       event:
@@ -51,6 +66,8 @@ de:
         ends: Ende
         venue: Veranstaltungsort
         description: Beschreibung
+        rsvp_type: Art der Anmeldung
+        max_attendees: Max TeilnehmerInnen
       user:
         login: Login (Nickname oder Email)
         email: E-Mail
@@ -64,7 +81,16 @@ de:
         remember_me: Eingeloggt bleiben
       rsvp:
         answer: Antwort
+    values:
+      event:
+        rsvp_type:
+          OpenRsvp: Du kannst Dich sofort anmelden
+          RsvpWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.
+      rsvp:
         answer:
           maybe: Vielleicht
           "yes": Ja
           "no": Nein
+          say_yes: Sage Ja
+          say_no: Sage Nein
+          say_maybe: Keine Aussage

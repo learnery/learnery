@@ -28,9 +28,15 @@ en:
   rsvp_1: one person will attend
   rsvp_n: "%{count} people will attend"
   do_rsvp: rsvp
+  you_said: "You said %{answer}"
+  there_are_no_people_on_waitlist: "There are %{number} people on the waiting list"
+  max_attendees_zero_is_unlimited: set to 0 for no limit
   events:
     new:
       title: New Event
+  topics:
+    new:
+      title: Suggest a new Topic
   topic:
     new:
       suggest: Suggest a new Topic
@@ -38,6 +44,10 @@ en:
     models:
       event: event
       user: user
+      rsvp: rsvp
+      OpenRsvp: open rsvp
+      RsvpWithWaitlist: rsvp with maximum attendees and waitlist
+      topic: topic
     attributes:
       topic:
         name: Name
@@ -50,6 +60,8 @@ en:
         ends: ends
         venue: venue
         description: description
+        rsvp_type: How to Rsvp
+        max_attendees: Max attendees
       user:
         login: Login (Nickname or Email)
         email: E-Mail
@@ -63,7 +75,16 @@ en:
         remember_me: Remember me
       rsvp:
         answer: Answer
+    values:
+      event:
+        rsvp_type:
+          OpenRsvp: You can rsvp any time
+          RsvpWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.
+      rsvp:
         answer:
           maybe: Maybe
-          "yes": Yes
-          "no": No
+          "yes": "Yes"
+          "no": "No"
+          say_yes: Say Yes
+          say_no: Say No
+          say_maybe: Say Maybe

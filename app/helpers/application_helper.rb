@@ -7,8 +7,12 @@ module ApplicationHelper
     redcarpet.render(text).html_safe
   end
 
-  def rsvp_options
-    Rsvp::ANSWERS.map{|x|[t(x, :scope => 'activerecord.attributes.rsvp.answer'),x]}
+  def rsvp_type_options
+    Rsvp.implementations.map(&:to_s).map{|x|[t(x, :scope => 'activerecord.models'),x]}
+  end
+
+  def rsvp_options(o)
+    o.class.state_machines[:answer].states.map(&:name).map{|x|[t(x, :scope => 'activerecord.attributes.rsvp.answer'),x]}
   end
 
   def event_rsvp_numbers
@@ -23,8 +27,18 @@ module ApplicationHelper
     @event.users_who_rsvped_yes.map{ |u| u.nickname }.join(", ")
   end
 
+  def event_rsvp_type_explanation( rsvp_type )
+    t(rsvp_type.to_s, :scope => 'activerecord.values.event.rsvp_type' )
+  end
+
   def current_rsvp_status
-    if @rsvp and @rsvp.id then "You said #{@rsvp.answer}." end
+    all = ""
+    if @rsvp and @rsvp.id then all = all + t(:you_said, answer: t(@rsvp.answer, :scope => 'activerecord.values.rsvp.answer') ) + ". " end
+
+    if !@rsvp.nil? && @rsvp.has_waitlist?
+      all = all + t(:there_are_no_people_on_waitlist, :number => @rsvp.no_on_waitlist) + ". "
+    end
+    all
   end
 
   def horizontal_form_for(name, *args, &block)
@@ -66,6 +80,10 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     wrap(attribute, options, super)
   end
   def text_area(attribute, options={})
+    help = options.delete(:help)
+    wrap(attribute, options, super)
+  end
+  def select(attribute, o, options={})
     help = options.delete(:help)
     wrap(attribute, options, super)
   end

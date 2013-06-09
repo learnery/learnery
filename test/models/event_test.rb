@@ -66,10 +66,9 @@ class EventTest < ActiveSupport::TestCase
       @u3 = User.create!( :email => 'user3@example.com', :password => '12345678')
       @u4 = User.create!( :email => 'user4@example.com', :password => '12345678')
 
-      @r1 = Rsvp.create!( event: @e, user: @u1, answer: :yes    )
-      @r2 = Rsvp.create!( event: @e, user: @u2, answer: :no     )
-      @r3 = Rsvp.create!( event: @e, user: @u3, answer: :maybe  )
-     
+      @r1 = OpenRsvp.create!( event: @e, user: @u1, answer: :yes    )
+      @r2 = OpenRsvp.create!( event: @e, user: @u2, answer: :no     )
+      @r3 = OpenRsvp.create!( event: @e, user: @u3, answer: :maybe  )
     end
 
     it "can find rsvp of single user" do
@@ -89,6 +88,38 @@ class EventTest < ActiveSupport::TestCase
       it { @e.count_yes.must_equal   1 }
       it { @e.count_no.must_equal    1 }
       it { @e.count_maybe.must_equal 1 }
+    end
+  end
+
+  context "with rsvps for waitlist" do
+    before do
+      @e = Event.create!( :name => "future event", :starts => Date.today + 30 )
+      @u1 = User.create!( :email => 'user1@example.com', :password => '12345678')
+      @u2 = User.create!( :email => 'user2@example.com', :password => '12345678')
+      @u3 = User.create!( :email => 'user3@example.com', :password => '12345678')
+      @u4 = User.create!( :email => 'user4@example.com', :password => '12345678')
+
+      @r1 = RsvpWithWaitlist.create!( event: @e, user: @u1, :answer => :yes )
+      @r2 = RsvpWithWaitlist.create!( event: @e, user: @u2, :answer => :yes  )
+      @r3 = RsvpWithWaitlist.create!( event: @e, user: @u3, :answer => :yes  )
+    end
+
+    context "can check if places are still available" do
+      it "returns true if no maximum is set" do
+        @e.max_attendees = 0
+        @e.save!
+        @e.places_available?.must_equal true
+      end
+      it "returns false if no of rsvp-yes is less than maximum" do
+        @e.max_attendees = 100
+        @e.save!
+        @e.places_available?.must_equal true
+      end
+      it "returns true if no of rsvp-yes is greater than than maximum" do
+        @e.max_attendees = 3
+        @e.save!
+        @e.places_available?.must_equal false
+      end
     end
 
   end

@@ -15,17 +15,15 @@
  <div class="hero-unit">
   <%= render "intro" %>
 </div>
+  <% if user_signed_in? %>
+    <%= link_to t('events.new.title'), new_event_path, :class => 'btn btn-primary' %>
+  <% end %>
 
   <% if @events.count > 0 %>
 
     <h2>Future Events</h2>
 
     <%= render "list" %>
-
-
-    <% if user_signed_in? %>
-      <%= link_to t('.new', :default => t("helpers.links.new")), new_event_path, :class => 'btn btn-primary' %>
-    <% end %>
 
   <% end # if @events %>
 
