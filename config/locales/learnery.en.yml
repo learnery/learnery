@@ -28,6 +28,8 @@ en:
   rsvp_1: one person will attend
   rsvp_n: "%{count} people will attend"
   do_rsvp: rsvp
+  you_said: "You said %{answer}"
+  there_are_no_people_on_waitlist: "There are %{number} people on the waiting list"
   max_attendees_zero_is_unlimited: set to 0 for no limit
   events:
     new:

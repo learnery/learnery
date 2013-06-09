@@ -2,12 +2,12 @@
 # Erste Übersetzungen für Learnery
 
 de:
-  past_events: Alte Veranstaltungene
+  past_events: Alte Veranstaltungen
   login: Login
   sign_up: Anmelden
   sign_up_twitter: Anmelden mit Twitter
   sign_up_with: "Anmelden mit %{provider}"
-  logged_in_as: "Eingelogget als %{user}"
+  logged_in_as: "Eingeloggt als %{user}"
   log_out: Logout
   forgot_password: Passwort vergessen?
   missing_confirmation: Keine Bestätigungs-Mail erhalten?
@@ -28,6 +28,8 @@ de:
   rsvp_1: eine Person ist angemeldet
   rsvp_n: "%{count} Leute sind angemeldet"
   do_rsvp: Ansage speichern
+  you_said: "Dein Status ist %{answer}"
+  there_are_no_people_on_waitlist: "Es sind %{number} Leute auf der Warte Liste"
   max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
   events:
     new:
@@ -37,8 +39,8 @@ de:
       event: Veranstaltung
       user: Person
       rsvp: Ansage
-      open_rsvp: Freie Anmeldung
-      rsvp_with_waitlist: Freie Anmeldung mit Maximum und Warteliste
+      OpenRsvp: Freie Anmeldung
+      RsvpWithWaitlist: Freie Anmeldung mit Maximum und Warteliste
     attributes:
       event:
         name: Name

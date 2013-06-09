@@ -33,10 +33,10 @@ module ApplicationHelper
 
   def current_rsvp_status
     all = ""
-    if @rsvp and @rsvp.id then all = all + "You said #{@rsvp.answer}" end
+    if @rsvp and @rsvp.id then all = all + t(:you_said, answer: t(@rsvp.answer, :scope => 'activerecord.values.rsvp.answer') ) + ". " end
 
     if !@rsvp.nil? && @rsvp.has_waitlist?
-      all = all + "There are #{@rsvp.no_on_waitlist} people on the waiting list. "
+      all = all + t(:there_are_no_people_on_waitlist, :number => @rsvp.no_on_waitlist) + ". "
     end
     all
   end
