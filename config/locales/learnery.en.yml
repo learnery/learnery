@@ -42,7 +42,7 @@ en:
       topic:
         name: Name
         description: Description
-        suggested_by: Suggested by
+        suggested_by: Suggested By
         presented_by: Presented by
       event:
         name: name

@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!,  :only => [ :new, :create, :edit, :update, :destroy ]
 
   # GET /topics
   # GET /topics.json
@@ -14,7 +15,13 @@ class TopicsController < ApplicationController
 
   # GET /topics/new
   def new
-    @topic = Topic.new
+    if params['event']
+      @event = Event.find(params['event'])
+      @topic = @event.suggested_topics.build
+    else
+      @topic = Topic.new
+    end
+    @topic.suggested_by = current_user
   end
 
   # GET /topics/1/edit

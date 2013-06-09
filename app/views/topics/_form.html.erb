@@ -1,37 +1,11 @@
-<%= form_for(@topic) do |f| %>
-  <% if @topic.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+<%= horizontal_form_for @topic do |f| %>
+   <%= render 'shared/flash.html', model: @topic %>
+   <%= render partial: 'form_optional', locals: { attribute: 'event', form: f} %>
+   <%= render partial: 'form_optional', locals: { attribute: 'suggested_by', form: f} %>
 
-      <ul>
-      <% @topic.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :event_id %><br>
-    <%= f.number_field :event_id %>
-  </div>
-  <div class="field">
-    <%= f.label :suggested_by_id %><br>
-    <%= f.number_field :suggested_by_id %>
-  </div>
-  <div class="field">
-    <%= f.label :presented_by_id %><br>
-    <%= f.number_field :presented_by_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+   <%= f.text_field :name %>
+   <%= f.text_field :description %>
+   <%= f.text_field :presented_by %>
+   <%= f.submit nil %>
 <% end %>
+

@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    email || nickname || firstname || lastname
+     nickname || email || firstname || lastname
   end
 
   def user_info

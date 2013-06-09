@@ -14,7 +14,11 @@ class Event < ActiveRecord::Base
 
   has_many :rsvp
   has_many :users, :through => :rsvp
+  has_many :topics
 
+  def suggested_topics
+    topics
+  end
   # bk-tbd
   # event knows about answers enumeration; it is duplicated here.
   # I think all of this functionality belongs in rsvp.
