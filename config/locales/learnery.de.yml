@@ -86,6 +86,7 @@ de:
       rsvp:
         answer:
           maybe: Vielleicht
+          new: noch nichts
           "yes": Ja
           "no": Nein
           say_yes: Sage Ja

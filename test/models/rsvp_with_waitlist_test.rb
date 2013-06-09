@@ -18,10 +18,10 @@ class RsvpWithWaitlistTest < ActiveSupport::TestCase
     end
 
 
-    it "answer defaults to maybe" do
+    it "answer defaults to new" do
       r = RsvpWithWaitlist.new( :user => @user1, :event => @event )
       r.save!
-      r.answer.must_equal "maybe"
+      r.answer.must_equal "new"
     end
 
     it "setting answer to yes saves date" do

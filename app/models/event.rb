@@ -73,7 +73,7 @@ class Event < ActiveRecord::Base
 
   # get rsvp of this user
   def rsvp_of(user)
-    rsvp.where(:user => user).first || rsvp_new(user)
+    rsvp.where(:user => user).first || rsvp_build(user)
   end
 
   def places_available?
@@ -89,7 +89,7 @@ class Event < ActiveRecord::Base
   def no_on_waitlist
     rsvp.where(:answer => :waiting).count
   end
-  def rsvp_new( user )
+  def rsvp_build( user )
     rsvp_type.constantize.new( event: self , user: user )
   end
   def rsvp_create( user )

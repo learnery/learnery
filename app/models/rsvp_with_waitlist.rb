@@ -17,21 +17,21 @@ class RsvpWithWaitlist < Rsvp
     Rsvp.model_name
   end
 
-  state_machine :answer, :initial => :maybe do
+  state_machine :answer, :initial => :new do
 
-    after_transition :maybe => any do |rsvp, transition|
+    after_transition [:new, :maybe, :no] => [:yes, :waiting] do |rsvp, transition|
       rsvp.asked_now!
     end
 
     event :say_yes do
-      transition [:no, :maybe] => :yes,     :if     => :places_available?
-      transition [:no, :maybe] => :waiting
+      transition [:new, :no, :maybe] => :yes,     :if     => :places_available?
+      transition [:new, :no, :maybe] => :waiting
     end
     event :say_no do
-      transition [:yes, :no, :waiting] => :no
+      transition [:new, :yes, :maybe, :waiting] => :no
     end
     event :say_maybe do
-      transition [:yes, :no, :waiting] => :maybe
+      transition [:new, :yes, :no, :waiting] => :maybe
     end
   end
 end

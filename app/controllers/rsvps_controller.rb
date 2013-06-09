@@ -2,7 +2,7 @@ class RsvpsController < ApplicationController
 
   def create
     @event = Event.find( params[:rsvp][:event_id] )
-    @rsvp = @event.rsvp_new( current_user)
+    @rsvp = @event.rsvp_build( current_user )
 
     if @rsvp.send params[:state_machine_event]
       redirect_to @rsvp.event, notice: 'success'
@@ -19,7 +19,7 @@ class RsvpsController < ApplicationController
   def update
     @rsvp = Rsvp.find( params[:id] )
 
-    if @rsvp.send rsvp_params[:state_machine_event]
+    if @rsvp.send params[:state_machine_event]
       redirect_to @rsvp.event, notice: 'success'
     else
       redirect_to @rsvp.event, notice: 'could not be saved.'
