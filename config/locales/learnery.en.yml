@@ -34,6 +34,9 @@ en:
   events:
     new:
       title: New Event
+  topics:
+    new:
+      title: Suggest a new Topic
   topic:
     new:
       suggest: Suggest a new Topic
@@ -44,6 +47,7 @@ en:
       rsvp: rsvp
       OpenRsvp: open rsvp
       RsvpWithWaitlist: rsvp with maximum attendees and waitlist
+      topic: topic
     attributes:
       topic:
         name: Name
@@ -57,6 +61,7 @@ en:
         venue: venue
         description: description
         rsvp_type: How to Rsvp
+        max_attendees: Max attendees
       user:
         login: Login (Nickname or Email)
         email: E-Mail

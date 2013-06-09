@@ -34,6 +34,11 @@ de:
   events:
     new:
       title: Neue Veranstaltung
+    edit:
+      title: Veranstaltung bearbeiten
+  topics:
+    new:
+      title: Neues Thema vorschlagen
   topic:
     new:
       suggest: Neues Thema vorschlagen
@@ -44,10 +49,11 @@ de:
       rsvp: Ansage
       OpenRsvp: Freie Anmeldung
       RsvpWithWaitlist: Freie Anmeldung mit Maximum und Warteliste
+      topic: Thema
     attributes:
       topic:
         name: Name
-        description: Description
+        description: Beschreibung
         suggested_by: Vorgeschlagen von
         presented_by: Vorgetragen von
       event:
@@ -57,6 +63,7 @@ de:
         venue: Veranstaltungsort
         description: Beschreibung
         rsvp_type: Art der Anmeldung
+        max_attendees: Max TeilnehmerInnen
       user:
         login: Login (Nickname oder Email)
         email: E-Mail

@@ -1,5 +1,3 @@
-<p>Event has now: rsvp_type <%= @event.rsvp_type %>, max_attendees = <%= @event.max_attendees %></p>
-
 <%= horizontal_form_for @event do |f| %>
    <%= f.text_field :name %>
    <%= f.select(:rsvp_type, options_for_select( rsvp_type_options, @event.rsvp_type ) ) %>

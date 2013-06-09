@@ -11,8 +11,19 @@
       <dd><%= @event.ends %></dd>
     <% end %>
 
-    <dt><strong><%= model_class.human_attribute_name(:venue) %>:</strong></dt>
-    <dd><%= @event.venue %></dd>
+    <% if ! @event.venue.blank? %>
+      <dt><strong><%= model_class.human_attribute_name(:venue) %>:</strong></dt>
+      <dd><%= @event.venue %></dd>
+    <% end %>
+
+    <% if @event.topics.count > 0 %>
+      <dt><strong><%= model_class.human_attribute_name(:topics) %>:</strong></dt>
+      <dd>
+        <% @event.topics.each do |t| %>
+          (<%= t.name %>)
+        <% end %>
+      </dd>
+    <% end %>
   </dl>
 
 
