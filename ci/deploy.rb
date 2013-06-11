@@ -1,5 +1,15 @@
 #!/usr/bin/env ruby
 # this is called by travis ci
+
+# test locally with:
+
+#  export HEROKU_API_KEY=<secret>
+#  export LEARNERY_THEME=default
+#  export TRAVIS_TEST_RESULT="0"
+#  export TRAVIS_JOB_NUMBER=local-test
+#  export TRAVIS_BRANCH=master
+#  bundle exec ci/deploy.rb learnery-drblinken
+
 require 'heroku-headless'
 
 File.new("travis_job_number","w").write(ENV['TRAVIS_JOB_NUMBER'])
@@ -19,10 +29,6 @@ unless undefined.size == 0
   puts "Please define #{required.join(", ")} as environment variables"
   exit 1
 end
-
-#export HEROKU_API_KEY=<secret>
-#export LEARNERY_THEME=default
-#export TRAVIS_TEST_RESULT="0"
 
 if ENV['TRAVIS_TEST_RESULT'] != "0"
   puts "There were errors in the build - skipping deploy."
@@ -45,7 +51,8 @@ else
       "git config --global user.email \"drblinken@gmail.com\"",
       "git config --global user.name \"Travis CI\"",
       "git checkout master",
-      "git commit -am  \"changes from headless deploy\" ",
+      "git add . ",
+      "git commit -m  \"changes from headless deploy\" ",
       "git remote add #{remote_name} git@heroku.com:#{app_name}.git",
       "git fetch #{remote_name}",
       "git merge -m \"merged by automatic deploy\" #{remote_name}/master",
