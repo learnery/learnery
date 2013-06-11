@@ -3,7 +3,7 @@
 </div>
 
 <%= horizontal_form_for(@person, :url => person_path(@person) ) do |f| %>
-
+  <%= model_errors(f.object) %>
   <%= f.email_field :email, :autofocus => true %>
   <%= f.text_field  :nickname %>
   <%= f.text_field  :firstname %>
@@ -11,4 +11,5 @@
   <%= f.check_box  :admin %>
   <%= f.submit t "update" %>
 <% end %>
+
 
