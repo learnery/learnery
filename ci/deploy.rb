@@ -10,6 +10,8 @@
 #  export TRAVIS_BRANCH=master
 #  bundle exec ci/deploy.rb learnery-drblinken
 
+# check if remote headlessheroku already exists -> must be matching your app name
+
 require 'heroku-headless'
 
 File.new("travis_job_number","w").write(ENV['TRAVIS_JOB_NUMBER'])
