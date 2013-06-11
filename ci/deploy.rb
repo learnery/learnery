@@ -1,16 +1,20 @@
 #!/usr/bin/env ruby
 # this is called by travis ci
 
-# test locally with:
+# test locally with: ()
 
 #  export HEROKU_API_KEY=<secret>
 #  export LEARNERY_THEME=default
 #  export TRAVIS_TEST_RESULT="0"
 #  export TRAVIS_JOB_NUMBER=local-test
 #  export TRAVIS_BRANCH=master
-#  bundle exec ci/deploy.rb learnery-drblinken
+#  bundle exec ci/deploy.rb <your-app-name>
 
-# check if remote headlessheroku already exists -> must be matching your app name
+# note that there might be problems if your app has diverted
+# from the version on the heroku repository. If so, deploy by
+# hand first (e.g. git push headlessheroku master) and resolve
+# any conflicts. (NOTE THAT THE HEADLESS DEPLOY WILL MERGE DOWN!)
+# also, make sure that no other remote is configured as headlessheroku
 
 require 'heroku-headless'
 
