@@ -47,12 +47,13 @@ else
   HerokuHeadless.configure do | config |
     config.post_deploy_commands = ['rake db:migrate']
     config.pre_deploy_git_commands = [
+      "git add .",
+      "git commit -m \"travis_job_number\"",
       "git remote -v",
       "git config --global user.email \"drblinken@gmail.com\"",
       "git config --global user.name \"Travis CI\"",
       "git checkout master",
-      "git add . ",
-      "git commit -m  \"changes from headless deploy\" ",
+      "git commit -am  \"changes from headless deploy\" ",
       "git remote add #{remote_name} git@heroku.com:#{app_name}.git",
       "git fetch #{remote_name}",
       "git merge -m \"merged by automatic deploy\" #{remote_name}/master",
