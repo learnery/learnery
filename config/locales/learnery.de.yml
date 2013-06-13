@@ -24,6 +24,7 @@ de:
   destroy: Löschen
   back: Zurück
   people: Leute
+  to_rsvp_please_login: Zum anmelden muss man eingeloggt sein
   rsvp_0: niemand ist angemeldet - sei der/die Erste!
   rsvp_1: eine Person ist angemeldet
   rsvp_n: "%{count} Leute sind angemeldet"

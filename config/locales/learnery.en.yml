@@ -24,6 +24,7 @@ en:
   destroy: Delete
   back: Back
   people: People
+  to_rsvp_please_login: to rsvp you have to be logged in
   rsvp_0: noone is attending yet - be the first to rsvp!
   rsvp_1: one person will attend
   rsvp_n: "%{count} people will attend"

@@ -1,5 +1,8 @@
 module ApplicationHelper
 
+  # for events
+
+  # convert markup to html
   def md(text)
     renderer = Redcarpet::Render::HTML.new
     extensions = {filter_html: true}
@@ -16,11 +19,16 @@ module ApplicationHelper
   end
 
   def event_rsvp_numbers
-    case @event.count_yes
+    all = case @event.count_yes
       when 0 then t :rsvp_0
       when 1 then t :rsvp_1
       else        t :rsvp_n, :count => @event.count_yes
     end
+
+    if @rsvp && @rsvp.has_waitlist?
+      all = all + t(:there_are_no_people_on_waitlist, :number => @rsvp.no_on_waitlist) + ". "
+    end
+    all
   end
 
   def event_rsvp_list_names
@@ -32,13 +40,8 @@ module ApplicationHelper
   end
 
   def current_rsvp_status
-    all = ""
-    if @rsvp and @rsvp.id then all = all + t(:you_said, answer: t(@rsvp.answer, :scope => 'activerecord.values.rsvp.answer') ) + ". " end
-
-    if !@rsvp.nil? && @rsvp.has_waitlist?
-      all = all + t(:there_are_no_people_on_waitlist, :number => @rsvp.no_on_waitlist) + ". "
-    end
-    all
+    return t(:to_rsvp_please_login) + "." if @rsvp.nil? 
+    t(:you_said, answer: t(@rsvp.answer, :scope => 'activerecord.values.rsvp.answer') ) + ". "
   end
 
   def horizontal_form_for(name, *args, &block)
