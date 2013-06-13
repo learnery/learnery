@@ -43,10 +43,10 @@ de:
       edit:
         title: Profil editieren
   topics:
+    none: Es gibt noch keine Themen für diese Veranstaltung.
     new:
       title: Neues Thema vorschlagen
   topic:
-    none: Es gibt noch keine Themen für diese Veranstaltung.
     new:
       suggest: Neues Thema vorschlagen
   activerecord:
@@ -63,6 +63,7 @@ de:
         description: Beschreibung
         suggested_by: Vorgeschlagen von
         presented_by: Vorgetragen von
+        event: Veranstaltung
       event:
         name: Name
         starts: Beginn

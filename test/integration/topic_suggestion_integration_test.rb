@@ -26,7 +26,7 @@ describe "Topic Suggestion Integration Test" do
       visit event_path( @event )
       click_link(t 'topic.new.suggest')
       page.must_have_content("#{t('activerecord.attributes.topic.suggested_by')}: #{@user.nickname}")
-      page.must_have_content("#{t('activerecord.models.event')}: #{@event.name}")
+      page.must_have_content("#{t('activerecord.attributes.topic.event')}: #{@event.name}")
     end
   end # /context user
 

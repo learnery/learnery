@@ -19,7 +19,7 @@ describe "User Profile Integration Test" do
 
       visit "/users/edit"
 
-      page.must_have_content('Edit User')
+      page.must_have_content( t 'devise.registrations.edit.title' )
       within('#edit_user') do
         fill_in t('activerecord.attributes.user.email'), :with => 'some@new.address'
         click_button t('update')
@@ -36,7 +36,7 @@ describe "User Profile Integration Test" do
 
       visit "/users/edit"
 
-      page.must_have_content('Edit User')
+      page.must_have_content( t 'devise.registrations.edit.title' )
       within('#edit_user') do
         fill_in t('activerecord.attributes.user.nickname'),  :with => nick
         fill_in t('activerecord.attributes.user.firstname'), :with => first

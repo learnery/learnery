@@ -61,6 +61,7 @@ en:
         description: Description
         suggested_by: Suggested By
         presented_by: Presented by
+        event: Event
       event:
         name: name
         starts: starts
