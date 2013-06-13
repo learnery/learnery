@@ -36,6 +36,12 @@ de:
       title: Neue Veranstaltung
     edit:
       title: Veranstaltung bearbeiten
+  devise:
+    registrations:
+      new:
+        title: Anmelden
+      edit:
+        title: Profil editieren
   topics:
     new:
       title: Neues Thema vorschlagen
@@ -73,7 +79,7 @@ de:
         nickname: Spitzname
         password: Passwort
         password_confirmation: Passwort noch einmal
-        current_password: Aktuelles passwort
+        current_password: Aktuelles Passwort
         admin: Admin
         remember_me: Eingeloggt bleiben
       rsvp:

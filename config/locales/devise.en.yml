@@ -51,6 +51,7 @@ en:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      awaiting_confirmation: "you have to confirm by clicking the link in the e-mail we sent to %{mail}"
       expired: "has expired, please request a new one"
       not_found: "not found"
       not_locked: "was not locked"

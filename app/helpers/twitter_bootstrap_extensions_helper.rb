@@ -4,7 +4,8 @@ module TwitterBootstrapExtensionsHelper
     if model.errors.none?
       return ""
     else
-      header = "There was #{pluralize(model.errors.count, "problem")} saving this #{model.class}:"
+      header = t('errors.template.header',  :count => model.errors.count, :model => @user.class)
+      #"There was #{pluralize(model.errors.count, "problem")} saving this #{model.class}:"
       flash_messages << header
       model.errors.full_messages.each do |message|
         flash_messages << message

@@ -34,6 +34,12 @@ en:
   events:
     new:
       title: New Event
+  devise:
+    registrations:
+      new:
+        title: Sign Up
+      edit:
+        title: Edit Profile
   topics:
     none: There are no Topics for this event.
     new:

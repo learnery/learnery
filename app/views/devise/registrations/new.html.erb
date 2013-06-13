@@ -1,6 +1,12 @@
-<h2><%= t :sign_up %></h2>
+<%- model_class = resource.class %>
+
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human %></h1>
+</div>
 
 <%= horizontal_form_for(resource, :as => resource_name, :url => registration_path(resource_name) ) do |f| %>
+
+  <%= model_errors(f.object) %>
 
   <% if f.object.nickname_required? %>
     <%= f.text_field :nickname, :autofocus => true %>
