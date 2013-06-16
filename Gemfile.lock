@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/learnery/learnery-theme.git
-  revision: f5c2a50f1ebd130f8f906e21c98869f5514a8585
+  revision: 8d3f09504e320b82a78544fc548e60121ef9fb22
   specs:
     learnery-theme (0.0.1)
 
