@@ -2,8 +2,10 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
+require 'capybara/poltergeist'
 require 'login_helper'
 
+Capybara.javascript_driver = :poltergeist
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
@@ -43,9 +45,6 @@ class ActionDispatch::IntegrationTest
   # use the 't' method in test directly
 
   delegate :t, :to => I18n
-  #def t(*x)
-  #  I18n.t(x)
-  #end
 
   # create the text on the standard buttons (new, create)
   def create_button_for(klass)
@@ -66,5 +65,3 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
-
-

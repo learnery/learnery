@@ -15,6 +15,10 @@ env:
   - LEARNERY_THEME=coderdojo
 before_install:
 - ci/copytheme.sh
+- wget https://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-i686.tar.bz2
+- tar -xf phantomjs-1.9.1-linux-i686.tar.bz2
+- sudo rm -rf /usr/local/phantomjs
+- sudo mv phantomjs-1.9.1-linux-i686 /usr/local/phantomjs
 script:
 - rake
 - bundle exec ruby ci/deploy.rb

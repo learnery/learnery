@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 
+# Ignore files created by the theme integration test
+/*.png
