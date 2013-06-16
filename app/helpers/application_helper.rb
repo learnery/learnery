@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  # for current_user
+  def current_user_is_admin?
+    !current_user.nil? && current_user.admin?
+  end
+
   # for events
 
   # convert markup to html

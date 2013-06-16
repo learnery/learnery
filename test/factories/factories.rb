@@ -1,8 +1,8 @@
 # see https://github.com/thoughtbot/factory_girl/wiki/Usage
 FactoryGirl.define do
   factory :user do
-    email "someone@somehost.xxx"
-    nickname "Someone"
+    sequence(:email)    { |n| "foo#{n}@example.com" }
+    sequence(:nickname) { |n| "Some Uniqe Name #{n}" }
     password "geheim12"
     password_confirmation "geheim12"
   end
@@ -15,6 +15,10 @@ FactoryGirl.define do
     nickname "ANick"
     password "geheim12"
     password_confirmation "geheim12"
+  end
+
+  factory :admin_user, :parent => :user do
+    admin true
   end
 
 

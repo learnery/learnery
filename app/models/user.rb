@@ -19,6 +19,12 @@ class User < ActiveRecord::Base
     where(:admin => true).count == 0
   end
 
+  def admin?
+    return true if self[:admin]
+    return true if User.can_become_admin?
+    return false
+  end
+
   def name
      nickname || email || firstname || lastname
   end

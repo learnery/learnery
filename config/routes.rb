@@ -5,6 +5,10 @@ Learnery::Application.routes.draw do
   resources :people, only: [ :index, :show, :edit, :update, :destroy ]
   resources :events
 
+  namespace :admin do
+    resources :events
+  end
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   #, path_names: {sign_in: "login", sign_out: "logout"}
 

@@ -19,6 +19,7 @@ de:
   not_right_now: derzeit sind keine weiteren Veranstaltungen geplant...
   create: Erstellen
   update: Speichern
+  manage: Verwalten
   new: Neu anlegen
   edit: Editieren
   destroy: Löschen
@@ -95,6 +96,7 @@ de:
         answer:
           maybe: Vielleicht
           new: noch nichts
+          waiting: Wartelistenplatz
           "yes": Ja
           "no": Nein
           say_yes: Sage Ja

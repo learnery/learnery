@@ -21,6 +21,7 @@ en:
   edit: Edit
   create: Create
   update: Update
+  manage: Manage
   destroy: Delete
   back: Back
   people: People
@@ -53,7 +54,7 @@ en:
       event: event
       user: user
       rsvp: rsvp
-      OpenRsvp: open rsvp
+      OpenRsvp: open rsvp - anyone can come
       RsvpWithWaitlist: rsvp with maximum attendees and waitlist
       topic: topic
     attributes:
@@ -93,6 +94,7 @@ en:
         answer:
           maybe: Maybe
           new: nothing yet
+          waiting: Waiting List
           "yes": "Yes"
           "no": "No"
           say_yes: Say Yes
