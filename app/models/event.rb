@@ -35,6 +35,13 @@ class Event < ActiveRecord::Base
     rsvp.count
   end
 
+  # can count types of rspvs
+  def count_rsvps_by_type
+    h = {}
+    Event.connection.select_all("SELECT answer, count(id) FROM rsvps WHERE event_id=#{id} GROUP BY answer").to_a.map{|h| h.map{|k,v| v} }.each{|x| h[x[0].to_sym] = x[1] }
+    h
+  end
+
   def users_who_rsvped
     rsvp.map(&:user)
   end

@@ -2,6 +2,8 @@
 # Erste Übersetzungen für Learnery
 
 de:
+  navigation:
+    events: Veranstaltungen
   past_events: Alte Veranstaltungen
   login: Login
   sign_up: Anmelden
@@ -33,7 +35,7 @@ de:
   you_said: "Dein Status ist %{answer}"
   there_are_no_people_on_waitlist: "Es sind %{number} Leute auf der Warte Liste"
   max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
-  events:
+  events: 
     new:
       title: Neue Veranstaltung
     edit:
@@ -86,7 +88,9 @@ de:
         admin: Admin
         remember_me: Eingeloggt bleiben
       rsvp:
-        answer: Antwort
+        answer: 
+          one: Antwort
+          other: Antworten
     values:
       event:
         rsvp_type:

@@ -1,6 +1,8 @@
 # english texts for learnery
 
 en:
+  navigation:
+    events: Events
   past_events: Past Events
   login: Login
   sign_up: Sign Up
@@ -84,7 +86,9 @@ en:
         admin: Admin
         remember_me: Remember me
       rsvp:
-        answer: Answer
+        answer: 
+          one: Answer
+          other: Answers
     values:
       event:
         rsvp_type:

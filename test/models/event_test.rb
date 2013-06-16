@@ -83,6 +83,12 @@ class EventTest < ActiveSupport::TestCase
       it { @e.users_who_rsvped_maybe.must_equal [ @u3 ]            }
     end
 
+    it "can count rsvp types" do
+      result_map  = {:yes=>1,:no=>1,:maybe=>1}
+      counter_map = @e.count_rsvps_by_type
+      counter_map.must_equal result_map
+    end
+
     context "can count them" do
       it { @e.count_rsvps.must_equal 3 }
       it { @e.count_yes.must_equal   1 }
