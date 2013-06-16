@@ -44,11 +44,6 @@ class EventsControllerTest < ActionController::TestCase
       assert_response 302
     end
 
-    it "should destroy event" do
-      delete :destroy, id: @event
-      assert_response 302
-    end
-
   end # /context admin action not publicly available
 
 
@@ -80,14 +75,6 @@ class EventsControllerTest < ActionController::TestCase
     it "should update event" do
       patch :update, id: @event, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
       assert_redirected_to event_path(assigns(:event))
-    end
-
-    it "should destroy event" do
-      assert_difference('Event.count', -1) do
-        delete :destroy, id: @event
-      end
-
-      assert_redirected_to events_path
     end
 
   end # /context admin actions

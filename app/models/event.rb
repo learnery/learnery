@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
 
   # Users can rsvp for events
   # this is actually always 
-  has_many :rsvp, :before_add => :check_rsvp_type
+  has_many :rsvp, :before_add => :check_rsvp_type, :dependent => :destroy
   has_many :users, :through => :rsvp
   has_many :topics
 

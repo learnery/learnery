@@ -34,3 +34,12 @@
 form.form-inline {
   display: inline;
 }
+
+/* override width of dt in dl-horizontal by using more specific selector */
+body .dl-horizontal dt {
+  width: 200px;
+}
+
+body .dl-horizontal dd {
+  margin-left: 210px;
+}
