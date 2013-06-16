@@ -20,7 +20,6 @@ require 'heroku-headless'
 
 File.new("travis_job_number","w").write(ENV['TRAVIS_JOB_NUMBER'])
 
-
 branch =  ENV['TRAVIS_BRANCH']
 deploy_only_branch = "master"
 if branch != deploy_only_branch

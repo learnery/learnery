@@ -1,4 +1,4 @@
-class RsvpWithWaitlist < Rsvp 
+class RsvpWithWaitlist < Rsvp
 
   delegate :places_available?, :has_waitlist?, :no_on_waitlist, :to => :event
 

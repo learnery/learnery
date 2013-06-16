@@ -12,7 +12,7 @@ class EventsController < ApplicationController
       @events = Event.future
       if @events.count > 0 then
         @event = @events.shift
-        @rsvp = @event.rsvp_of( current_user ) if current_user
+        @rsvp = @event.rsvp_of( current_user ) || @event.rsvp_new( current_user ) if current_user
       end
       render "index"
     end
@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @rsvp = @event.rsvp_of( current_user ) if current_user
+    @rsvp = @event.rsvp_of( current_user ) || @event.rsvp_new( current_user ) if current_user
   end
 
   # GET /events/new

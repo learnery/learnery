@@ -3,6 +3,8 @@
 <% @events.each do |event| %>
   <h2><%= link_to event.name, event_path(event) %></h2>
 
+  <p><%= link_to t('events.new.title'), new_event_path, :class => 'btn btn-primary' %></p>
+
   <dl class="dl-horizontal">
   <dt><%= model_class.human_attribute_name(:starts) %>:</dt>
   <dd><%=l event.starts, :format => :long %></dd>
@@ -38,6 +40,7 @@
   </dl>
   
     <p>
+       <%= link_to t(:back), event_path(@event), :class => 'btn'  %>
        <%= link_to t(:edit),    edit_event_path(event),  :class => 'btn btn-mini' %>
        <%= link_to t(:manage),  admin_event_path(event), :class => 'btn btn-mini' %>
        <%= link_to t(:destroy), admin_event_path(event),

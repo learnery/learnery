@@ -1,7 +1,28 @@
 require "test_helper"
 
 describe "Rsvp Integration Test" do
- 
+
+  context "create rsvps only if needed" do
+    before do
+      @e = create( :event )
+      @u = create( :user )
+    end
+
+    it "if i just visit the events page no rsvp is created" do
+      login_user( @u )
+      visit event_path( @e )
+      @e.rsvp_of( @u ).must_be_nil
+    end
+
+    it "if i click rspv an rsvp is created" do
+      login_user( @u )
+      visit event_path( @e )
+
+      click_button t(:say_yes, :scope => 'activerecord.values.rsvp.answer')
+      @e.rsvp_of( @u ).wont_be_nil
+    end
+  end # context "create rsvps only if needed"
+
   context "seeing rsvp status for a future event" do
 
 
@@ -17,7 +38,7 @@ describe "Rsvp Integration Test" do
       @r3 = Rsvp.create!( :event => @e, :user => @u3, :answer => :maybe )
       # no Rsvp for user @u4
     end
- 
+
     it "noone is attending" do
       # TODO: find a way to test this in some themes, and not test it in others
       skip "only applies to some themes"
@@ -51,7 +72,7 @@ describe "Rsvp Integration Test" do
       @e = Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
       @u = User.create!( :email => 'user@example.com', :password => '12345678')
     end
- 
+
     it "cannot rsvp without login" do
       visit event_path(@e)
       page.wont_have_button('Update Rsvp')

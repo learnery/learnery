@@ -25,9 +25,9 @@ describe "Admin Rsvps Integration Test" do
     end
 
     it "admin can see list of all rsvps" do
-      @event.rsvp_create( @user1 ).say_yes
-      @event.rsvp_create( @user2 ).say_no
-      @event.rsvp_create( @user3 ).say_maybe
+      @event.rsvp_create!( @user1 ).say_yes
+      @event.rsvp_create!( @user2 ).say_no
+      @event.rsvp_create!( @user3 ).say_maybe
       login_user( @admin )
       visit event_path( @event )
       click_link t("manage")
@@ -47,9 +47,9 @@ describe "Admin Rsvps Integration Test" do
     end
 
     it "admin can see list of all rsvps" do
-      @event.rsvp_create( @user1 ).say_yes
-      @event.rsvp_create( @user2 ).say_no
-      @event.rsvp_create( @user3 ).say_maybe
+      @event.rsvp_create!( @user1 ).say_yes
+      @event.rsvp_create!( @user2 ).say_no
+      @event.rsvp_create!( @user3 ).say_maybe
       login_user( @admin )
       visit event_path( @event )
       click_link t("manage")

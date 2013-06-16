@@ -25,7 +25,7 @@ class Event < ActiveRecord::Base
   # event knows about answers enumeration; it is duplicated here.
   # I think all of this functionality belongs in rsvp.
 
-  # 
+  #
   def check_rsvp_type(rsvp)
     raise "Incompatible RSVP, should be #{rsvp_type}" unless rsvp.class.to_s == rsvp_type
   end
@@ -80,7 +80,7 @@ class Event < ActiveRecord::Base
 
   # get rsvp of this user
   def rsvp_of(user)
-    rsvp.where(:user => user).first || rsvp_create(user)
+    rsvp.where(:user => user).first
   end
 
   def places_available?
@@ -96,7 +96,10 @@ class Event < ActiveRecord::Base
   def no_on_waitlist
     rsvp.where(:answer => :waiting).count
   end
-  def rsvp_create( user )
+  def rsvp_new( user )
+    rsvp_type.constantize.new( event: self , user: user )
+  end
+  def rsvp_create!( user )
     rsvp_type.constantize.create!( :event_id => id, :user_id => user.id )
   end
 end

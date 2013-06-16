@@ -1,7 +1,9 @@
 <% if current_user then %>
   <% @rsvp.available_events.each do |eventname|%>
     <%= inline_form_for(@rsvp) do |f|  %>
-      <%= hidden_field_tag "rsvp[event]", eventname  %>
+      <%= hidden_field_tag "state_machine_event", eventname  %>
+      <%= hidden_field_tag "rsvp[event_id]", @event.id  %>
+
       <%= f.submit t(eventname, :scope => 'activerecord.values.rsvp.answer'), :name => "", :class => ''  %>
     <% end  %>
   <% end  %>
