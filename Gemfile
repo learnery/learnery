@@ -44,7 +44,7 @@ group :test do
   gem 'capybara'
   gem 'capybara_minitest_spec'
   gem 'poltergeist'
-  gem 'rmagick'
+  gem 'rmagick', :require => 'RMagick'
   gem 'database_cleaner'
   gem 'launchy' # for save_and_open_page in integration tests
   gem 'factory_girl_rails'

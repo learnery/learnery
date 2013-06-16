@@ -1,4 +1,5 @@
 require "test_helper"
+require 'RMagick'
 
 describe "Theme Integration Test" do
   setup do
