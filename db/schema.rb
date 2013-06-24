@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130609095250) do
+ActiveRecord::Schema.define(version: 20130614091736) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20130609095250) do
     t.datetime "updated_at"
     t.integer  "max_attendees", default: 0,          null: false
     t.string   "rsvp_type",     default: "OpenRsvp", null: false
+    t.integer  "topic_id"
   end
 
   create_table "rsvps", force: true do |t|
