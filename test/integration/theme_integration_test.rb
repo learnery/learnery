@@ -7,7 +7,8 @@ describe "Theme Integration Test" do
   end
 
   it "may take a screenshot" do
-    screenshot_fixture_file  = "test/fixtures/screenshots/#{ENV["LEARNERY_THEME"]}.png"
+    screenshot_file_name = ENV['LEARNERY_THEME']? ENV['LEARNERY_THEME'] : "default"
+    screenshot_fixture_file  = "test/fixtures/screenshots/#{screenshot_file_name}.png"
     screenshot_fixture_image = Magick::Image::read(screenshot_fixture_file).first
 
     visit root_path
@@ -21,7 +22,7 @@ describe "Theme Integration Test" do
     ilg.push( image_right_size )
     ilg.append(true).write("compare.png")
 
-    errors= image_right_size.difference( screenshot_fixture_image ) 
+    errors= image_right_size.difference( screenshot_fixture_image )
     assert_in_delta( errors[1], 0, 0.1 )
   end
 
