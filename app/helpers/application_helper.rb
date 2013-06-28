@@ -29,7 +29,7 @@ module ApplicationHelper
       when 1 then t :rsvp_1
       else        t :rsvp_n, :count => @event.count_yes
     end
-
+    all = all[0].upcase + all[1..-1] + ". "
     if @rsvp && @rsvp.has_waitlist?
       all = all + t(:there_are_no_people_on_waitlist, :number => @rsvp.no_on_waitlist) + ". "
     end
@@ -46,7 +46,7 @@ module ApplicationHelper
 
   def current_rsvp_status
     return t(:to_rsvp_please_login) + "." if @rsvp.nil? 
-    t(:you_said, answer: t(@rsvp.answer, :scope => 'activerecord.values.rsvp.answer') ) + ". "
+    t(@rsvp.answer, :scope => 'rsvp_describe_answer_for_you') + "."
   end
 
   def horizontal_form_for(name, *args, &block)

@@ -33,7 +33,15 @@ de:
   rsvp_n: "%{count} Leute sind angemeldet"
   do_rsvp: Ansage speichern
   you_said: "Dein Status ist %{answer}"
-  there_are_no_people_on_waitlist: "Es sind %{number} Leute auf der Warte Liste"
+  there_are_no_people_on_waitlist: "Es sind %{number} Leute auf der Warteliste"
+  rsvp_describe_answer_for_you:
+    maybe: Du hast Dich noch nicht entschieden
+    new: Du hast noch keine Antwort gegeben
+    waiting: Du bist auf der Warteliste
+    "yes": Du hast eine Eintrittskarte
+    "no": Du nimmst nicht teil
+  max_attendees_zero_is_unlimited: set to 0 for no limit
+  events:
   max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
   events: 
     new:

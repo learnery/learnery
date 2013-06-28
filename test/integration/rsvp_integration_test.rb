@@ -39,31 +39,6 @@ describe "Rsvp Integration Test" do
       # no Rsvp for user @u4
     end
 
-    it "noone is attending" do
-      # TODO: find a way to test this in some themes, and not test it in others
-      skip "only applies to some themes"
-      @r1.answer = :no
-      @r1.save!
-      visit event_path(@e)
-      page.must_have_content "noone is attending yet - be the first to rsvp!"
-    end
-
-    it "one person is attending" do
-      # TODO: find a way to test this in some themes, and not test it in others
-      skip "only applies to some themes"
-      visit event_path(@e)
-      page.must_have_content "one person will attend"
-    end
-
-    it "one person is attending" do
-      # TODO: find a way to test this in some themes, and not test it in others
-      skip "only applies to some themes"
-      @r2.answer = :yes
-      @r2.save!
-      visit event_path(@e)
-      page.must_have_content "2 people will attend"
-    end
-
   end
 
   context "rsvping for a future event" do
@@ -85,11 +60,12 @@ describe "Rsvp Integration Test" do
 
       page.must_have_button t(:say_yes, :scope => 'activerecord.values.rsvp.answer')
       click_button t(:say_yes, :scope => 'activerecord.values.rsvp.answer')
-      page.must_have_content t(:you_said, answer: t(:yes, :scope => 'activerecord.values.rsvp.answer') )
+      page.must_have_content t(:yes, :scope => 'rsvp_describe_answer_for_you')
+
 
       page.must_have_button t(:say_no, :scope => 'activerecord.values.rsvp.answer')
       click_button t(:say_no, :scope => 'activerecord.values.rsvp.answer')
-      page.must_have_content t(:you_said, answer: t(:no, :scope => 'activerecord.values.rsvp.answer') )
+      page.must_have_content t(:no, :scope => 'rsvp_describe_answer_for_you')
     end
 
   end

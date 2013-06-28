@@ -78,7 +78,7 @@ module RsvpHolder
 
   def places_available?
     return true if max_attendees == 0
-    rsvp.where(:answer => :yes).count < max_attendees
+    count_yes < max_attendees
   end
 
   def has_waitlist?

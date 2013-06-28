@@ -49,14 +49,12 @@ describe "Admin Rsvps Integration Test" do
     it "admin can see list of all rsvps" do
       @event.rsvp_create!( @user1 ).say_yes
       @event.rsvp_create!( @user2 ).say_no
-      @event.rsvp_create!( @user3 ).say_maybe
       login_user( @admin )
       visit event_path( @event )
       click_link t("manage")
       must_have_content @admin.nickname
       must_have_content @user1.nickname
       must_have_content @user2.nickname
-      must_have_content @user3.nickname
     end
   end # context RsvpWithWaitlist
 
