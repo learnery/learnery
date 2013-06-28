@@ -34,6 +34,12 @@ en:
   do_rsvp: rsvp
   you_said: "You said %{answer}"
   there_are_no_people_on_waitlist: "There are %{number} people on the waiting list"
+  rsvp_describe_answer_for_you:
+    maybe: You have not decided yet
+    new: You have given no answer yet
+    waiting: You are on the waiting list
+    "yes": You have a ticket
+    "no": You are not going
   max_attendees_zero_is_unlimited: set to 0 for no limit
   events:
     new:

@@ -36,24 +36,27 @@ class RsvpWithWaitlistTest < ActiveSupport::TestCase
     end
 
     it "third attendee is put on waitlist" do
+      @event.max_attendees.must_equal 2
+      @event.count_yes.must_equal 0
+      @event.places_available?.must_equal true
+
       r1 = RsvpWithWaitlist.new( :user => @user1, :event => @event )
-      r1.event.max_attendees.must_equal 2
-      r1.event.rsvp.where(:answer => "yes").count.must_equal 0
-      r1.places_available?.must_equal true
       r1.say_yes!
       r1.answer.must_equal "yes"
+      @event.count_yes.must_equal 1
+      @event.places_available?.must_equal true
+
       r2 = RsvpWithWaitlist.new( :user => @user2, :event => @event )
-      r2.event.max_attendees.must_equal 2
-      r2.event.rsvp.where(:answer => "yes").count.must_equal 1
-      r2.places_available?.must_equal true
       r2.say_yes!
       r2.answer.must_equal "yes"
+      @event.count_yes.must_equal 2
+      @event.places_available?.must_equal false
+
       r3 = RsvpWithWaitlist.new( :user => @user3, :event => @event )
-      r3.event.max_attendees.must_equal 2
-      r3.event.rsvp.where(:answer => "yes").count.must_equal 2
-      r3.places_available?.must_equal false
       r3.say_yes!
       r3.answer.must_equal "waiting"
+      @event.count_yes.must_equal 2
+      @event.places_available?.must_equal false
     end
 
   end
