@@ -1,16 +1,15 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-
   context "can create" do
 
     it "cannot be created without starts" do
-      event   = Event.create( :name => "next event" )
+      event   = Learnery::Event.create( :name => "next event" )
       event.valid?.must_equal false
     end
 
     it "cannot be created without name" do
-      event   = Event.create( :starts => Date.today + 10 )
+      event   = Learnery::Event.create( :starts => Date.today + 10 )
       event.valid?.must_equal false
     end
 
@@ -23,7 +22,7 @@ class EventTest < ActiveSupport::TestCase
           :venue => "here"
       }
 
-      event   = Event.create( event_data )
+      event   = Learnery::Event.create( event_data )
       event.valid?.must_equal true
       event.save!
       event.reload
@@ -38,19 +37,19 @@ class EventTest < ActiveSupport::TestCase
 
   context "can find" do
     before do
-      @past_event   = Event.create!( :name => "past event",   :starts => Date.today - 10 )
-      @next_event   = Event.create!( :name => "next event",   :starts => Date.today + 10 )
-      @future_event = Event.create!( :name => "future event", :starts => Date.today + 30 )
+      @past_event   = Learnery::Event.create!( :name => "past event",   :starts => Date.today - 10 )
+      @next_event   = Learnery::Event.create!( :name => "next event",   :starts => Date.today + 10 )
+      @future_event = Learnery::Event.create!( :name => "future event", :starts => Date.today + 30 )
     end
     it "can find all past events" do
-      f = Event.past
+      f = Learnery::Event.past
 
       f.must_include @past_event
       f.wont_include @next_event
       f.wont_include @future_event
     end
     it "can find all future events" do
-      f = Event.future
+      f = Learnery::Event.future
 
       f.wont_include     @past_event
       f.first.must_equal @next_event
@@ -59,16 +58,18 @@ class EventTest < ActiveSupport::TestCase
   end
 
   context "with rsvps" do
+      include Learnery
     before do
-      @e = Event.create!( :name => "future event", :starts => Date.today + 30 )
-      @u1 = User.create!( :email => 'user1@example.com', :password => '12345678')
-      @u2 = User.create!( :email => 'user2@example.com', :password => '12345678')
-      @u3 = User.create!( :email => 'user3@example.com', :password => '12345678')
-      @u4 = User.create!( :email => 'user4@example.com', :password => '12345678')
 
-      @r1 = OpenRsvp.create!( event: @e, user: @u1, answer: :yes    )
-      @r2 = OpenRsvp.create!( event: @e, user: @u2, answer: :no     )
-      @r3 = OpenRsvp.create!( event: @e, user: @u3, answer: :maybe  )
+      @e = Learnery::Event.create!( :name => "future event", :starts => Date.today + 30 )
+      @u1 = Learnery::User.create!( :email => 'user1@example.com', :password => '12345678')
+      @u2 = Learnery::User.create!( :email => 'user2@example.com', :password => '12345678')
+      @u3 = Learnery::User.create!( :email => 'user3@example.com', :password => '12345678')
+      @u4 = Learnery::User.create!( :email => 'user4@example.com', :password => '12345678')
+
+      @r1 = Learnery::OpenRsvp.create!( event: @e, user: @u1, answer: :yes    )
+      @r2 = Learnery::OpenRsvp.create!( event: @e, user: @u2, answer: :no     )
+      @r3 = Learnery::OpenRsvp.create!( event: @e, user: @u3, answer: :maybe  )
     end
 
     it "can find rsvp of single user" do
@@ -99,15 +100,15 @@ class EventTest < ActiveSupport::TestCase
 
   context "with rsvps for waitlist" do
     before do
-      @e = Event.create!( :name => "future event", :starts => Date.today + 30 )
-      @u1 = User.create!( :email => 'user1@example.com', :password => '12345678')
-      @u2 = User.create!( :email => 'user2@example.com', :password => '12345678')
-      @u3 = User.create!( :email => 'user3@example.com', :password => '12345678')
-      @u4 = User.create!( :email => 'user4@example.com', :password => '12345678')
+      @e = Learnery::Event.create!( :name => "future event", :starts => Date.today + 30 )
+      @u1 = Learnery::User.create!( :email => 'user1@example.com', :password => '12345678')
+      @u2 = Learnery::User.create!( :email => 'user2@example.com', :password => '12345678')
+      @u3 = Learnery::User.create!( :email => 'user3@example.com', :password => '12345678')
+      @u4 = Learnery::User.create!( :email => 'user4@example.com', :password => '12345678')
 
-      @r1 = RsvpWithWaitlist.create!( event: @e, user: @u1, :answer => :yes )
-      @r2 = RsvpWithWaitlist.create!( event: @e, user: @u2, :answer => :yes  )
-      @r3 = RsvpWithWaitlist.create!( event: @e, user: @u3, :answer => :yes  )
+      @r1 = Learnery::RsvpWithWaitlist.create!( event: @e, user: @u1, :answer => :yes )
+      @r2 = Learnery::RsvpWithWaitlist.create!( event: @e, user: @u2, :answer => :yes  )
+      @r3 = Learnery::RsvpWithWaitlist.create!( event: @e, user: @u3, :answer => :yes  )
     end
 
     context "can check if places are still available" do

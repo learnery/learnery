@@ -1,22 +1,21 @@
 require 'test_helper'
-
+module Learnery
 class EventsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   before do
-    @event = events(:one)
+    @event = create(:event)
   end
 
   context "public actions" do
 
     it "should get index" do
-      get :index
+      get :index, use_route: :learnery
       assert_response :success
       assert_not_nil assigns(:events)
     end
 
     it "should show event" do
-      get :show, id: @event
+      get :show, id: @event, use_route: :learnery
       assert_response :success
     end
 
@@ -25,22 +24,22 @@ class EventsControllerTest < ActionController::TestCase
   context "admin actions should not be publicly availabe" do
 
     it "should get new" do
-      get :new
+      get :new, use_route: :learnery
       assert_response 302
     end
 
     it "should create event" do
-      post :create, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+      post :create, use_route: :learnery, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
       assert_response 302
     end
 
     it "should get edit" do
-      get :edit, id: @event
+      get :edit, use_route: :learnery, id: @event
       assert_response 302
     end
 
     it "should update event" do
-      patch :update, id: @event, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+      patch :update, use_route: :learnery, id: @event, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
       assert_response 302
     end
 
@@ -50,32 +49,35 @@ class EventsControllerTest < ActionController::TestCase
 
   context "admin actions" do
     before do
-      u1 = User.create!( :email => 'user1@example.com', :password => '12345678', :admin => true)
+      #u1 = User.create!( :email => 'user1@example.com', :password => '12345678', :admin => true)
+      u1 = create(:admin_user)
       sign_in( u1 )
     end
 
     it "should get new" do
-      get :new
+      get :new, use_route: :learnery
       assert_response :success
     end
 
     it "should create event" do
-      assert_difference('Event.count') do
-        post :create, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
-      end
 
-      assert_redirected_to event_path(assigns(:event))
+      assert_difference('Event.count') do
+        post :create, use_route: :learnery, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+      end
+      assert_redirected_to learnery.event_path(assigns(:event)), "bla bla"
     end
 
     it "should get edit" do
-      get :edit, id: @event
+
+      get :edit, use_route: :learnery, id: @event
       assert_response :success
     end
 
     it "should update event" do
-      patch :update, id: @event, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
-      assert_redirected_to event_path(assigns(:event))
+      patch :update, use_route: :learnery, id: @event, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+      assert_redirected_to learnery.event_path(assigns(:event))
     end
 
   end # /context admin actions
+end
 end

@@ -1,9 +1,16 @@
 ENV["RAILS_ENV"] ||= "test"
-require File.expand_path('../../config/environment', __FILE__)
+# engine todo: uncomment this and delete config/environment?
+#require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+
 require 'rails/test_help'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'login_helper'
+require 'learnery'
+#require 'factory_girl_rails'
+FactoryGirl.definition_file_paths = %w(test/factories)
+FactoryGirl.find_definitions
 
 Capybara.javascript_driver = :poltergeist
 
@@ -17,6 +24,9 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
+
+  # todo engine : this was generated - necessary?
+  Rails.backtrace_cleaner.remove_silencers!
 
   # Add more helper methods to be used by all tests here...
 end
@@ -64,4 +74,7 @@ end
 
 class ActionController::TestCase
   include Devise::TestHelpers
+  def learnery
+    @controller.learnery
+  end
 end

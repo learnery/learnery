@@ -11,10 +11,10 @@ module LoginHelper
   end
 
   def login_user_with(login,password)
-    visit new_user_session_path
+    visit learnery.new_user_session_path
     within "#new_user" do
-      fill_in t('activerecord.attributes.user.login'), :with => login
-      fill_in t('activerecord.attributes.user.password'), :with => password
+      fill_in t('activerecord.attributes.learnery/user.login'), :with => login
+      fill_in t('activerecord.attributes.learnery/user.password'), :with => password
       click_button t('login')
     end
   end

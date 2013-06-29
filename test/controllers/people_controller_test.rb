@@ -1,5 +1,5 @@
 require 'test_helper'
-
+module Learnery
 class PeopleControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
@@ -9,21 +9,22 @@ class PeopleControllerTest < ActionController::TestCase
 
   context "admin actions should not be publicly availabe" do
     before do
-      @person = User.create!( :email => 'user1@example.com', :password => '12345678')
+      #@person = User.create!( :email => 'user1@example.com', :password => '12345678')
+      @person = create(:user)
     end
 
     it "should not show index" do
-      get :index
+      get :index, use_route: :learnery
       assert_response 302
     end
 
     it "should not get edit" do
-      get :edit, id: @person
+      get :edit, use_route: :learnery, id: @person
       assert_response 302
     end
 
     it "should not update person" do
-      patch :update, id: @person, person: { firstname: "bla" }
+      patch :update, use_route: :learnery, id: @person, person: { firstname: "bla" }
       assert_response 302
     end
 
@@ -32,27 +33,28 @@ class PeopleControllerTest < ActionController::TestCase
 
   context "admin actions" do
     before do
-      @person = User.create!( :email => 'user1@example.com', :password => '12345678')
-      @admin  = User.create!( :email => 'user2@example.com', :password => '12345678', :admin => true)
+      @person = create(:user_sequence)
+      @admin  = create(:admin_user)
       sign_in( @admin )
     end
 
     it "should show index" do
-      get :index
+      get :index, use_route: :learnery
       assert_response :success
     end
 
     it "should get edit" do
-      get :edit, id: @person
+      get :edit, id: @person, use_route: :learnery
       assert_response :success
     end
 
     it "should update person" do
-      patch :update, id: @person, user: { firstname: "bla" }
-      assert_redirected_to people_path
+      patch :update, use_route: :learnery, id: @person, user: { firstname: "bla" }
+      assert_redirected_to learnery.people_path
       @person.reload
       assert @person.firstname == "bla"
     end
 
   end # /context admin actions
+end
 end

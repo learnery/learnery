@@ -1,5 +1,5 @@
 require "test_helper"
-
+module Learnery
 describe "Rsvp Integration Test" do
 
   context "create rsvps only if needed" do
@@ -10,13 +10,13 @@ describe "Rsvp Integration Test" do
 
     it "if i just visit the events page no rsvp is created" do
       login_user( @u )
-      visit event_path( @e )
+      visit learnery.event_path( @e )
       @e.rsvp_of( @u ).must_be_nil
     end
 
     it "if i click rspv an rsvp is created" do
       login_user( @u )
-      visit event_path( @e )
+      visit learnery.event_path( @e )
 
       click_button t(:say_yes, :scope => 'activerecord.values.rsvp.answer')
       @e.rsvp_of( @u ).wont_be_nil
@@ -27,36 +27,32 @@ describe "Rsvp Integration Test" do
 
 
     before do
-      @e = Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
-      @u1 = User.create!( :email => 'user1@example.com', :password => '12345678')
-      @u2 = User.create!( :email => 'user2@example.com', :password => '12345678')
-      @u3 = User.create!( :email => 'user3@example.com', :password => '12345678')
-      @u4 = User.create!( :email => 'user4@example.com', :password => '12345678')
 
-      @r1 = Rsvp.create!( :event => @e, :user => @u1, :answer => :yes )
-      @r2 = Rsvp.create!( :event => @e, :user => @u2, :answer => :no )
-      @r3 = Rsvp.create!( :event => @e, :user => @u3, :answer => :maybe )
+      @r1 = create(:rsvp_1)
+      @r2 = create(:rsvp_2)
+      @r3 = create(:rsvp_3)
       # no Rsvp for user @u4
     end
+
 
   end
 
   context "rsvping for a future event" do
 
     before do
-      @e = Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
-      @u = User.create!( :email => 'user@example.com', :password => '12345678')
+      @e = create(:rsvp_event)
+      @u = create(:user)
     end
 
     it "cannot rsvp without login" do
-      visit event_path(@e)
+      visit learnery.event_path(@e)
       page.wont_have_button('Update Rsvp')
       page.wont_have_button('Create Rsvp')
     end
 
     it "user can rsvp" do
       login_user( @u )
-      visit event_path( @e )
+      visit learnery.event_path( @e )
 
       page.must_have_button t(:say_yes, :scope => 'activerecord.values.rsvp.answer')
       click_button t(:say_yes, :scope => 'activerecord.values.rsvp.answer')
@@ -69,5 +65,5 @@ describe "Rsvp Integration Test" do
     end
 
   end
-
+end
 end

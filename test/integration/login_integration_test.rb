@@ -1,6 +1,15 @@
 require "test_helper"
-
+module Learnery
 describe "user login and logout integration test" do
+
+  it "saves a user" do
+    assert Learnery::User.count == 0
+    user = create(:user_only_with_email)
+    assert Learnery::User.count == 1
+    u = Learnery::User.first
+    assert u.email == "someone2@somehost.xxx"
+
+  end
   it "logs in user with email" do
     user = create(:user_only_with_email)
     login_user( user )
@@ -25,9 +34,10 @@ describe "user login and logout integration test" do
   it "log out" do
     user = create(:user)
     login_user( user )
-    visit root_path
+    visit learnery.root_path
     click_link t :log_out
     page.must_have_content t 'devise.sessions.signed_out'
   end
 
+end
 end

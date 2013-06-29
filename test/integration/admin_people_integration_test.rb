@@ -11,7 +11,7 @@ describe "Admin People Integration Test" do
     login_user( @user1 )
     wont_have_link t("people")
 
-    visit people_path
+    visit learnery.people_path
     must_have_content t(:admin_only)
   end
 
@@ -23,4 +23,4 @@ describe "Admin People Integration Test" do
     must_have_content @user2.nickname
     must_have_content @user3.nickname
   end
-end # describe "Admin Integration Test" 
+end # describe "Admin Integration Test"
