@@ -1,11 +1,26 @@
+
 module ApplicationHelper
+  include Learnery::FormHelper
+  include Learnery::AuthenticationHelper
+  include Learnery::RsvpHelper
 
-  # for current_user
-  def current_user_is_admin?
-    !current_user.nil? && current_user.admin?
+  def model_errors(model)
+    flash_messages = []
+    if model.errors.none?
+      return ""
+    else
+      header = t('errors.template.header',  :count => model.errors.count, :model => @user.class)
+      #"There was #{pluralize(model.errors.count, "problem")} saving this #{model.class}:"
+      flash_messages << header
+      model.errors.full_messages.each do |message|
+        flash_messages << message
+      end
+    end
+    text = flash_messages.join("<br/>").html_safe
+    text = content_tag(:div,
+                           content_tag(:button, raw("  &times;"), :class => "close",   "data-dismiss" => "alert") +
+                         text.html_safe, :class => "alert fade in alert-error")
   end
-
-  # for events
 
   # convert markup to html
   def md(text)
@@ -16,7 +31,7 @@ module ApplicationHelper
   end
 
   def rsvp_type_options
-    Rsvp.implementations.map(&:to_s).map{|x|[t(x, :scope => 'activerecord.models'),x]}
+    Learnery::Rsvp.implementations.map(&:to_s).map{|x|[t(x, :scope => 'activerecord.models'),x]}
   end
 
   def rsvp_options(o)
@@ -45,7 +60,7 @@ module ApplicationHelper
   end
 
   def current_rsvp_status
-    return t(:to_rsvp_please_login) + "." if @rsvp.nil? 
+    return t(:to_rsvp_please_login) + "." if @rsvp.nil?
     t(@rsvp.answer, :scope => 'rsvp_describe_answer_for_you') + "."
   end
 
@@ -69,9 +84,9 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   def wrap(attribute, options={}, result_of_super)
     help = options.delete(:help)
     help = @template.content_tag(:span, help, :class => 'help-inline') if help
-    @template.content_tag(:div, 
-                          label(attribute, :class => 'control-label') + 
-                          @template.content_tag(:div, result_of_super + help, :class => "controls"), 
+    @template.content_tag(:div,
+                          label(attribute, :class => 'control-label') +
+                          @template.content_tag(:div, result_of_super + help, :class => "controls"),
                           :class => "control-group")
   end
 
@@ -100,8 +115,8 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   def check_box(attribute, options={})
     help = options.delete(:help)
     help = @template.content_tag(:span, help, :class => 'help-inline') if help
-    @template.content_tag(:div, 
-                          @template.content_tag(:div, super + label(attribute) + help, :class => "controls"), 
+    @template.content_tag(:div,
+                          @template.content_tag(:div, super + label(attribute) + help, :class => "controls"),
                           :class => "control-group")
   end
 
@@ -116,3 +131,4 @@ class HorizontalBootstrapFormBuilder < BootstrapFormBuilder
     @template.content_tag(:div, super(attribute,options), :class => "form-actions")
   end
 end
+

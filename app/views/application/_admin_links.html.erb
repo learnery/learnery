@@ -1,6 +1,0 @@
-<% if user_signed_in? and current_user.admin? %>
-  <li class="divider-vertical"></li>
-  <li><%= link_to t(:events, :scope => 'navigation'), admin_events_path %></li>
-  <li><%= link_to t(:people), people_path %></li>
-<% end %>
-

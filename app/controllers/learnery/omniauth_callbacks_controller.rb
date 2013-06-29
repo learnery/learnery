@@ -2,7 +2,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def all
     #raise request.env["omniauth.auth"].inspect
-    user = Learnery::User.from_omniauth(request.env["omniauth.auth"])
+    user = User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
       flash.notice = "Signed in with #{user.provider}!"
       if !user.email || "" == user.email
