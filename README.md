@@ -43,6 +43,10 @@ Clone this repository and start your rails server:
     git clone https://github.com/learnery/learnery.git my-learnery-site
     cd my-learnery-site/
     bundle install
+
+    there is a simple theme in test/dummy which can be used for testing:
+    rake learnery:install:migrations
+    cd test/dummy
     rake db:migrate
     rails s
 
@@ -81,6 +85,8 @@ Clone the repository and edit the files:
     ├── app
     │   └── views
     │       └── application
+    │           ├── _site_name.html.erb
+    │           ├── _site_description.html.erb
     │           ├── _footer.html.erb
     │           └── _site_links.html.erb
     └── vendor

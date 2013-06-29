@@ -10,11 +10,10 @@ env:
       bFrX28dEy1G4w+mHwGZVHrchKlGDEXBt3zGJRMhkzL538ccRDjk=
   matrix:
   - LEARNERY_THEME=default
-  - LEARNERY_THEME=railsgirls
-  - LEARNERY_THEME=webdev
-  - LEARNERY_THEME=coderdojo
-before_install:
-- ci/copytheme.sh
+before_script:
+- cd test/dummy
+- rake db:schema:load
+- cd ../..
 script:
 - rake
 - bundle exec ruby ci/deploy.rb

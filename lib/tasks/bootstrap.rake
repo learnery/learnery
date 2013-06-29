@@ -27,7 +27,7 @@
 namespace :bootstrap do
   desc "Add the default user"
   task :default_profiles => :environment do
-    User.create(email: "bjelli@gmail.com",
+    Learnery::User.create(email: "bjelli@gmail.com",
                 nickname: "bjelline",
                 firstname: "Brigitte",
                 lastname: "Jellinek",
@@ -35,7 +35,7 @@ namespace :bootstrap do
                 uid: "4206851",
                 admin: true )
 
-    User.create(email: "drblinken@gmail.com",
+    Learnery::User.create(email: "drblinken@gmail.com",
                 nickname: "drblinken",
                 firstname: "Béla",
                 lastname: "Blinken",
@@ -47,7 +47,7 @@ namespace :bootstrap do
 
   desc "Create the default event"
   task :default_event => :environment do
-    Event.create(name: "The Future",
+    Learnery::Event.create(name: "The Future",
                  starts: 3.months.from_now,
                  ends: 3.months.from_now + 2.hours,
                  venue: "Berlin (where else)",
