@@ -43,6 +43,14 @@ de:
       updated: "Danke, dass Du Deine Daten aktuell hältst."
       update_needs_confirmation: "Vielen Dank. Eine E-Mail ist zu Dir unterwegs, mit der Du Deine Änderungen bestätigen kannst."
       destroyed: "Schade, Du hast Dein Nutzerkonto gelöscht. Mach's gut und hoffentlich bis bald."
+    my_registrations:
+      signed_up: "Vielen Dank. Eine E-Mail ist zu Dir unterwegs, mit der Du Deine Registrierung bestätigen kannst."
+      signed_up_but_unconfirmed: "Du musst erst deine Registrierung bestätigen durch den Link in unserem Email."
+      signed_up_but_inactive: "Dein Account ist inaktiv. Bitte klicke unterhalb um ein Bestätigungsemail anzufordern."
+      signed_up_but_locked: "Dein Account ist gesperrt. Bitte klicke unterhalb um deinen Account zu entsperren."
+      updated: "Danke, dass Du Deine Daten aktuell hältst."
+      update_needs_confirmation: "Vielen Dank. Eine E-Mail ist zu Dir unterwegs, mit der Du Deine Änderungen bestätigen kannst."
+      destroyed: "Schade, Du hast Dein Nutzerkonto gelöscht. Mach's gut und hoffentlich bis bald."
     unlocks:
       send_instructions: "Eine E-Mail mit Freischalt-Infos ist zu Dir unterwegs."
       send_paranoid_instructions: "Eine E-Mail mit Freischalt-Infos ist schon unterwegs."
