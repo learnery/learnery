@@ -15,21 +15,6 @@ group :development do
   gem 'debugger'
 end
 
-# for travis deploy to learnery-staging
-# added here because .gemspec does not support depending on git versions
-#http://stackoverflow.com/questions/6499410/ruby-gemspec-dependency-is-possible-have-a-git-branch-dependency
-group :test do
-  # forked for now because we need this:
-  # https://github.com/learnery/heroku-headless/commit/b5179227c710ac84e871b91699fd0fc355d43b28
-  gem 'heroku-headless', :git => 'https://github.com/drblinken/heroku-headless.git'
-end
-group :production do
-  # to enable static asset serving for rails4 on heroku
-  # https://devcenter.heroku.com/articles/rails4
-  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
-  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
-end
-
 group :test do
   gem 'rake' # for travis, see http://about.travis-ci.org/docs/user/languages/ruby/
   gem 'minitest-spec-rails'

@@ -23,39 +23,40 @@
 
 # below rake task adapted from stackoverflow:
 # http://stackoverflow.com/questions/62201/how-and-whether-to-populate-rails-application-with-initial-data
+namespace :learnery do
+  namespace :bootstrap do
+    desc "Create some default users"
+    task :default_profiles => :environment do
+      Learnery::User.create(email: "bjelli@gmail.com",
+                  nickname: "bjelline",
+                  firstname: "Brigitte",
+                  lastname: "Jellinek",
+                  provider: "twitter",
+                  uid: "4206851",
+                  admin: true )
 
-namespace :bootstrap do
-  desc "Add the default user"
-  task :default_profiles => :environment do
-    Learnery::User.create(email: "bjelli@gmail.com",
-                nickname: "bjelline",
-                firstname: "Brigitte",
-                lastname: "Jellinek",
-                provider: "twitter",
-                uid: "4206851",
-                admin: true )
+      Learnery::User.create(email: "drblinken@gmail.com",
+                  nickname: "drblinken",
+                  firstname: "Béla",
+                  lastname: "Blinken",
+                  provider: "github",
+                  uid: "2063596",
+                  admin: true)
 
-    Learnery::User.create(email: "drblinken@gmail.com",
-                nickname: "drblinken",
-                firstname: "Béla",
-                lastname: "Blinken",
-                provider: "github",
-                uid: "2063596",
-                admin: true)
+    end
 
+    desc "Create the default event"
+    task :default_event => :environment do
+      Learnery::Event.create(name: "The Future",
+                   starts: 3.months.from_now,
+                   ends: 3.months.from_now + 2.hours,
+                   venue: "Berlin (where else)",
+                   description: "we will invent it\r\n",
+                   max_attendees: 1,
+                   rsvp_type: "RsvpWithWaitlist" )
+    end
+
+    desc "Run all bootstrapping tasks"
+    task :all => [:default_profiles, :default_event]
   end
-
-  desc "Create the default event"
-  task :default_event => :environment do
-    Learnery::Event.create(name: "The Future",
-                 starts: 3.months.from_now,
-                 ends: 3.months.from_now + 2.hours,
-                 venue: "Berlin (where else)",
-                 description: "we will invent it\r\n",
-                 max_attendees: 1,
-                 rsvp_type: "RsvpWithWaitlist" )
-  end
-
-  desc "Run all bootstrapping tasks"
-  task :all => [:default_profiles, :default_event]
 end
