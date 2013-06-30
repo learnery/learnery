@@ -24,6 +24,7 @@ module Learnery
     def remove_files
       remove_file 'app/assets/javascripts/application.js'
       remove_file 'app/helpers/application_helper.rb'
+      remove_file 'app/views/layouts/application.html.erb'
     end
   end
   private
