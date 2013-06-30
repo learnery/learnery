@@ -1,6 +1,5 @@
 
 require 'rubygems'
-require 'twitter-bootstrap-rails'
 
 require 'omniauth-twitter'
 require 'omniauth-github'
@@ -22,6 +21,8 @@ require 'jbuilder'
 
 require 'devise'
 require 'learnery/engine'
+require 'twitter-bootstrap-rails'
+
 
 
 Bundler.require(:default, Rails.env)
