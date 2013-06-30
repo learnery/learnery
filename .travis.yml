@@ -2,5 +2,9 @@
 language: ruby
 rvm:
 - 2.0.0
+before_script:
+- cd test/dummy
+- rake db:schema:load
+- cd ../..
 script:
 - rake
