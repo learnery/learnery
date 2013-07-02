@@ -2,7 +2,8 @@
     module RsvpHelper
 
     def rsvp_type_options
-      Rsvp.implementations.map(&:to_s).map{|x|[t(x, :scope => 'activerecord.models'),x]}
+      #                      Learnery::OpenRsvp -->  learnery/openrsvp  --> I18n
+      Rsvp.implementations.map(&:to_s).map{|x| y = x.to_s.gsub(/Learnery::/, 'learnery/'); [I18n.t("#{y}", :scope => 'activerecord.models'),y]}
     end
 
     def rsvp_options(o)

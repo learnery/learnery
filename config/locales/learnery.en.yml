@@ -1,6 +1,10 @@
 # english texts for learnery
 
 en:
+  about_learnery: Learnery
+  errors:
+    messages:
+      starts_must_be_before_ends: The event must end after it started
   navigation:
     events: Events
   past_events: Past Events
@@ -102,8 +106,8 @@ en:
     values:
       event:
         rsvp_type:
-          OpenRsvp: You can rsvp any time
-          RsvpWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.
+          Learnery::OpenRsvp: You can rsvp any time
+          Learnery::RsvpWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.
       rsvp:
         answer:
           maybe: Maybe

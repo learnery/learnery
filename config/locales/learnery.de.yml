@@ -2,6 +2,10 @@
 # Erste Übersetzungen für Learnery
 
 de:
+  about_learnery: Lernerei
+  errors:
+    messages:
+      starts_must_be_before_ends: Der Ende der Veranstaltung muss nach dem Beginn sein
   dummy: Mein Dummy
   navigation:
     events: Veranstaltungen
@@ -104,8 +108,8 @@ de:
     values:
       event:
         rsvp_type:
-          OpenRsvp: Du kannst Dich sofort anmelden
-          RsvpWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.
+          Learnery::OpenRsvp: Du kannst Dich sofort anmelden
+          Learnery::RsvpWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.
       rsvp:
         answer:
           maybe: Vielleicht
