@@ -1,0 +1,14 @@
+<li class="divider-vertical"></li>
+<% if user_signed_in? %>
+  <li><%= link_to t(:logged_in_as, :user => current_user.user_info), edit_registration_path(:user) %></li>
+  <li><%= link_to(t(:log_out), learnery.destroy_user_session_path, method: :delete) %></li>
+<% else %>
+  <li><%= link_to t(:sign_up), new_registration_path(:user) %></li>
+  <li><%= link_to t(:login), new_session_path(:user) %></li>
+
+  <% Learnery::Engine.config.oauth_providers.each do | oauth_provider | %>
+  <li><%= link_to t(:login_with, provider: oauth_provider), learnery.user_omniauth_authorize_path(oauth_provider) %></li>
+  <% end %>
+
+<% end %>
+

@@ -1,31 +1,31 @@
 require 'test_helper'
-
+module Learnery
 class RsvpWithWaitlistTest < ActiveSupport::TestCase
 
   context "can rsvp" do
     before do
-      @event = Event.create!( :name => 'intresting event', :starts => Date.today + 10, :max_attendees => 2 )
-      @user1  = User.create!( :email => 'user1@example.com', :password => '12345678')
-      @user2  = User.create!( :email => 'user2@example.com', :password => '12345678')
-      @user3  = User.create!( :email => 'user3@example.com', :password => '12345678')
+      @event = Learnery::Event.create!( :name => 'intresting event', :starts => Date.today + 10, :max_attendees => 2 )
+      @user1  = Learnery::User.create!( :email => 'user1@example.com', :password => '12345678')
+      @user2  = Learnery::User.create!( :email => 'user2@example.com', :password => '12345678')
+      @user3  = Learnery::User.create!( :email => 'user3@example.com', :password => '12345678')
     end
 
     it "but cannot rsvp twice" do
       assert_raise ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid do
-        RsvpWithWaitlist.create!( :user => @user1, :event => @event )
-        RsvpWithWaitlist.create!( :user => @user1, :event => @event )
+        Learnery::RsvpWithWaitlist.create!( :user => @user1, :event => @event )
+        Learnery::RsvpWithWaitlist.create!( :user => @user1, :event => @event )
       end
     end
 
 
     it "answer defaults to new" do
-      r = RsvpWithWaitlist.new( :user => @user1, :event => @event )
+      r = Learnery::RsvpWithWaitlist.new( :user => @user1, :event => @event )
       r.save!
       r.answer.must_equal "new"
     end
 
     it "setting answer to yes saves date" do
-      r = RsvpWithWaitlist.new( :user => @user1, :event => @event )
+      r = Learnery::RsvpWithWaitlist.new( :user => @user1, :event => @event )
       r.event.max_attendees.must_equal 2
       r.event.rsvp.where(:answer => "yes").count.must_equal 0
       r.places_available?.must_equal true
@@ -53,6 +53,7 @@ class RsvpWithWaitlistTest < ActiveSupport::TestCase
       @event.places_available?.must_equal false
 
       r3 = RsvpWithWaitlist.new( :user => @user3, :event => @event )
+
       r3.say_yes!
       r3.answer.must_equal "waiting"
       @event.count_yes.must_equal 2
@@ -60,4 +61,5 @@ class RsvpWithWaitlistTest < ActiveSupport::TestCase
     end
 
   end
+end
 end

@@ -5,41 +5,38 @@ class RsvpTest < ActiveSupport::TestCase
   context "can find" do
 
     before do
-      @event = Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
-      @u1 = User.create!( :email => 'user1@example.com', :password => '12345678')
-      @u2 = User.create!( :email => 'user2@example.com', :password => '12345678')
-      @r1 = OpenRsvp.create!( :user => @u1, :event => @event, :answer => :yes )
-      @r2 = OpenRsvp.create!( :user => @u2, :event => @event, :answer => :no )
+      @r1 = create(:open_rsvp_1)
+      @r2 = create(:open_rsvp_2)
     end
 
     it "all yes-rsvps" do
-      Rsvp.yes.must_include( @r1 )
-      Rsvp.yes.wont_include( @r2 )
+      Learnery::Rsvp.yes.must_include( @r1 )
+      Learnery::Rsvp.yes.wont_include( @r2 )
     end
     it "all no-rsvps" do
-      Rsvp.no.wont_include( @r1 )
-      Rsvp.no.must_include( @r2 )
+      Learnery::Rsvp.no.wont_include( @r1 )
+      Learnery::Rsvp.no.must_include( @r2 )
     end
 
   end
 
   context "can rsvp" do
     before do
-      @event = Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
-      @user = User.create!( :email => 'user@example.com', :password => '12345678')
+      @event = create(:event)
+      @user = create(:user_sequence)
     end
 
 
     it " answer defaults to nil" do
-      r = Rsvp.new( :user => @user, :event => @event )
+      r = Learnery::Rsvp.new( :user => @user, :event => @event )
       r.save!
       r.answer.must_equal nil
     end
 
     it "but cannot rsvp twice" do
       assert_raise ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid do
-        Rsvp.create!( :user => @user, :event => @event )
-        Rsvp.create!( :user => @user, :event => @event )
+        Learnery::Rsvp.create!( :user => @user, :event => @event )
+        Learnery::Rsvp.create!( :user => @user, :event => @event )
       end
     end
 

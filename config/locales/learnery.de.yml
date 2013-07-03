@@ -2,6 +2,11 @@
 # Erste Übersetzungen für Learnery
 
 de:
+  about_learnery: Lernerei
+  errors:
+    messages:
+      starts_must_be_before_ends: Der Ende der Veranstaltung muss nach dem Beginn sein
+  dummy: Mein Dummy
   navigation:
     events: Veranstaltungen
   past_events: Alte Veranstaltungen
@@ -16,6 +21,7 @@ de:
   missing_unlock: Keine Entsperrungs-Mail erhalten?
   login_with: "Login mit %{provider}"
   admin_only: "Du musst mit Administrations-Rechten eingeloggt sein bevor Du das tun kannst."
+  user_only: "Hierfür musst Du angemeldet sein"
   learn_more: Mehr darüber
   nothing_planned: Nichts geplant
   not_right_now: derzeit sind keine weiteren Veranstaltungen geplant...
@@ -43,7 +49,7 @@ de:
   max_attendees_zero_is_unlimited: set to 0 for no limit
   events:
   max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
-  events: 
+  events:
     new:
       title: Neue Veranstaltung
     edit:
@@ -63,20 +69,20 @@ de:
       suggest: Neues Thema vorschlagen
   activerecord:
     models:
-      event: Veranstaltung
-      user: Person
-      rsvp: Ansage
-      OpenRsvp: Freie Anmeldung
-      RsvpWithWaitlist: Freie Anmeldung mit Maximum und Warteliste
-      topic: Thema
+      learnery/event: Veranstaltung
+      learnery/user: Person
+      learnery/rsvp: Ansage
+      learnery/OpenRsvp: Freie Anmeldung
+      learnery/RsvpWithWaitlist: Freie Anmeldung mit Maximum und Warteliste
+      learnery/topic: Thema
     attributes:
-      topic:
+      learnery/topic:
         name: Name
         description: Beschreibung
         suggested_by: Vorgeschlagen von
         presented_by: Vorgetragen von
         event: Veranstaltung
-      event:
+      learnery/event:
         name: Name
         starts: Beginn
         ends: Ende
@@ -84,7 +90,7 @@ de:
         description: Beschreibung
         rsvp_type: Art der Anmeldung
         max_attendees: Max TeilnehmerInnen
-      user:
+      learnery/user:
         login: Login (Nickname oder Email)
         email: E-Mail
         firstname: Vorname
@@ -95,15 +101,15 @@ de:
         current_password: Aktuelles Passwort
         admin: Admin
         remember_me: Eingeloggt bleiben
-      rsvp:
-        answer: 
+      learnery/rsvp:
+        answer:
           one: Antwort
           other: Antworten
     values:
       event:
         rsvp_type:
-          OpenRsvp: Du kannst Dich sofort anmelden
-          RsvpWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.
+          Learnery::OpenRsvp: Du kannst Dich sofort anmelden
+          Learnery::RsvpWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.
       rsvp:
         answer:
           maybe: Vielleicht

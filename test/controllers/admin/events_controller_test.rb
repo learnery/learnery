@@ -1,26 +1,26 @@
 require 'test_helper'
-
+module Learnery
 module Admin
   class EventsControllerTest < ActionController::TestCase
     include Devise::TestHelpers
 
     before do
-      @event = events(:one)
+      @event = create(:event)
     end
 
     context "no actions should be publicly availabe" do
       it "should get index" do
-        get :index
+        get :index, use_route: :learnery
         assert_response 302
       end
 
       it "should show event" do
-        get :show, id: @event
+        get :show, use_route: :learnery, id: @event
         assert_response 302
       end
 
       it "should destroy event" do
-        delete :destroy, id: @event
+        delete :destroy, use_route: :learnery, id: @event
         assert_response 302
       end
 
@@ -35,23 +35,24 @@ module Admin
       end
 
       it "should get index" do
-        get :index
+        get :index, use_route: :learnery
         assert_response :success
         assert_not_nil assigns(:events)
       end
 
       it "should show event" do
-        get :show, id: @event
+        get :show, use_route: :learnery, id: @event
         assert_response :success
       end
 
       it "should destroy event" do
         assert_difference('Event.count', -1) do
-          delete :destroy, id: @event
+          delete :destroy, use_route: :learnery, id: @event
         end
-        assert_redirected_to events_path
+        assert_redirected_to learnery.events_path
       end
 
     end # /context admin actions
   end
+end
 end

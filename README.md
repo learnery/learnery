@@ -38,11 +38,55 @@ Here are some example installations with different themes:
 Installation
 ======
 
+To use learnery, you have to import it from a rails application and provide the theme files. Here's the simplest way to do that:
+
+create a new app:
+
+ and use learnery from within it:
+    $ rails new <your-app-name>
+e.g.
+    $ rails new learnery-default
+
+add the learnery gem to your gemfile (add this line to Gemfile within the rails application)
+
+     gem 'learnery', :git => 'git://github.com/learnery/learnery.git', branch: 'stable'
+
+run bundler:
+
+    $ bundle
+
+generate the initial theme files:
+
+    $ rails generate learnery:theme
+
+then, copy the migrations from the learnery engine and run them:
+
+    $ rake learnery:install:migrations
+    $ rake db:migrate
+
+mount the learnery engine in config/routes.rb: add this line somewhere between the
+<YOURAPPNAME>::Application.routes.draw do
+and the last end
+
+    mount Learnery::Engine => "/", as: "learnery"
+
+finally, start the server locally:
+
+    $ rails server
+
+
+
+##### old installation
+
 Clone this repository and start your rails server:
 
     git clone https://github.com/learnery/learnery.git my-learnery-site
     cd my-learnery-site/
     bundle install
+
+    there is a simple theme in test/dummy which can be used for testing:
+    rake learnery:install:migrations
+    cd test/dummy
     rake db:migrate
     rails s
 
@@ -81,6 +125,8 @@ Clone the repository and edit the files:
     ├── app
     │   └── views
     │       └── application
+    │           ├── _site_name.html.erb
+    │           ├── _site_description.html.erb
     │           ├── _footer.html.erb
     │           └── _site_links.html.erb
     └── vendor

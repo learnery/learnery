@@ -17,7 +17,7 @@ describe "Theme Integration Test" do
     screenshot_fixture_file  = "test/fixtures/screenshots/#{FIXTURE_FILENAME}.png"
     screenshot_fixture_image = Magick::Image::read(screenshot_fixture_file).first
 
-    visit root_path
+    visit learnery.root_path
     save_screenshot(SCREENSHOT_FILENAME)
     image = Magick::Image.read(SCREENSHOT_FILENAME).first
     image_right_size = image.resize_to_fill(screenshot_fixture_image.columns, screenshot_fixture_image.rows, Magick::NorthWestGravity)

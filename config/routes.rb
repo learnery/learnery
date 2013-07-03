@@ -1,4 +1,4 @@
-Learnery::Application.routes.draw do
+Learnery::Engine.routes.draw do
   resources :topics
 
   resources :rsvps, only: [ :create, :update ]
@@ -9,9 +9,17 @@ Learnery::Application.routes.draw do
     resources :events
   end
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  #, path_names: {sign_in: "login", sign_out: "logout"}
+#http://guides.rubyonrails.org/routing.html#specifying-a-controller-to-use
+scope module: :learnery do
+  #https://github.com/plataformatec/devise/wiki/How-To:-Use-devise-inside-a-mountable-engine
+  devise_for :users, :class_name => 'Learnery::User',
+    module: :devise,
+    controllers: {omniauth_callbacks: "omniauth_callbacks",
+                  registrations: 'my_registrations'}
+  end
 
   get "/pages/:id", to: "pages#show", as: "pages"
   root 'events#index'
 end
+
+

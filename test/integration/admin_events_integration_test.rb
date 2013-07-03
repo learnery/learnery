@@ -3,16 +3,16 @@ require "test_helper"
 describe "Admin Events Integration Test" do
   before do
     @user = create(:user)
-    @event1 = create(:event)
-    @event2 = create(:event)
-    @event3 = create(:event)
+    @event1 = create(:past_event)
+    @event2 = create(:past_event)
+    @event3 = create(:past_event)
     @admin = create(:admin_user)
   end
   it "normal user cannot see admin list of events" do
     login_user( @user )
-    wont_have_link admin_events_path
+    wont_have_link learnery.admin_events_path
 
-    visit admin_events_path
+    visit learnery.admin_events_path
     must_have_content t(:admin_only)
   end
 

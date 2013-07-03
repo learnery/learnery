@@ -1,6 +1,10 @@
 # english texts for learnery
 
 en:
+  about_learnery: Learnery
+  errors:
+    messages:
+      starts_must_be_before_ends: The event must end after it started
   navigation:
     events: Events
   past_events: Past Events
@@ -16,6 +20,7 @@ en:
   missing_unlock: "Didn't receive unlock instructions?"
   login_with: "Login with %{provider}"
   admin_only: "You need to sign in as an admin before continuing."
+  user_only: "You need to be signed in for that."
   learn_more: Learn more
   nothing_planned: Nothing planned
   not_right_now: there are no events planned just now...
@@ -58,21 +63,24 @@ en:
     new:
       suggest: Suggest a new Topic
   activerecord:
+    learnery:
+      attributes:
+        password_confirmation: XXX
     models:
-      event: event
-      user: user
-      rsvp: rsvp
-      OpenRsvp: open rsvp - anyone can come
-      RsvpWithWaitlist: rsvp with maximum attendees and waitlist
-      topic: topic
+      learnery/event: event
+      learnery/user: user
+      learnery/rsvp: rsvp
+      learnery/OpenRsvp: open rsvp - anyone can come
+      learnery/RsvpWithWaitlist: rsvp with maximum attendees and waitlist
+      learnery/topic: topic
     attributes:
-      topic:
+      learnery/topic:
         name: Name
         description: Description
         suggested_by: Suggested By
         presented_by: Presented by
         event: Event
-      event:
+      learnery/event:
         name: name
         starts: starts
         ends: ends
@@ -80,7 +88,7 @@ en:
         description: description
         rsvp_type: How to Rsvp
         max_attendees: Max attendees
-      user:
+      learnery/user:
         login: Login (Nickname or Email)
         email: E-Mail
         firstname: Firstname
@@ -91,15 +99,15 @@ en:
         current_password: Current password
         admin: Admin
         remember_me: Remember me
-      rsvp:
-        answer: 
+      learnery/rsvp:
+        answer:
           one: Answer
           other: Answers
     values:
       event:
         rsvp_type:
-          OpenRsvp: You can rsvp any time
-          RsvpWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.
+          Learnery::OpenRsvp: You can rsvp any time
+          Learnery::RsvpWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.
       rsvp:
         answer:
           maybe: Maybe

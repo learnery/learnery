@@ -6,7 +6,7 @@ describe "Topic Suggestion Integration Test" do
   end
   context "not logged in" do
     it "should not see suggest topic link" do
-      visit event_path( @event )
+      visit learnery.event_path( @event )
       page.wont_have_content(t 'topic.new.suggest')
     end
   end
@@ -15,7 +15,7 @@ describe "Topic Suggestion Integration Test" do
     before do
       @user = create(:user)
       login_user( @user )
-       visit event_path( @event )
+       visit learnery.event_path( @event )
     end
 
     it "sees suggest topic link" do
@@ -23,10 +23,10 @@ describe "Topic Suggestion Integration Test" do
     end
 
     it "i get an topic creation page with correct presets" do
-      visit event_path( @event )
+      visit learnery.event_path( @event )
       click_link(t 'topic.new.suggest')
-      page.must_have_content("#{t('activerecord.attributes.topic.suggested_by')}: #{@user.nickname}")
-      page.must_have_content("#{t('activerecord.attributes.topic.event')}: #{@event.name}")
+      page.must_have_content("#{t('activerecord.attributes.learnery/topic.suggested_by')}: #{@user.nickname}")
+      page.must_have_content("#{t('activerecord.attributes.learnery/topic.event')}: #{@event.name}")
     end
   end # /context user
 

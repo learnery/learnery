@@ -8,24 +8,20 @@ describe "Admin Integration Test" do
   context "creating admin account" do
 
     it "first user can become admin" do
-      user = User.create!( :email => 'user@example.com', :password => '12345678')
+      user = create(:user)
       login_user( user )
-      page.must_have_content  user_profile_link(user)
       click_link user_profile_link(user)
-
-      check   t("activerecord.attributes.user.admin")
-      fill_in t("activerecord.attributes.user.current_password"), :with => '12345678'
-
+      check   t("activerecord.attributes.learnery/user.admin")
+      fill_in t("activerecord.attributes.learnery/user.current_password"), :with => user.password
       click_button t(:update)
-
       page.must_have_content t('devise.registrations.updated')
       user.reload
-      assert user.admin, "user is now an admin"
+      assert user.admin, "xxx user is now an admin"
     end
 
     it "If there's already an admin you can't become admin" do
-      admin = User.create!( :email => 'admin@example.com', :password => '12345678', :admin => true )
-      user  = User.create!( :email => 'user@example.com',  :password => '12345678')
+      admin = create(:admin_user)
+      user  = create(:user)
       login_user( user )
 
       click_link user_profile_link(user)
@@ -34,8 +30,8 @@ describe "Admin Integration Test" do
     end
 
     it "admin can make other user an admin" do
-      admin = User.create!( :email => 'admin@example.com', :password => '12345678', :admin => true )
-      user  = User.create!( :email => 'user@example.com',  :password => '12345678')
+      admin = create(:admin_user)
+      user  = create(:user)
       login_user( admin )
 
       click_link user_profile_link(admin)
@@ -48,7 +44,7 @@ describe "Admin Integration Test" do
         click_link t(:edit)
       end
 
-      check t("activerecord.attributes.user.admin")
+      check t("activerecord.attributes.learnery/user.admin")
 
       click_button t(:update)
       user.reload
@@ -58,4 +54,4 @@ describe "Admin Integration Test" do
   end
 
 
-end # describe "Admin Integration Test" 
+end # describe "Admin Integration Test"

@@ -1,7 +1,8 @@
+#module Learnery
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def all
     #raise request.env["omniauth.auth"].inspect
-    user = User.from_omniauth(request.env["omniauth.auth"])
+    user = Learnery::User.from_omniauth(request.env["omniauth.auth"])
     if user.persisted?
       flash.notice = "Signed in with #{user.provider}!"
       if !user.email || "" == user.email
@@ -13,7 +14,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
-  Learnery::Application.config.oauth_providers.each do | oauth_provider |
+  Learnery::Engine.config.oauth_providers.each do | oauth_provider |
     alias_method oauth_provider, :all
   end
 end
+#end
