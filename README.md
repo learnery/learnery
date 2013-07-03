@@ -7,59 +7,72 @@ This software is work in progress and has not been released yet!
 README
 ========
 
-Learnery is a rails app you can use to organize
+Learnery is a rails engine you can use in your rails app to organize
 open learning events, like railsbridge, barcamps, user groups,
-meetups, hackathons.  You can adapt the theme to your
+meetups, hackathons.  You can adapt it to your
 liking and deploy the app to heroku in a few simple steps.
 
-Here are some example installations with different themes:
+Here are some example installations using the learnery engine:
 
-![learnery with blank theme](http://learnery.github.io/images/screenshot-1.png)
+![learnery in default app](http://learnery.github.io/images/screenshot-1.png)
 
-[learnery with blank theme](http://learnery-staging.herokuapp.com/)
-
-
-![learnery with theme webdev](http://learnery.github.io/images/screenshot-2.png)
-
-[learnery with theme webdev](http://learnery-staging-webdev.herokuapp.com/)
+[learnery in default app](http://learnery-staging.herokuapp.com/)
 
 
-![learnery with theme coderdojo](http://learnery.github.io/images/screenshot-3.png)
+![learnery in  webdev app](http://learnery.github.io/images/screenshot-2.png)
 
-[learnery with theme coderdojo](http://learnery-staging-coderdojo.herokuapp.com/)
+[learnery in webdev app](http://learnery-staging-webdev.herokuapp.com/)
 
 
-![learnery with theme railsgirls](http://learnery.github.io/images/screenshot-4.png)
+![learnery in coderdojo app](http://learnery.github.io/images/screenshot-3.png)
 
-[learnery with theme railsgirls](http://learnery-staging-railsgirls.herokuapp.com/)
+[learnery in coderdojo app](http://learnery-staging-coderdojo.herokuapp.com/)
+
+
+![learnery in railsgirls app](http://learnery.github.io/images/screenshot-4.png)
+
+[learnery in  railsgirls app](http://learnery-staging-railsgirls.herokuapp.com/)
 
 
 
 Installation
 ======
 
-To use learnery, you have to import it from a rails application and provide the theme files. Here's the simplest way to do that:
+To use learnery, you have to have a rails application. This application uses learnery as a rail engine. 
+There's two ways to do that:
+
+1. Clone one of the example apps and work from there
+2. Build your own app from scratch
+
+
+Build your own app from scratch
+---------------------
 
 create a new app:
 
- and use learnery from within it:
     $ rails new <your-app-name>
-e.g.
-    $ rails new learnery-default
+    $ cd <your-app-name>
 
-add the learnery gem to your gemfile (add this line to Gemfile within the rails application)
+and use learnery from within it:
 
+add the learnery gem to your gemfile 
+
+     # add this line to Gemfile within the rails application
      gem 'learnery', :git => 'git://github.com/learnery/learnery.git', branch: 'stable'
 
 run bundler:
 
     $ bundle
 
-generate the initial theme files:
+generate the initial theme files (only pretend at first)
+
+    $ rails generate  learnery:theme -p
+
+if you like what the generator does, run it for real, without the -p = pretend flag
 
     $ rails generate learnery:theme
 
-then, copy the migrations from the learnery engine and run them:
+then, install the migrations for the learnery engine and run them:
 
     $ rake learnery:install:migrations
     $ rake db:migrate
@@ -76,23 +89,6 @@ finally, start the server locally:
 
 
 
-##### old installation
-
-Clone this repository and start your rails server:
-
-    git clone https://github.com/learnery/learnery.git my-learnery-site
-    cd my-learnery-site/
-    bundle install
-
-    there is a simple theme in test/dummy which can be used for testing:
-    rake learnery:install:migrations
-    cd test/dummy
-    rake db:migrate
-    rails s
-
-and play around with it on http://localhost:3000/
-
-
 ### Deploying To Heroku
 
 You can deploy to heroku: (if you don't have a heroku account yet, go to [https://get.heroku.com](https://get.heroku.com) and get one first)
@@ -105,51 +101,50 @@ You can deploy to heroku: (if you don't have a heroku account yet, go to [https:
 congratulations, your site is online!
 
 
-### Switching Themes
+### Internationalization (I18n)
 
-You can try one of the ready made themes from https://github.com/learnery :
+The engine comes with german and english texts.
+To switch to german edit your config/application.rb
 
-Edit Gemfile.theme to use another theme:
+    # in file config/application.rb
+    config.i18n.default_locale = :de
 
-    gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme.git'
-    gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme-webdev.git'
-    gem 'learnery-theme', :git => 'https://github.com/learnery/learnery-theme-coderdojo.git'
-    gem 'learnery-theme', :git => 'https://github.com/learnery/https://github.com/learnery/learnery-theme-railsgirls.git'
+To add a new language, say :fi, create a file
+config/locales/learnery.fi.yml by copying the current
+english or german version from github:
+https://github.com/learnery/learnery/blob/master/config/locales/learnery.en.yml
+https://github.com/learnery/learnery/blob/master/config/locales/learnery.de.yml
+
+We accept pull requests for new languages!
+
+### Adapting the look and feel of your app
+
+Here are the most important files to edit:
+
+    app/
+    ├── assets
+    │   ├── images
+    │   │   ├── *            <-- add your images here
+    │   │   └── favicon.ico
+    │   └── stylesheets
+    │       ├── style.css.less      <--- add custom css here
+    │       └── variables.css.less  <--- colors
+    └── views
+        ├── layouts                 <--- ignore!
+        └── learnery
+            ├── pages
+            │   ├── *.html.md       <--- add "static" pages here
+            │   └── about.html.md
+            └── theme
+                ├── _footer.html.erb
+                ├── _site_description.html.erb
+                ├── _site_links.html.erb        <--- add links to top menu here
+                └── _site_name.html.erb
 
 
-### Creating your own Theme
-
-To make your own theme fork one of the themes mentioned above.
-Clone the repository and edit the files:
-
-    ├── app
-    │   └── views
-    │       └── application
-    │           ├── _site_name.html.erb
-    │           ├── _site_description.html.erb
-    │           ├── _footer.html.erb
-    │           └── _site_links.html.erb
-    └── vendor
-        └── assets
-            └── stylesheets
-                ├── style.css.less      = your main stylesheet
-                └── variables.css.less  = variables for bootstrap and you own stylesheet
-
-
-build the gem
-
-    rake build
-
-And test it locally by specifying the full path in Gemfile.theme of you learnery app:
-
-    gem 'learnery-theme', :path => '/really/long/path/to/learnery-theme'
-
-repeat until you are satisfied with your changes.  Then
-push your gem to a public repository, and change the reference in Gemfile.theme in you learnery app:
-
-    gem 'learnery-theme', :git => 'https://github.com/MYNAME/theme-MYTHEME.git'
-
-(bk tbd: it should be possible to use bundler groups here)
+If you want to change the layout of the whole page
+you can do so by adding a file app/views/learnery/shared/_main_layout.html.erb
+it's probably best to copy it from one of the example apps and work from there.
 
 
 ### Continuous Deployment
