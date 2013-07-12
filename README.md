@@ -127,20 +127,28 @@ Here are the most important files to edit:
     │   │   ├── *            <-- add your images here
     │   │   └── favicon.ico
     │   └── stylesheets
-    │       ├── style.css.less      <--- add custom css here
-    │       └── variables.css.less  <--- colors
+    │       ├── style.css.less      <---    add custom css here
+    │       └── variables.css.less  <--- 3) change the colors
     └── views
-        ├── layouts                 <--- ignore!
+        ├── layouts                 <--- ignore! do not write your own application-layout!
         └── learnery
             ├── pages
             │   ├── *.html.md       <--- add "static" pages here
             │   └── about.html.md
             └── theme
                 ├── _footer.html.erb
-                ├── _site_description.html.erb
-                ├── _site_links.html.erb        <--- add links to top menu here
-                └── _site_name.html.erb
+                ├── _site_description.html.erb  <--- 2) add a short descriptive text about your events
+                ├── _site_links.html.erb        <--- 
+                └── _site_name.html.erb         <--- 1) add your sites name
 
+
+We recommend you start by
+
+1. adding your sites name
+2. adding a short descriptive text
+3. changing the colors
+
+#### Advanced users:
 
 If you want to change the layout of the whole page
 you can do so by adding a file app/views/learnery/shared/_main_layout.html.erb
