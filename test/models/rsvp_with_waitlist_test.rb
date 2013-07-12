@@ -60,6 +60,38 @@ class RsvpWithWaitlistTest < ActiveSupport::TestCase
       @event.places_available?.must_equal false
     end
 
+    it "if one attendee gives back the ticket, first on waitlist moves up" do
+      @event.max_attendees.must_equal 2
+      @event.count_yes.must_equal 0
+      @event.places_available?.must_equal true
+
+      r1 = RsvpWithWaitlist.new( :user => @user1, :event => @event )
+      r1.say_yes!
+      r1.answer.must_equal "yes"
+      @event.count_yes.must_equal 1
+      @event.places_available?.must_equal true
+
+      r2 = RsvpWithWaitlist.new( :user => @user2, :event => @event )
+      r2.say_yes!
+      r2.answer.must_equal "yes"
+      @event.count_yes.must_equal 2
+      @event.places_available?.must_equal false
+
+      r3 = RsvpWithWaitlist.new( :user => @user3, :event => @event )
+
+      r3.say_yes!
+      r3.answer.must_equal "waiting"
+      @event.count_yes.must_equal 2
+      @event.places_available?.must_equal false
+
+      r1.say_no!
+      r3.reload
+      r1.answer.must_equal "no"
+      r3.answer.must_equal "yes"
+      @event.count_yes.must_equal 2
+      @event.places_available?.must_equal false
+    end
+
   end
 end
 end

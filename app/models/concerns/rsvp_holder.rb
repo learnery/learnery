@@ -72,6 +72,18 @@ module RsvpHolder
     rsvp.where(:user => user).first
   end
 
+  def release_place
+    if has_waitlist?
+      promote_from_waitlist
+    end
+  end
+
+  def promote_from_waitlist
+    first_on_waitlist = rsvp.where(:answer => :waiting).order(:asked_at => :desc).first
+    first_on_waitlist.say_no   # transistioning from waiting to yes will not work!
+    first_on_waitlist.say_yes
+  end
+
   def places_available?
     return true if max_attendees == 0
     count_yes < max_attendees
