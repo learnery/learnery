@@ -12,26 +12,17 @@ open learning events, like railsbridge, barcamps, user groups,
 meetups, hackathons.  You can adapt it to your
 liking and deploy the app to heroku in a few simple steps.
 
-Here are some example installations using the learnery engine:
+This README contains info on
 
-![learnery in default app](http://learnery.github.io/images/screenshot-1.png)
-
-[learnery in default app](http://learnery-staging.herokuapp.com/)
-
-
-![learnery in  webdev app](http://learnery.github.io/images/screenshot-2.png)
-
-[learnery in webdev app](http://learnery-staging-webdev.herokuapp.com/)
-
-
-![learnery in coderdojo app](http://learnery.github.io/images/screenshot-3.png)
-
-[learnery in coderdojo app](http://learnery-staging-coderdojo.herokuapp.com/)
-
-
-![learnery in railsgirls app](http://learnery.github.io/images/screenshot-4.png)
-
-[learnery in  railsgirls app](http://learnery-staging-railsgirls.herokuapp.com/)
+* [Installation](#installation)
+** [Clone an example app](#clone-an-example-app)
+** [Build your own app from scratch](#build-your-own-app-from-scratch)
+** [Deploying To Heroku](#deploying-to-heroku)
+* [Adapting the look and feel of your app](#adapting-the-look-and-feel-of-your-app)
+* [Internationalization (I18n)](#internationalization-i18n)
+* [Configuring OAuth Authorizations](#configuring-oauth-authorizations)
+* [Continuous Deployment](#continuous-deployment)
+* [DEVELOPING THE LEARNERY RAILS ENGINE](#developing-the-learnery-rails-engine)
 
 
 
@@ -43,6 +34,47 @@ There's two ways to do that:
 
 1. Clone one of the example apps and work from there
 2. Build your own app from scratch
+
+Clone an example app
+---------------------
+
+Pick one of our four example app:
+
+![learnery in default app](http://learnery.github.io/images/screenshot-1.png)
+
+"Default"
+* [Repository](https://github.com/learnery/learnery-default)
+* [Demo](http://learnery-staging.herokuapp.com/)
+
+
+![learnery in  webdev app](http://learnery.github.io/images/screenshot-2.png)
+
+"Webdev"
+* [Repository](https://github.com/learnery/learnery-webdev)
+* [Demo](http://learnery-staging-webdev.herokuapp.com/)
+
+
+![learnery in coderdojo app](http://learnery.github.io/images/screenshot-3.png)
+
+"CoderDojo"
+* [Repository](https://github.com/learnery/learnery-coderdojo)
+* [Demo](http://learnery-staging-coderdojo.herokuapp.com/)
+
+
+![learnery in railsgirls app](http://learnery.github.io/images/screenshot-4.png)
+
+"RailsGirls"
+* [Repository](https://github.com/learnery/learnery-railsgirls)
+* [Demo](http://learnery-staging-railsgirls.herokuapp.com/)
+
+If you have a github account:
+
+* fork the example apps repository to your own github account
+* clone your own repository to your development machine
+
+If you do not have a github account:
+
+* clone the example app directly
 
 
 Build your own app from scratch
@@ -89,7 +121,8 @@ finally, start the server locally:
 
 
 
-### Deploying To Heroku
+Deploying To Heroku
+------------
 
 You can deploy to heroku: (if you don't have a heroku account yet, go to [https://get.heroku.com](https://get.heroku.com) and get one first)
 
@@ -100,22 +133,6 @@ You can deploy to heroku: (if you don't have a heroku account yet, go to [https:
 
 congratulations, your site is online!
 
-
-### Internationalization (I18n)
-
-The engine comes with german and english texts.
-To switch to german edit your config/application.rb
-
-    # in file config/application.rb
-    config.i18n.default_locale = :de
-
-To add a new language, say :fi, create a file
-config/locales/learnery.fi.yml by copying the current
-english or german version from github:
-https://github.com/learnery/learnery/blob/master/config/locales/learnery.en.yml
-https://github.com/learnery/learnery/blob/master/config/locales/learnery.de.yml
-
-We accept pull requests for new languages!
 
 ### Adapting the look and feel of your app
 
@@ -148,28 +165,26 @@ We recommend you start by
 2. adding a short descriptive text
 3. changing the colors
 
-#### Advanced users:
-
-If you want to change the layout of the whole page
+For advanced users: If you want to change the layout of the whole page
 you can do so by adding a file app/views/learnery/shared/_main_layout.html.erb
-it's probably best to copy it from one of the example apps and work from there.
+it's probably best to [copy it from one of the example apps](https://github.com/learnery/learnery-coderdojo/blob/master/app/views/learnery/shared/_main_layout.html.erb) and work from there.
 
+### Internationalization (I18n)
 
-### Continuous Deployment
+The engine comes with german and english texts.
+To switch to german edit your config/application.rb
 
-The app contains a script that deploys to heroku automatically from travis ci:
+    # in file config/application.rb
+    config.i18n.default_locale = :de
 
-    ci/deploy.rb
+To add a new language, say :fi, create a file
+config/locales/learnery.fi.yml by copying the current
+english or german version from github:
+https://github.com/learnery/learnery/blob/master/config/locales/learnery.en.yml
+https://github.com/learnery/learnery/blob/master/config/locales/learnery.de.yml
 
-As travis ci does truncate the git repo, run the first deploy from your own, complete repo like this:
+We accept pull requests for new languages!
 
-    export HEROKU_API_KEY=xxxx
-    export TRAVIS_TEST_RESULT="0"
-    export LEARNERY_THEME=default
-
-    ci/copytheme.sh
-    bundle
-    bundle exec ci/deploy.rb <herokuappname>
 
 ### Configuring OAuth Authorizations
 
@@ -208,8 +223,24 @@ And finally make these keys known to heroku with
  * Steam Key:
   * STEAM_WEB_API_KEY
 
+### Continuous Deployment
 
-FURTHER INFORMATION
+The app contains a script that deploys to heroku automatically from travis ci:
+
+    ci/deploy.rb
+
+As travis ci does truncate the git repo, run the first deploy from your own, complete repo like this:
+
+    export HEROKU_API_KEY=xxxx
+    export TRAVIS_TEST_RESULT="0"
+    export LEARNERY_THEME=default
+
+    ci/copytheme.sh
+    bundle
+    bundle exec ci/deploy.rb <herokuappname>
+
+
+DEVELOPING THE LEARNERY RAILS ENGINE
 ==============
 
 Backlog
