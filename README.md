@@ -15,9 +15,9 @@ liking and deploy the app to heroku in a few simple steps.
 This README contains info on
 
 * [Installation](#installation)
-** [Clone an example app](#clone-an-example-app)
-** [Build your own app from scratch](#build-your-own-app-from-scratch)
-** [Deploying To Heroku](#deploying-to-heroku)
+  * [Clone an example app](#clone-an-example-app)
+  * [Build your own app from scratch](#build-your-own-app-from-scratch)
+  * [Deploying To Heroku](#deploying-to-heroku)
 * [Adapting the look and feel of your app](#adapting-the-look-and-feel-of-your-app)
 * [Internationalization (I18n)](#internationalization-i18n)
 * [Configuring OAuth Authorizations](#configuring-oauth-authorizations)
