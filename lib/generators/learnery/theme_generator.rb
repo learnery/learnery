@@ -17,6 +17,8 @@ module Learnery
       "app/assets/stylesheets/variables.css.less"
       copy_file "assets/stylesheets/style.css.less",
        "app/assets/stylesheets/style.css.less"
+      copy_file "assets/stylesheets/application.css",
+       "app/assets/stylesheets/application.css"
 
       destination_root = File.join(@@app_root,"app/views/learnery")
       directory "views/learnery", "app/views/learnery"

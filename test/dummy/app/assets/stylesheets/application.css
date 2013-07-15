@@ -1,13 +1,11 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
+ * This file was written by learnery
+ * 
+ * put your  own style in style.css.less 
+ * There you will be able use variables set in variables.css.less
+ * 
+ * if you inlcude  other less-files here, they will
+ * not have access to your variables
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
+ *= require "learnery/bootstrap_and_overrides.css.less"
  */

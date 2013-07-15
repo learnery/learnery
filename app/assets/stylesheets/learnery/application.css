@@ -43,3 +43,8 @@ body .dl-horizontal dt {
 body .dl-horizontal dd {
   margin-left: 210px;
 }
+
+.hero-unit .form-actions {
+      border-radius: 6px 6px 6px 6px;
+      border: 1px solid #E5E5E5;
+}
