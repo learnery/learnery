@@ -1,3 +1,4 @@
+# encoding: utf-8 
 # thou shall not be attached to data in test databases.
 # here's the rake task that fills the db with some initial data.
 # re-setup staging database:
