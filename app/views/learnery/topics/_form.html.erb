@@ -1,10 +1,12 @@
-<%= horizontal_form_for @topic do |f| %>
-   <%= model_errors(f.object) %>
-   <%= render partial: 'form_optional', locals: { attribute: 'event', form: f} %>
-   <%= render partial: 'form_optional', locals: { attribute: 'suggested_by', form: f} %>
+<% if @event.present? %>
+  <p><%= t('topics.for_the_event').ucfirst %> <%= @event.name %>, <%=l @event.starts %>.</p>
+<% end %>
+<p><%= t('topics.suggested_by').ucfirst %> <%= current_user.name %></p>
 
+<%= horizontal_form_for [@event, @topic] do |f| %>
+   <%= model_errors(f.object) %>
    <%= f.text_field :name %>
-   <%= f.text_field :description %>
+   <%= f.text_area :description %>
    <%= f.text_field :presented_by %>
    <%= f.submit nil %>
 <% end %>

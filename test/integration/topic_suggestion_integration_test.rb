@@ -25,8 +25,8 @@ describe "Topic Suggestion Integration Test" do
     it "i get an topic creation page with correct presets" do
       visit learnery.event_path( @event )
       click_link(t 'topic.new.suggest')
-      page.must_have_content("#{t('activerecord.attributes.learnery/topic.suggested_by')}: #{@user.nickname}")
-      page.must_have_content("#{t('activerecord.attributes.learnery/topic.event')}: #{@event.name}")
+      page.must_have_content("#{t('activerecord.attributes.learnery/topic.suggested_by')} #{@user.nickname}")
+      page.must_have_content("#{t('topics.for_the_event').ucfirst} #{@event.name}")
     end
   end # /context user
 

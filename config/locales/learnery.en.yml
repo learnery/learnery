@@ -48,6 +48,7 @@ en:
   max_attendees_zero_is_unlimited: set to 0 for no limit
   events:
     successfully_created: Event was successfully created
+    successfully_updated: Event was successfully updated
     new:
       title: New Event
     edit:
@@ -59,9 +60,17 @@ en:
       edit:
         title: Edit Profile
   topics:
+    successfully_created: Topic was successfully created
+    successfully_updated: Topic was successfully updated
     none: There are no Topics for this event.
+    empty_description: no detailed description
+    empty_event: this suggested topic has not been assigned to an event yet
+    empty_presented: for this suggested topic there is no speaker yet
+    for_the_event: for the event
     new:
       title: Suggest a new Topic
+    edit:
+      title: Edit a Topic
   topic:
     new:
       suggest: Suggest a new Topic

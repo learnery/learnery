@@ -1,11 +1,14 @@
 
-   <% if @topic.send(attribute) %>
-   <div class = "control_group">
-     <%= hidden_field(:topic, "#{attribute}_id".to_sym) %>
-     <%= t("activerecord.attributes.learnery/topic.#{attribute}")%>: <%=@topic.send(attribute).name%>
-   </div>
-   <% else %>
-     <%= form.text_field attribute.to_sym  %>
-   <% end %>
+<% if @topic.send(attribute) %>
+  <div class = "control_group">
+    <label class="control-label"><%= t("activerecord.attributes.learnery/topic.#{attribute}")%></label>
+    <div class="controls">
+      <span class="help-inline"><%=@topic.send(attribute).name%></span>
+      <%= text_field(:topic, "#{attribute}_id".to_sym, { :disabled => true, :style => "visibility:hidden;" }) %>
+    </div>
+  </div>
+<% else %>
+  <%= form.text_field attribute.to_sym  %>
+<% end %>
 
 

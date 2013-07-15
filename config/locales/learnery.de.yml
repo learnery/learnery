@@ -49,6 +49,7 @@ de:
   max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
   events:
     successfully_created: Veranstaltung wurde erfolgreich erstellt
+    successfully_updated: Veranstaltung wurde erfolgreich aktualisiert
     new:
       title: Neue Veranstaltung
     edit:
@@ -60,9 +61,17 @@ de:
       edit:
         title: Profil editieren
   topics:
+    successfully_created: Thema wurde erfolgreich erstellt
+    successfully_updated: Thema wurde erfolgreich aktualisiert
     none: Es gibt noch keine Themen für diese Veranstaltung.
+    empty_description: keine detaillierte Beschreibung
+    empty_event: dieser Themenvorschlag ist noch keiner Veranstaltung zugeordnet
+    empty_presented: zu diesem Themenvorschlag gibt es noch keine Sprecherin / keinen Sprecher
+    for_the_event: für die Veranstaltung
     new:
       title: Neues Thema vorschlagen
+    edit:
+      title: Thema bearbeiten
   topic:
     new:
       suggest: Neues Thema vorschlagen

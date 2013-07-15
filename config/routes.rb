@@ -1,9 +1,10 @@
 Learnery::Engine.routes.draw do
-  resources :topics
-
+  resources :topics, only: [ :show ]
   resources :rsvps, only: [ :create, :update ]
   resources :people, only: [ :index, :show, :edit, :update, :destroy ]
-  resources :events
+  resources :events do
+    resources :topics, only: [ :new, :create ]
+  end
 
   namespace :admin do
     resources :events

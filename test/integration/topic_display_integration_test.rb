@@ -7,11 +7,19 @@ describe "Topic Display Integration Test" do
       visit learnery.event_path( @event )
       page.must_have_content(t 'topics.none')
     end
+    it "show topics" do
+      @topic = create(:topic)
+      visit learnery.topic_path( @topic )
+      page.must_have_content(@topic.name)
+    end
     it "lists topics for event" do
-      @event_with_two_topics = create(:event_with_two_topics)
-      visit learnery.event_path( @event_with_two_topics )
-      page.must_have_content(@event_with_two_topics.topics.first.name)
-      page.must_have_content(@event_with_two_topics.topics.last.name)
+      @event = create(:event)
+      @event.topics = [ create(:topic), create(:topic) ]
+      @event.save!
+
+      visit learnery.event_path(@event)
+      page.must_have_content(@event.topics.first.name)
+      page.must_have_content(@event.topics.last.name)
     end
   end  # /context visitor
 

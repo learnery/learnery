@@ -132,3 +132,11 @@ class HorizontalBootstrapFormBuilder < BootstrapFormBuilder
   end
 end
 
+
+class String
+  def ucfirst
+    result = self
+    result[0] = result[0].upcase 
+    result
+  end
+end
