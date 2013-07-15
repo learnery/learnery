@@ -15,7 +15,7 @@ describe "Topic Suggestion Integration Test" do
     before do
       @user = create(:user)
       login_user( @user )
-       visit learnery.event_path( @event )
+      visit learnery.event_path( @event )
     end
 
     it "sees suggest topic link" do
@@ -27,6 +27,15 @@ describe "Topic Suggestion Integration Test" do
       click_link(t 'topic.new.suggest')
       page.must_have_content("#{t('activerecord.attributes.learnery/topic.suggested_by')} #{@user.nickname}")
       page.must_have_content("#{t('topics.for_the_event').ucfirst} #{@event.name}")
+    end
+
+    it "i can save an new topic" do
+      visit learnery.event_path( @event )
+      click_link(t 'topic.new.suggest')
+      fill_in t('activerecord.attributes.learnery/topic.name'), with: "A New Topic" 
+      click_button create_button_for(Learnery::Topic)
+      visit learnery.event_path( @event )
+      page.must_have_content "A New Topic"
     end
   end # /context user
 

@@ -39,6 +39,7 @@ class TopicsController < ApplicationController
     if @event
       params[:topic][:event_id] = @event.id
     end
+    params[:topic][:suggested_by_id] = current_user.id
     @topic = Topic.new(topic_params)
 
     respond_to do |format|
