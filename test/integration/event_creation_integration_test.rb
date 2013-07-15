@@ -80,7 +80,8 @@ describe "Event Creation Integration Test" do
         click_button create_button_for(Learnery::Event)
       end
 
-      page.must_have_content("Event was successfully created.")
+      page.must_have_content(t 'events.successfully_created' )
+
     end
 
   end # /context admin

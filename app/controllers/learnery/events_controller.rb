@@ -43,7 +43,7 @@ module Learnery
 
       respond_to do |format|
         if @event.save
-          format.html { redirect_to @event, notice: 'Event was successfully created.' }
+          format.html { redirect_to @event, notice: t('events.successfully_created')}
           format.json { render action: 'show', status: :created, location: @event }
         else
           format.html { render action: 'new' }

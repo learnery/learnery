@@ -19,9 +19,8 @@ describe "Form Errors Integration Test" do
         click_button update_button_for(Learnery::Event)
       end
 
-      page.wont_have_content("Event was successfully created.")
+      page.wont_have_content(t 'events.successfully_created' )
       page.must_have_content(t "errors.messages.blank")
-      puts page.body
     end
 
   end # /context admin

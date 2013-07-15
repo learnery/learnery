@@ -46,10 +46,9 @@ de:
     waiting: Du bist auf der Warteliste
     "yes": Du hast eine Eintrittskarte
     "no": Du nimmst nicht teil
-  max_attendees_zero_is_unlimited: set to 0 for no limit
-  events:
   max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
   events:
+    successfully_created: Veranstaltung wurde erfolgreich erstellt
     new:
       title: Neue Veranstaltung
     edit:

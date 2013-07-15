@@ -47,8 +47,11 @@ en:
     "no": You are not going
   max_attendees_zero_is_unlimited: set to 0 for no limit
   events:
+    successfully_created: Event was successfully created
     new:
       title: New Event
+    edit:
+      title: Edit Event
   devise:
     registrations:
       new:
