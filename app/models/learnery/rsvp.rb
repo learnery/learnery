@@ -18,7 +18,7 @@ module Learnery
     # all subtypes should implement a state machine!
 
     def self.implementations
-      [ OpenRsvp, RsvpWithWaitlist ]
+      [ OpenRsvp, RsvpWithWaitlist, ApplyForRsvp ]
     end
 
     def has_waitlist?

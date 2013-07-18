@@ -9,11 +9,11 @@ module ApplicationHelper
     if model.errors.none?
       return ""
     else
-      header = t('errors.template.header',  :count => model.errors.count, :model => @user.class)
-      #"There was #{pluralize(model.errors.count, "problem")} saving this #{model.class}:"
+      t_model = t(model.class.model_name.i18n_key, :scope => 'activerecord.models')
+      header = t('errors.template.header',  :count => model.errors.count, :model => t_model)
       flash_messages << header
       model.errors.full_messages.each do |message|
-        flash_messages << message
+        flash_messages << "#{message}."
       end
     end
     text = flash_messages.join("<br/>").html_safe
@@ -30,8 +30,12 @@ module ApplicationHelper
     redcarpet.render(text).html_safe
   end
 
+  def event_type_options
+    Learnery::Event.implementations.map(&:to_s).map{|x|[t(x.ucfirst, :scope => 'activerecord.models'),x]}
+  end
+
   def rsvp_type_options
-    Learnery::Rsvp.implementations.map(&:to_s).map{|x|[t(x, :scope => 'activerecord.models'),x]}
+    Learnery::Rsvp.implementations.map(&:to_s).map{|x|[t(x.ucfirst, :scope => 'activerecord.models'),x]}
   end
 
   def rsvp_options(o)

@@ -79,11 +79,23 @@ en:
       attributes:
         password_confirmation: XXX
     models:
+      'Learnery::Event': event
+      'Learnery::User': user
+      'Learnery::Rsvp': rsvp
+      'Learnery::OpenEvent': open rsvp - anyone can come
+      'Learnery::EventWithWaitlist': rsvp with maximum attendees and waitlist
+      'Learnery::EventWithApplication': apply for places
+      'Learnery::OpenRsvp': open rsvp - anyone can come
+      'Learnery::RsvpWithWaitlist': rsvp with maximum attendees and waitlist
+      'Learnery::ApplyForRsvp': apply for places
+      'Learnery::Topic': topic
       learnery/event: event
       learnery/user: user
       learnery/rsvp: rsvp
-      learnery/OpenRsvp: open rsvp - anyone can come
-      learnery/RsvpWithWaitlist: rsvp with maximum attendees and waitlist
+      learnery/open_event: open rsvp - anyone can come
+      learnery/open_rsvp: open rsvp - anyone can come
+      learnery/rsvp_with_waitlist: rsvp with maximum attendees and waitlist
+      learnery/apply_for_rsvp: apply for places
       learnery/topic: topic
     attributes:
       learnery/topic:
@@ -98,7 +110,7 @@ en:
         ends: ends
         venue: venue
         description: description
-        rsvp_type: How to Rsvp
+        type: How to Rsvp
         max_attendees: Max attendees
       learnery/user:
         login: Login (Nickname or Email)
@@ -120,6 +132,7 @@ en:
         rsvp_type:
           Learnery::OpenRsvp: You can rsvp any time
           Learnery::RsvpWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.
+          Learnery::ApplyForRsvp: You can apply for a place until the application closing date. Then the places are confirmed. 
       rsvp:
         answer:
           maybe: Maybe
@@ -130,3 +143,4 @@ en:
           say_yes: Say Yes
           say_no: Say No
           say_maybe: Say Maybe
+          confirm: confirm ticket

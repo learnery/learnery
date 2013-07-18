@@ -17,9 +17,9 @@ describe "Homepage Integration Test" do
 
   context "with events" do
     before do
-      future_event = Learnery::Event.create!( :name => "event in the future", :starts => Date.today + 30 )
-      next_event   = Learnery::Event.create!( :name => "the very next event", :starts => Date.today + 10 )
-      past_event   = Learnery::Event.create!( :name => "event in the past",   :starts => Date.today - 10 )
+      future_event = create( :event, :name => "event in the future", :starts => Date.today + 30 )
+      next_event   = create( :event, :name => "the very next event", :starts => Date.today + 10 )
+      past_event   = create( :event, :name => "event in the past",   :starts => Date.today - 10 )
     end
     it "shows upcoming events" do
       visit learnery.root_path

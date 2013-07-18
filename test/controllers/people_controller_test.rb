@@ -9,7 +9,6 @@ class PeopleControllerTest < ActionController::TestCase
 
   context "admin actions should not be publicly availabe" do
     before do
-      #@person = User.create!( :email => 'user1@example.com', :password => '12345678')
       @person = create(:user)
     end
 
@@ -33,7 +32,7 @@ class PeopleControllerTest < ActionController::TestCase
 
   context "admin actions" do
     before do
-      @person = create(:user_sequence)
+      @person = create(:user)
       @admin  = create(:admin_user)
       sign_in( @admin )
     end

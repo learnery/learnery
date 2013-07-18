@@ -74,7 +74,7 @@ module Learnery
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def event_params
-        params.require(:event).permit(:name, :starts, :ends, :venue, :description, :rsvp_type, :max_attendees, :event)
+        params.require(:event).permit(:name, :starts, :ends, :venue, :description, :type, :max_attendees, :event)
       end
 
   end

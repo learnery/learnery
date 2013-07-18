@@ -1,5 +1,5 @@
 module Learnery
-  class RsvpWithWaitlist < Learnery::Rsvp
+  class ApplyForRsvp < Learnery::Rsvp
 
     delegate :places_available?, :has_waitlist?, :no_on_waitlist, :release_place, :to => :event
 
@@ -15,7 +15,7 @@ module Learnery
     # for form_for and link_to helpers:
     # pretend i'm of the superclass
     def self.model_name
-      Learnery::Rsvp.model_name
+      Rsvp.model_name
     end
 
     state_machine :answer, :initial => :new do
@@ -29,11 +29,13 @@ module Learnery
 
 
       event :say_yes do
-        transition [:new, :no] => :yes,     :if     => :places_available?
-        transition [:new, :no] => :waiting
+        transition [:new, :no] => :pending
       end
       event :say_no do
-        transition [:new, :waiting, :yes] => :no
+        transition [:new, :pending, :confirmed] => :no
+      end
+      event :confirm do
+        transition [:pending] => :confirmed
       end
     end
   end
