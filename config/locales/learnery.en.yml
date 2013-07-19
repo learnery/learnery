@@ -1,6 +1,7 @@
 # english texts for learnery
 
 en:
+  only_some_fields_are_relevant: Depending on the type of RSVP only some of the following fields are relevant
   about_learnery: Learnery
   errors:
     messages:

@@ -1,7 +1,7 @@
 module Learnery
   class EventWithApplication < Learnery::Event
 
-    # validates :application_date, :presence => true
+    validates :application_date, :presence => true
 
     def rsvp_type
       Learnery::ApplyForRsvp

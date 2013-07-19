@@ -102,6 +102,10 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     help = options.delete(:help)
     wrap(attribute, options, super)
   end
+  def date_field(attribute, options={})
+    help = options.delete(:help)
+    wrap(attribute, options, super)
+  end
   def text_field(attribute, options={})
     help = options.delete(:help)
     wrap(attribute, options, super)

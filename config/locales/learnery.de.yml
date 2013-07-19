@@ -2,6 +2,7 @@
 # Erste Übersetzungen für Learnery
 
 de:
+  only_some_fields_are_relevant: Je nach Art der Anmeldung gelten die folgenden Felder - oder sie werden ignoriert!
   about_learnery: Lernerei
   errors:
     messages:
