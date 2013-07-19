@@ -45,6 +45,7 @@ de:
     maybe: Du hast Dich noch nicht entschieden
     new: Du hast noch keine Antwort gegeben
     waiting: Du bist auf der Warteliste
+    pending: Du hast Dich um einen Platz beworben
     "yes": Du hast eine Eintrittskarte
     "no": Du nimmst nicht teil
   max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
@@ -140,6 +141,7 @@ de:
           waiting: Wartelistenplatz
           "yes": Ja
           "no": Nein
+          pending: Bewerbung
           say_yes: Sage Ja
           say_no: Sage Nein
           say_maybe: Keine Aussage

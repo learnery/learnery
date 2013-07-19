@@ -18,6 +18,14 @@ module Learnery
       Rsvp.model_name
     end
 
+    def available_events_for( user )
+      if user.admin then
+        available_events
+      else
+        available_events - [ :confirm ]
+      end
+    end
+
     state_machine :answer, :initial => :new do
       after_transition [:new, :no] => [:yes, :waiting] do |rsvp, transition|
         rsvp.asked_now!

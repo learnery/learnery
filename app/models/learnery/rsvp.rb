@@ -28,5 +28,11 @@ module Learnery
     def available_events
       answer_transitions.map(&:event)
     end
+
+    def available_events_for( user )
+      available_events
+    end
+
+
   end
 end

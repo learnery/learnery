@@ -33,7 +33,8 @@
 
     def current_rsvp_status
       return t(:to_rsvp_please_login) + "." if @rsvp.nil?
-      t(:you_said, answer: t(@rsvp.answer, :scope => 'activerecord.values.rsvp.answer') ) + ". "
+      t(@rsvp.answer, :scope => 'rsvp_describe_answer_for_you') + "."
     end
+
   end
 end

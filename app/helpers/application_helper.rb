@@ -63,11 +63,6 @@ module ApplicationHelper
     t(rsvp_type.to_s, :scope => 'activerecord.values.event.rsvp_type' )
   end
 
-  def current_rsvp_status
-    return t(:to_rsvp_please_login) + "." if @rsvp.nil?
-    t(@rsvp.answer, :scope => 'rsvp_describe_answer_for_you') + "."
-  end
-
   def horizontal_form_for(name, *args, &block)
     options = args.extract_options!
     extra_options = {:builder => HorizontalBootstrapFormBuilder, :html => { :class => 'form-horizontal' } }
