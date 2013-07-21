@@ -130,6 +130,10 @@ de:
           other: Antworten
     values:
       event:
+        type:
+          Learnery::OpenEvent: Du kannst Dich sofort anmelden
+          Learnery::EventWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.
+          Learnery::EventWithApplication: Du kannst Dich bis zum Stichtag anmelden, dann werden die Plätze verteilt.
         rsvp_type:
           Learnery::OpenRsvp: Du kannst Dich sofort anmelden
           Learnery::RsvpWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.

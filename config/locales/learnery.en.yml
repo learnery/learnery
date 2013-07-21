@@ -131,6 +131,10 @@ en:
           other: Answers
     values:
       event:
+        type:
+          Learnery::OpenEvent: You can rsvp any time
+          Learnery::EventWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.
+          Learnery::EventWithApplication: You can apply for a place until the application closing date. Then the places are confirmed. 
         rsvp_type:
           Learnery::OpenRsvp: You can rsvp any time
           Learnery::RsvpWithWaitlist: You can rsvp as long as there are places left. The waitlist is ordered by the time of rsvp.

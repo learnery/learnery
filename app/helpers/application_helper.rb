@@ -63,6 +63,10 @@ module ApplicationHelper
     @event.users_who_rsvped_yes.map{ |u| u.nickname }.join(", ")
   end
 
+  def event_type_explanation( event_type )
+    t(event_type.to_s, :scope => 'activerecord.values.event.type' )
+  end
+
   def event_rsvp_type_explanation( rsvp_type )
     t(rsvp_type.to_s, :scope => 'activerecord.values.event.rsvp_type' )
   end
