@@ -118,14 +118,10 @@ module Learnery
 
     def rsvp_new( user )
       rsvp_type = rsvp_type_for_me
-      Rails.logger.warn("rsvp_new: I am Learnery::Event.find(#{id}) of type #{self.class} and my rsvp_type is #{rsvp_type} of class  #{rsvp_type.class} ")
-      Rails.logger.warn("rsvp_new: I am creating a rsvp for user #{user.id} of class #{user.class}")
       rsvp_type.new( event: self , user: user )
     end
     def rsvp_create!( user )
       rsvp_type = rsvp_type_for_me
-      Rails.logger.warn("rsvp_create!: I am Learnery::Event.find(#{id}) of type #{self.class} and my rsvp_type is #{rsvp_type} of class  #{rsvp_type.class} ")
-      Rails.logger.warn("rsvp_new: I am creating a rsvp for user #{user.id} of class #{user.class}")
       rsvp_type.create!( event: self, user: user )
     end
     # /----------- concerning rsvps ----------

@@ -38,39 +38,6 @@ module ApplicationHelper
     Learnery::Event.implementations.map(&:to_s).map{|x|[t(x.ucfirst, :scope => 'activerecord.models'),x]}
   end
 
-  def rsvp_type_options
-    Learnery::Rsvp.implementations.map(&:to_s).map{|x|[t(x.ucfirst, :scope => 'activerecord.models'),x]}
-  end
-
-  def rsvp_options(o)
-    o.class.state_machines[:answer].states.map(&:name).map{|x|[t(x, :scope => 'activerecord.attributes.rsvp.answer'),x]}
-  end
-
-  def event_rsvp_numbers
-    all = case @event.count_yes
-      when 0 then t :rsvp_0
-      when 1 then t :rsvp_1
-      else        t :rsvp_n, :count => @event.count_yes
-    end
-    all = all[0].upcase + all[1..-1] + ". "
-    if @rsvp && @rsvp.has_waitlist?
-      all = all + t(:there_are_no_people_on_waitlist, :number => @rsvp.no_on_waitlist) + ". "
-    end
-    all
-  end
-
-  def event_rsvp_list_names
-    @event.users_who_rsvped_yes.map{ |u| u.nickname }.join(", ")
-  end
-
-  def event_type_explanation( event_type )
-    t(event_type.to_s, :scope => 'activerecord.values.event.type' )
-  end
-
-  def event_rsvp_type_explanation( rsvp_type )
-    t(rsvp_type.to_s, :scope => 'activerecord.values.event.rsvp_type' )
-  end
-
   def horizontal_form_for(name, *args, &block)
     options = args.extract_options!
     extra_options = {:builder => HorizontalBootstrapFormBuilder, :html => { :class => 'form-horizontal' } }

@@ -18,8 +18,9 @@
     <dd><%= event.venue %></dd>
   <% end %>
 
-  <dt><%=t 'activerecord.attributes.learnery/event.rsvp_type' %>:</dt>
-  <dd><%=t event.rsvp_type, :scope => 'activerecord.models' %>.</dd>
+  <dt><%=t 'activerecord.attributes.learnery/event.type' %>:</dt>
+  <dd>&quot;<%= event_type_explanation( event.type )%>&quot;</dd>
+
 
   <% if ! event.max_attendees.blank? && event.max_attendees > 0 %>
     <dt><%=t 'activerecord.attributes.learnery/event.max_attendees' %>:</dt>
