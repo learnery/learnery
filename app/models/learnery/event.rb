@@ -59,6 +59,10 @@ module Learnery
       rsvp.count
     end
 
+    def may_change_type?
+      rsvp.count == 0
+    end
+
     # can count types of rspvs
     def count_rsvps_by_type
       h = {}

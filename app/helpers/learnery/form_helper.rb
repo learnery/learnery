@@ -37,6 +37,13 @@ module FormHelper
                             :class => "control-group")
     end
 
+    def text_display(attribute, value)
+      @template.content_tag(:div,
+                            label(attribute, :class => 'control-label') +
+                            @template.content_tag(:div, value, :class => "controls"),
+                            :class => "control-group")
+    end
+
     def password_field(attribute, options={})
       help = options.delete(:help)
       wrap(attribute, options, super)
@@ -77,6 +84,12 @@ module FormHelper
   class HorizontalBootstrapFormBuilder < BootstrapFormBuilder
     def submit(attribute, options={})
       @template.content_tag(:div, super(attribute,options), :class => "form-actions")
+    end
+    def text_display(attribute, value)
+      @template.content_tag(:div,
+                            label(attribute, :class => 'control-label') +
+                            @template.content_tag(:div, value, :class => "controls"),
+                            :class => "control-group")
     end
   end
 

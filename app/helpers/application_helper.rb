@@ -30,6 +30,10 @@ module ApplicationHelper
     redcarpet.render(text).html_safe
   end
 
+  def class_to_filename(klass)
+    klass.to_s.split('::').last.underscore
+  end
+
   def event_type_options
     Learnery::Event.implementations.map(&:to_s).map{|x|[t(x.ucfirst, :scope => 'activerecord.models'),x]}
   end

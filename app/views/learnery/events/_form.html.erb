@@ -1,21 +1,32 @@
 <%= model_errors( @event ) %>
 <%= horizontal_form_for @event do |f| %>
    <%= f.text_field :name %>
-   <%= f.select(:type, options_for_select( event_type_options, @event.type ) ) %>
+   <% if @event.may_change_type? %>
+      <%= f.select(:type, options_for_select( event_type_options, @event.type ) ) %>
+   <% else %>
+      <%= f.text_display(:type, t(@event.type, :scope => 'activerecord.models') ) %>
+   <% end %>
    <%= f.text_field :starts %>
    <%= f.text_field :ends %>
    <%= f.text_area :description %>
    <%= f.text_area :venue %>
 
-   <div class="subform">
-     <div class="alert">
-     <%= t :only_some_fields_are_relevant %>
+
+   <% if @event.may_change_type? then # complicated form, display one of the subforms with javascript %>
+     <div class="subform">
+       <div class="alert">
+       <%= t :only_some_fields_are_relevant %>
+       </div>
      </div>
-   </div>
-   <% Learnery::Event.implementations.each do |subclass| %>
-     <div class="subform <%= subclass.to_s.split('::').last %>">
-         <%= render(:partial => subclass.to_s.split('::').last.underscore, :locals => { :f => f }) %>
-     </div>
-   <% end %>
-   <%= f.submit nil %>
+     <% Learnery::Event.implementations.each do |subclass| %>
+       <div class="subform <%= subclass.to_s.split('::').last %>">
+           <%= render(:partial => class_to_filename( subclass ), :locals => { :f => f }) %>
+       </div>
+     <% end %>
+ <% else # simple form: type is fixed %>
+   <%= render(:partial => class_to_filename( @event.type ), :locals => { :f => f }) %>
  <% end %>
+
+
+   <%= f.submit nil %>
+<% end %>
