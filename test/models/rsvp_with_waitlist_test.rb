@@ -4,10 +4,10 @@ class RsvpWithWaitlistTest < ActiveSupport::TestCase
 
   context "can rsvp" do
     before do
-      @event = Learnery::Event.create!( :name => 'intresting event', :starts => Date.today + 10, :max_attendees => 2 )
-      @user1  = Learnery::User.create!( :email => 'user1@example.com', :password => '12345678')
-      @user2  = Learnery::User.create!( :email => 'user2@example.com', :password => '12345678')
-      @user3  = Learnery::User.create!( :email => 'user3@example.com', :password => '12345678')
+      @event  = Learnery::EventWithWaitlist.create!( :name => 'intresting event', :starts => Date.today + 10, :max_attendees => 2 )
+      @user1  = create( :user )
+      @user2  = create( :user )
+      @user3  = create( :user )
     end
 
     it "but cannot rsvp twice" do
@@ -25,14 +25,14 @@ class RsvpWithWaitlistTest < ActiveSupport::TestCase
     end
 
     it "setting answer to yes saves date" do
-      r = Learnery::RsvpWithWaitlist.new( :user => @user1, :event => @event )
+      r = @event.rsvp_create!( @user1 )
       r.event.max_attendees.must_equal 2
       r.event.rsvp.where(:answer => "yes").count.must_equal 0
       r.places_available?.must_equal true
       r.say_yes!
       r.answer.must_equal "yes"
       r.asked_at.wont_be_nil
-      r.asked_at.must_be_close_to r.created_at, 0.01
+      r.asked_at.must_be_close_to r.created_at, 0.05
     end
 
     it "third attendee is put on waitlist" do

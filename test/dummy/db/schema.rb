@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130628202316) do
+ActiveRecord::Schema.define(version: 20130718214748) do
 
   create_table "learnery_events", force: true do |t|
     t.string   "name"
     t.datetime "starts"
     t.datetime "ends"
     t.string   "venue"
-    t.string   "description",   default: "",                   null: false
+    t.string   "description",      default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "max_attendees", default: 0,                    null: false
-    t.string   "rsvp_type",     default: "Learnery::OpenRsvp", null: false
+    t.integer  "max_attendees",    default: 0,  null: false
     t.integer  "topic_id"
+    t.string   "type"
+    t.datetime "application_date"
   end
 
   create_table "learnery_rsvps", force: true do |t|

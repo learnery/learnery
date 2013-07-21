@@ -62,7 +62,7 @@ class EventsControllerTest < ActionController::TestCase
     it "should create event" do
 
       assert_difference('Event.count') do
-        post :create, use_route: :learnery, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue }
+        post :create, use_route: :learnery, event: { description: @event.description, ends: @event.ends, name: @event.name, starts: @event.starts, venue: @event.venue, type: @event.type }
       end
       assert_redirected_to learnery.event_path(assigns(:event)), "bla bla"
     end

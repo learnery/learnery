@@ -4,8 +4,8 @@ class OpenRsvpTest < ActiveSupport::TestCase
 
   context "can rsvp" do
     before do
-      @event = Learnery::Event.create!( :name => 'intresting event', :starts => Date.today + 10 )
-      @user  = Learnery::User.create!( :email => 'user@example.com', :password => '12345678')
+      @event = Learnery::OpenEvent.create!( :name => 'intresting event', :starts => Date.today + 10 )
+      @user  = create(:user)
     end
 
     it "answer defaults to new when creating with new" do

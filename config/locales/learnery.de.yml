@@ -2,6 +2,7 @@
 # Erste Übersetzungen für Learnery
 
 de:
+  only_some_fields_are_relevant: Je nach Art der Anmeldung gelten die folgenden Felder - oder sie werden ignoriert!
   about_learnery: Lernerei
   errors:
     messages:
@@ -44,6 +45,7 @@ de:
     maybe: Du hast Dich noch nicht entschieden
     new: Du hast noch keine Antwort gegeben
     waiting: Du bist auf der Warteliste
+    pending: Du hast Dich um einen Platz beworben
     "yes": Du hast eine Eintrittskarte
     "no": Du nimmst nicht teil
   max_attendees_zero_is_unlimited: Auf 0 setzen bedeutet kein Limit
@@ -77,12 +79,25 @@ de:
       suggest: Neues Thema vorschlagen
   activerecord:
     models:
+      'Learnery::ApplyForRsvp': Bewerbung um Plätze
+      'Learnery::Event': Veranstaltung
+      'Learnery::EventWithApplication': Bewerbung um Plätze
+      'Learnery::EventWithWaitlist': Freie Anmeldung mit Maximum und Warteliste
+      'Learnery::OpenEvent': Freie Anmeldung
+      'Learnery::OpenRsvp': Freie Anmeldung
+      'Learnery::Rsvp': Ansage
+      'Learnery::RsvpWithWaitlist': Freie Anmeldung mit Maximum und Warteliste
+      'Learnery::User': Person
+      learnery/apply_for_rsvp: Bewerbung um Plätze
+      learnery/open_rsvp: Freie Anmeldung
+      learnery/rsvp_with_waitlist: Freie Anmeldung mit Maximum und Warteliste
       learnery/event: Veranstaltung
-      learnery/user: Person
+      learnery/event_with_application: Bewerbung um Plätze
+      learnery/event_with_waitlist: Freie Anmeldung mit Maximum und Warteliste
+      learnery/open_event: Freie Anmeldung
       learnery/rsvp: Ansage
-      learnery/OpenRsvp: Freie Anmeldung
-      learnery/RsvpWithWaitlist: Freie Anmeldung mit Maximum und Warteliste
       learnery/topic: Thema
+      learnery/user: Person
     attributes:
       learnery/topic:
         name: Name
@@ -96,7 +111,7 @@ de:
         ends: Ende
         venue: Veranstaltungsort
         description: Beschreibung
-        rsvp_type: Art der Anmeldung
+        type: Art der Anmeldung
         max_attendees: Max TeilnehmerInnen
       learnery/user:
         login: Login (Nickname oder Email)
@@ -118,6 +133,7 @@ de:
         rsvp_type:
           Learnery::OpenRsvp: Du kannst Dich sofort anmelden
           Learnery::RsvpWithWaitlist: Du kannst Dich sofort anmelden, bis die Plätze voll sind. Dann gibt es eine Warteliste nach Anmelde-Zeitpunkt.
+          Learnery::ApplyForRsvp: Du kannst Dich bis zum Stichtag anmelden, dann werden die Plätze verteilt.
       rsvp:
         answer:
           maybe: Vielleicht
@@ -125,6 +141,8 @@ de:
           waiting: Wartelistenplatz
           "yes": Ja
           "no": Nein
+          pending: Bewerbung
           say_yes: Sage Ja
           say_no: Sage Nein
           say_maybe: Keine Aussage
+          confirm: Platz Zusagen

@@ -9,11 +9,11 @@ module ApplicationHelper
     if model.errors.none?
       return ""
     else
-      header = t('errors.template.header',  :count => model.errors.count, :model => @user.class)
-      #"There was #{pluralize(model.errors.count, "problem")} saving this #{model.class}:"
+      t_model = t(model.class.model_name.i18n_key, :scope => 'activerecord.models')
+      header = t('errors.template.header',  :count => model.errors.count, :model => t_model)
       flash_messages << header
       model.errors.full_messages.each do |message|
-        flash_messages << message
+        flash_messages << "#{message}."
       end
     end
     text = flash_messages.join("<br/>").html_safe
@@ -30,8 +30,16 @@ module ApplicationHelper
     redcarpet.render(text).html_safe
   end
 
+  def class_to_filename(klass)
+    klass.to_s.split('::').last.underscore
+  end
+
+  def event_type_options
+    Learnery::Event.implementations.map(&:to_s).map{|x|[t(x.ucfirst, :scope => 'activerecord.models'),x]}
+  end
+
   def rsvp_type_options
-    Learnery::Rsvp.implementations.map(&:to_s).map{|x|[t(x, :scope => 'activerecord.models'),x]}
+    Learnery::Rsvp.implementations.map(&:to_s).map{|x|[t(x.ucfirst, :scope => 'activerecord.models'),x]}
   end
 
   def rsvp_options(o)
@@ -57,11 +65,6 @@ module ApplicationHelper
 
   def event_rsvp_type_explanation( rsvp_type )
     t(rsvp_type.to_s, :scope => 'activerecord.values.event.rsvp_type' )
-  end
-
-  def current_rsvp_status
-    return t(:to_rsvp_please_login) + "." if @rsvp.nil?
-    t(@rsvp.answer, :scope => 'rsvp_describe_answer_for_you') + "."
   end
 
   def horizontal_form_for(name, *args, &block)
@@ -95,6 +98,10 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     wrap(attribute, options, super)
   end
   def email_field(attribute, options={})
+    help = options.delete(:help)
+    wrap(attribute, options, super)
+  end
+  def date_field(attribute, options={})
     help = options.delete(:help)
     wrap(attribute, options, super)
   end

@@ -5,8 +5,8 @@ class RsvpTest < ActiveSupport::TestCase
   context "can find" do
 
     before do
-      @r1 = create(:open_rsvp_1)
-      @r2 = create(:open_rsvp_2)
+      @r1 = create(:rsvp, answer: :yes)
+      @r2 = create(:rsvp, answer: :no)
     end
 
     it "all yes-rsvps" do
@@ -20,25 +20,10 @@ class RsvpTest < ActiveSupport::TestCase
 
   end
 
-  context "can rsvp" do
-    before do
-      @event = create(:event)
-      @user = create(:user_sequence)
-    end
-
-
+  context "can give implementations" do
     it " answer defaults to nil" do
-      r = Learnery::Rsvp.new( :user => @user, :event => @event )
-      r.save!
-      r.answer.must_equal nil
+      i = Learnery::Rsvp.implementations
+      i.count.must_equal 3
     end
-
-    it "but cannot rsvp twice" do
-      assert_raise ActiveRecord::RecordNotUnique, ActiveRecord::StatementInvalid do
-        Learnery::Rsvp.create!( :user => @user, :event => @event )
-        Learnery::Rsvp.create!( :user => @user, :event => @event )
-      end
-    end
-
   end
 end

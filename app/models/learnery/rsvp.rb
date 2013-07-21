@@ -18,7 +18,7 @@ module Learnery
     # all subtypes should implement a state machine!
 
     def self.implementations
-      [ OpenRsvp, RsvpWithWaitlist ]
+      [ OpenRsvp, RsvpWithWaitlist, ApplyForRsvp ]
     end
 
     def has_waitlist?
@@ -28,5 +28,11 @@ module Learnery
     def available_events
       answer_transitions.map(&:event)
     end
+
+    def available_events_for( user )
+      available_events
+    end
+
+
   end
 end

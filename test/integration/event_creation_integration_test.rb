@@ -5,7 +5,7 @@ describe "Event Creation Integration Test" do
   context "as an visitor" do
 
     it "displays markdown event-descriptions as html" do
-      future_event = Learnery::Event.create!( :name => "event in the future", :starts => Date.today + 30, :description => "## important" )
+      future_event = create( :event, :name => "event in the future", :starts => Date.today + 30, :description => "## important" )
       visit learnery.event_path( future_event )
       page.must_have_css( 'h2' )
       within 'h2' do
@@ -15,7 +15,7 @@ describe "Event Creation Integration Test" do
     end
 
     it "do not see links to new event on homepage" do
-      past_event   = Learnery::Event.create!( :name => "event in the past",   :starts => Date.today - 10 )
+      past_event   = create( :event, :name => "event in the past",   :starts => Date.today - 10 )
       visit learnery.root_path
       page.wont_have_link(t :new)
       page.wont_have_link(t :edit)
@@ -24,7 +24,7 @@ describe "Event Creation Integration Test" do
     end
 
     it "do not see links to edit an event" do
-      future_event = Learnery::Event.create!( :name => "event in the future", :starts => Date.today + 30 )
+      future_event = create( :event, :name => "event in the future", :starts => Date.today + 30 )
       visit learnery.event_path( future_event )
       page.wont_have_link(t :edit)
       page.wont_have_link(t :delete)
@@ -76,7 +76,7 @@ describe "Event Creation Integration Test" do
         fill_in t('activerecord.attributes.learnery/event.description'), with: 'this is areally long test'
         # todo engine: I18n key in model_name is learnery/rsvp for complete hierarchy
         #select t('activerecord.models.learnery/OpenRsvp')
-        select('Learnery::OpenRsvp')
+        select( t 'Learnery::OpenEvent', :scope => 'activerecord.models')
         click_button create_button_for(Learnery::Event)
       end
 

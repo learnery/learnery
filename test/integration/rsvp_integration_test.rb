@@ -40,7 +40,7 @@ describe "Rsvp Integration Test" do
   context "rsvping for a future event" do
 
     before do
-      @e = create(:rsvp_event)
+      @e = create(:event)
       @u = create(:user)
     end
 

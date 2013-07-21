@@ -22,9 +22,9 @@ class RsvpsController < ApplicationController
   def update
     @rsvp = Rsvp.find( params[:id] )
     if @rsvp.send params[:state_machine_event]
-      redirect_to @rsvp.event, notice: 'success'
+      redirect_to request.referer, notice: 'success'
     else
-      redirect_to @rsvp.event, notice: 'could not be saved.'
+      redirect_to request.referer, notice: 'could not be saved.'
     end
   end
 

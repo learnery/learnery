@@ -1,5 +1,5 @@
 <% if current_user then %>
-  <% @rsvp.available_events.each do |eventname|%>
+  <% @rsvp.available_events_for( current_user ).each do |eventname|%>
     <%= inline_form_for(@rsvp) do |f|  %>
       <%= hidden_field_tag "state_machine_event", eventname  %>
       <%= hidden_field_tag "rsvp[event_id]", @event.id  %>

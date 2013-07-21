@@ -16,7 +16,7 @@ module FormHelper
   # TODO: use this in the apps/themes
   field_error_proc  = Proc.new do |html_tag, object|
     html = Nokogiri::HTML::DocumentFragment.parse(html_tag)
-    html = html.at_css("input") || html.at_css("textarea")
+    html = html.at_css("input") || html.at_css("textarea") || html.at_css("select")
     unless html.nil?
       css_class = html['class'] || ""
       html['class'] = css_class.split.push("error").join(' ')
@@ -34,6 +34,13 @@ module FormHelper
       @template.content_tag(:div,
                             label(attribute, :class => 'control-label') +
                             @template.content_tag(:div, result_of_super + help, :class => "controls"),
+                            :class => "control-group")
+    end
+
+    def text_display(attribute, value)
+      @template.content_tag(:div,
+                            label(attribute, :class => 'control-label') +
+                            @template.content_tag(:div, value, :class => "controls"),
                             :class => "control-group")
     end
 
@@ -77,6 +84,12 @@ module FormHelper
   class HorizontalBootstrapFormBuilder < BootstrapFormBuilder
     def submit(attribute, options={})
       @template.content_tag(:div, super(attribute,options), :class => "form-actions")
+    end
+    def text_display(attribute, value)
+      @template.content_tag(:div,
+                            label(attribute, :class => 'control-label') +
+                            @template.content_tag(:div, value, :class => "controls"),
+                            :class => "control-group")
     end
   end
 

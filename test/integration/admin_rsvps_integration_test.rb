@@ -21,8 +21,6 @@ describe "Admin Rsvps Integration Test" do
   context "OpenRsvp" do
     before do
       @event = create(:event)
-      @event.rsvp_type = "Learnery::OpenRsvp"
-      @event.save!
     end
 
     it "admin can see list of all rsvps" do
@@ -42,7 +40,6 @@ describe "Admin Rsvps Integration Test" do
   context "RsvpWithWaitlist" do
     before do
       @event = create(:event)
-      @event.rsvp_type = "Learnery::RsvpWithWaitlist"
       @event.max_attendees = 1
       @event.save!
     end

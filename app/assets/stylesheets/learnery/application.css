@@ -13,6 +13,11 @@
  *= require_tree .
  */
 
+body [class^="icon-"],
+body [class*=" icon-"] {
+  background-image: url("twitter/bootstrap/../img/glyphicons-halflings.png");
+}
+
 .row-fluid {
   margin-bottom: 50px;
 }
