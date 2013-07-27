@@ -20,8 +20,6 @@ group :test do
   gem 'minitest-spec-rails'
   gem 'capybara'
   gem 'capybara_minitest_spec'
-  gem 'poltergeist'
-  gem 'rmagick', :require => 'RMagick'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'factory_girl_rails'
