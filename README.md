@@ -87,7 +87,7 @@ create a new app:
 
 and use learnery from within it:
 
-add the learnery gem to your gemfile 
+add the learnery gem to your Gemfile  (outside any "group")
 
      # add this line to Gemfile within the rails application
      gem 'learnery', :git => 'git://github.com/learnery/learnery.git', branch: 'stable'
