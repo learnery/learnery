@@ -29,6 +29,12 @@ This README contains info on
 Installation
 ======
 
+Before you start, make sure you have ruby 2.0 installed:
+
+  $ ruby -v
+  ruby 2.0.0p195    # <--- strange extra info is ok, 
+  ruby 1.9.3        # <--- version number less than 2 is not ok
+
 To use learnery, you have to have a rails application. This application uses learnery as a rail engine. 
 There's two ways to do that:
 
