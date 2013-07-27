@@ -34,13 +34,8 @@ Before you start, make sure you have rails 4.0.0 installed:
 To use learnery, you have to have a rails application. This application uses learnery as a rail engine.
 There's two ways to do that:
 
-<<<<<<< HEAD
 a) Clone one of the example apps and work from there
 b) Build your own app from scratch
-=======
-1. Clone one of the example apps and work from there (that's the simpler solution)
-2. Build your own app from scratch (more elaborate, you need to update rails to version 4.0 first!)
->>>>>>> 40d3389de65893532fb8f0327ffb5ff0f7e9c3f4
 
 a) Clone an example app
 ---------------------
