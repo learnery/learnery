@@ -34,8 +34,13 @@ Before you start, make sure you have rails 4.0.0 installed:
 To use learnery, you have to have a rails application. This application uses learnery as a rail engine.
 There's two ways to do that:
 
+<<<<<<< HEAD
 a) Clone one of the example apps and work from there
 b) Build your own app from scratch
+=======
+1. Clone one of the example apps and work from there (that's the simpler solution)
+2. Build your own app from scratch (more elaborate, you need to update rails to version 4.0 first!)
+>>>>>>> 40d3389de65893532fb8f0327ffb5ff0f7e9c3f4
 
 a) Clone an example app
 ---------------------
@@ -86,6 +91,7 @@ If you do not have a github account:
 b) Build your own app from scratch
 ---------------------
 
+
 create a new app:
 
     $ rails new your-app-name
@@ -121,7 +127,9 @@ and the last end
     mount Learnery::Engine => "/", as: "learnery"
 
 to use pretty, bootstrap-styled errer messages in forms add
-the following initializer:
+the following initializer.  (You can create initializers by
+creating a file in config/initializers with a new name and extension .rb
+we recommend using config/initializers/bootstrap_field_error.rb)
 
     # config/initializers/bootstrap_field_error.rb
     # from http://stackoverflow.com/questions/7341545/rails-actionviewbase-field-error-proc-moving-up-the-dom-tree
@@ -211,7 +219,9 @@ We accept pull requests for new languages!
 ### Configuring OAuth Authorizations
 
 Learnery has oauth authorizations for twitter, github and steam.
-To active them on your page, you have to register you app and get oauth keys from the providers, then make them known to your app via environment variables on the server.
+To active them on your page, you have to register you app and 
+get oauth keys from the providers, then make them known 
+to your app via environment variables on the server.
 
 If you don't want to use all oauth providers, configure them in
 config/initializers/learnery.rb:
@@ -221,7 +231,8 @@ config/initializers/learnery.rb:
 
 #### Configuring Twitter Authorization
 
-If you want to use Twitter Authorization, you need to register your app / instance of learnery with twitter at https://dev.twitter.com/apps/new
+If you want to use Twitter Authorization, you need to register 
+your app / instance of learnery with twitter at https://dev.twitter.com/apps/new
 
 To test locally, set the environment variables before running rails server (pick up your keys from http://dev.twitter.com !)
 
@@ -251,7 +262,7 @@ The app contains a script that deploys to heroku automatically from travis ci:
 
     ci/deploy.rb
 
-As travis ci does truncate the git repo, run the first deploy from your own, complete repo like this:
+Before you use trevis, run the first deploy to your heroku from your own, complete repo like this:
 
     export HEROKU_API_KEY=xxxx
     export TRAVIS_TEST_RESULT="0"
@@ -260,6 +271,8 @@ As travis ci does truncate the git repo, run the first deploy from your own, com
     ci/copytheme.sh
     bundle
     bundle exec ci/deploy.rb <herokuappname>
+
+This is necessary because travis ci truncates the git repository.
 
 
 DEVELOPING THE LEARNERY RAILS ENGINE
@@ -281,7 +294,7 @@ Things we may want to cover:
 
 * Ruby version
 
-    2.0.0
+    1.9.3 and 2.0.0 should both work
 
 * System dependencies
 
