@@ -32,10 +32,10 @@ Installation
 Before you start, make sure you have ruby 2.0 installed:
 
   $ ruby -v
-  ruby 2.0.0p195    # <--- strange extra info is ok, 
+  ruby 2.0.0p195    # <--- strange extra info is ok,
   ruby 1.9.3        # <--- version number less than 2 is not ok
 
-To use learnery, you have to have a rails application. This application uses learnery as a rail engine. 
+To use learnery, you have to have a rails application. This application uses learnery as a rail engine.
 There's two ways to do that:
 
 1. Clone one of the example apps and work from there
@@ -102,13 +102,14 @@ run bundler:
 
     $ bundle
 
-generate the initial theme files (only pretend at first)
+generate the initial theme files
+
+    $ rails generate learnery:theme
+
+If you have own files in your rails app and want to see what the generator does, you can run it in test mode first ("pretend")
 
     $ rails generate  learnery:theme -p
 
-if you like what the generator does, run it for real, without the -p = pretend flag
-
-    $ rails generate learnery:theme
 
 then, install the migrations for the learnery engine and run them:
 
@@ -124,7 +125,7 @@ and the last end
 to use pretty, bootstrap-styled errer messages in forms add
 the following initializer:
 
-    # config/initializers/bootstrap_field_error.rb 
+    # config/initializers/bootstrap_field_error.rb
     # from http://stackoverflow.com/questions/7341545/rails-actionviewbase-field-error-proc-moving-up-the-dom-tree
     # fix display of errors in form to go well with bootstrap
     ActionView::Base.field_error_proc = Proc.new do |html_tag, object|
@@ -178,7 +179,7 @@ Here are the most important files to edit:
             └── theme
                 ├── _footer.html.erb
                 ├── _site_description.html.erb  <--- 2) add a short descriptive text about your events
-                ├── _site_links.html.erb        <--- 
+                ├── _site_links.html.erb        <---
                 └── _site_name.html.erb         <--- 1) add your sites name
 
 
