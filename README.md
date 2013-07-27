@@ -1,8 +1,4 @@
-This software is work in progress and has not been released yet!
-
-[![Build Status](https://travis-ci.org/learnery/learnery.png?branch=master)](https://travis-ci.org/learnery/learnery)
-
-[![Code Climate](https://codeclimate.com/github/learnery/learnery.png)](https://codeclimate.com/github/learnery/learnery)
+This software is work in progress and has not been released yet!  [![Build Status](https://travis-ci.org/learnery/learnery.png?branch=master)](https://travis-ci.org/learnery/learnery) [![Code Climate](https://codeclimate.com/github/learnery/learnery.png)](https://codeclimate.com/github/learnery/learnery)
 
 README
 ========
@@ -15,9 +11,9 @@ liking and deploy the app to heroku in a few simple steps.
 This README contains info on
 
 * [Installation](#installation)
-  * [Clone an example app](#clone-an-example-app)
-  * [Build your own app from scratch](#build-your-own-app-from-scratch)
-  * [Deploying To Heroku](#deploying-to-heroku)
+  * a) [Clone an example app](#clone-an-example-app)
+  * b) [Build your own app from scratch](#build-your-own-app-from-scratch)
+  * [Deploying To Heroku](#deploying-to-heroku)  for both a) and b)
 * [Adapting the look and feel of your app](#adapting-the-look-and-feel-of-your-app)
 * [Internationalization (I18n)](#internationalization-i18n)
 * [Configuring OAuth Authorizations](#configuring-oauth-authorizations)
@@ -29,49 +25,53 @@ This README contains info on
 Installation
 ======
 
-Before you start, make sure you have ruby 2.0 installed:
+Before you start, make sure you have rails 4.0.0 installed:
 
-  $ ruby -v
-  ruby 2.0.0p195    # <--- strange extra info is ok,
-  ruby 1.9.3        # <--- version number less than 2 is not ok
+    $ rails -v
+    Rails 4.0.0       # <--- higher numbers are also ok
+    Rails 3.2.13      # <--- first number smaller than 4 is not ok
 
 To use learnery, you have to have a rails application. This application uses learnery as a rail engine.
 There's two ways to do that:
 
-1. Clone one of the example apps and work from there
-2. Build your own app from scratch
+a) Clone one of the example apps and work from there
+b) Build your own app from scratch
 
-Clone an example app
+a) Clone an example app
 ---------------------
 
 Pick one of our four example app:
 
-![learnery in default app](http://learnery.github.io/images/screenshot-1.png)
 
 "Default"
 * [Repository](https://github.com/learnery/learnery-default)
 * [Demo](http://learnery-staging.herokuapp.com/)
+* Screenshot: 
+![learnery in default app](http://learnery.github.io/images/screenshot-1.png)
 
 
-![learnery in  webdev app](http://learnery.github.io/images/screenshot-2.png)
 
 "Webdev"
 * [Repository](https://github.com/learnery/learnery-webdev)
 * [Demo](http://learnery-staging-webdev.herokuapp.com/)
+* Screenshot:
+![learnery in  webdev app](http://learnery.github.io/images/screenshot-2.png)
 
 
-![learnery in coderdojo app](http://learnery.github.io/images/screenshot-3.png)
 
 "CoderDojo"
 * [Repository](https://github.com/learnery/learnery-coderdojo)
 * [Demo](http://learnery-staging-coderdojo.herokuapp.com/)
+* Screenshot:
+![learnery in coderdojo app](http://learnery.github.io/images/screenshot-3.png)
 
 
-![learnery in railsgirls app](http://learnery.github.io/images/screenshot-4.png)
 
 "RailsGirls"
 * [Repository](https://github.com/learnery/learnery-railsgirls)
 * [Demo](http://learnery-staging-railsgirls.herokuapp.com/)
+* RailsGirls
+![learnery in railsgirls app](http://learnery.github.io/images/screenshot-4.png)
 
 If you have a github account:
 
@@ -83,17 +83,15 @@ If you do not have a github account:
 * clone the example app directly
 
 
-Build your own app from scratch
+b) Build your own app from scratch
 ---------------------
 
 create a new app:
 
-    $ rails new <your-app-name>
-    $ cd <your-app-name>
+    $ rails new your-app-name
+    $ cd your-app-name
 
-and use learnery from within it:
-
-add the learnery gem to your Gemfile  (outside any "group")
+and use learnery from within it: add the learnery gem to your Gemfile  (outside any "group")
 
      # add this line to Gemfile within the rails application
      gem 'learnery', :git => 'git://github.com/learnery/learnery.git', branch: 'stable'
