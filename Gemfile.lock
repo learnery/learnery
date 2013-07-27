@@ -252,7 +252,5 @@ DEPENDENCIES
   launchy
   learnery!
   minitest-spec-rails
-  poltergeist
   rake
-  rmagick
   sqlite3
