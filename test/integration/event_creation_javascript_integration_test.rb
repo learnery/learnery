@@ -8,13 +8,6 @@ describe "Event Creation Javascript Integration Test", :js => true do
     login_user( user )
   end
 
-  it 'should find github poltergeist in google' do
-    visit 'http://www.google.com/'
-    fill_in "q", :with => "github poltergeist"
-    click_button "Google-Suche"
-    page.must_have_content 'jonleighton/poltergeist'
-  end
-
   it "event creation form adapts with event type" do
     visit learnery.new_event_path # "/events/new"
     page.must_have_content(:new)
