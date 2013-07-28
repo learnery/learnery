@@ -13,6 +13,9 @@ FactoryGirl.definition_file_paths = %w(test/factories)
 FactoryGirl.find_definitions
 
 Capybara.javascript_driver = :poltergeist
+#Capybara.register_driver :poltergeist do |app|
+#  Capybara::Poltergeist::Driver.new(app, { debug: true, js_errors: true })
+#end
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
