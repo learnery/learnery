@@ -1,4 +1,4 @@
-#encoding: utf-8 
+#encoding: utf-8
 # thou shall not be attached to data in test databases.
 # here's the rake task that fills the db with some initial data.
 # re-setup staging database:
@@ -48,13 +48,12 @@ namespace :learnery do
 
     desc "Create the default event"
     task :default_event => :environment do
-      Learnery::Event.create(name: "The Future",
+      Learnery::EventWithWaitlist.create(name: "The Future",
                    starts: 3.months.from_now,
                    ends: 3.months.from_now + 2.hours,
                    venue: "Berlin (where else)",
                    description: "we will invent it\r\n",
-                   max_attendees: 1,
-                   rsvp_type: "RsvpWithWaitlist" )
+                   max_attendees: 1 )
     end
 
     desc "Run all bootstrapping tasks"
