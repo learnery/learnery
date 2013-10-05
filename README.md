@@ -228,6 +228,7 @@ config/initializers/learnery.rb:
 
 If you want to use Twitter Authorization, you need to register 
 your app / instance of learnery with twitter at https://dev.twitter.com/apps/new
+Make sure to provide a callback URL in the settings section.
 
 To test locally, set the environment variables before running rails server (pick up your keys from http://dev.twitter.com !)
 
