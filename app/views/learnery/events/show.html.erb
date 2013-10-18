@@ -20,7 +20,9 @@
 
   </dl>
 
-  <%= render 'topics', model_class: model_class %>
+    <% if @event.topics_enabled? %>
+      <%= render 'topics', model_class: model_class %>
+    <% end %>
 
   <% if current_user_is_admin? %>
     <div class="form-actions">

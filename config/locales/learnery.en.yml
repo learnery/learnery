@@ -6,6 +6,8 @@ en:
   errors:
     messages:
       starts_must_be_before_ends: The event must end after it started
+      event_has_topics_disabled: Topics are disabled for this event
+      not_allowed_to_disable_topics_if_topics_present: Cannot disable topics because this event has topics
   navigation:
     events: Events
   past_events: Past Events
@@ -51,6 +53,7 @@ en:
   events:
     successfully_created: Event was successfully created
     successfully_updated: Event was successfully updated
+    topics_enabled: Topics are enabled for this event
     new:
       title: New Event
     edit:
@@ -114,6 +117,7 @@ en:
         description: description
         type: How to Rsvp
         max_attendees: Max attendees
+        topics_enabled: Topics enabled
       learnery/user:
         login: Login (Nickname or Email)
         email: E-Mail

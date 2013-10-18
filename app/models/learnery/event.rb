@@ -4,6 +4,13 @@ module Learnery
 
     validates :name, :starts, :type, :presence => true
     validate :validate_starts_before_it_ends
+    validate :validate_topics_enabled_if_topics_present
+
+    def validate_topics_enabled_if_topics_present
+      if topics.present?
+        errors.add(:topics_enabled, I18n.t(:not_allowed_to_disable_topics_if_topics_present, :scope => 'errors.messages')) unless topics_enabled?
+      end
+    end
 
     def validate_starts_before_it_ends
       if ends && starts
@@ -42,6 +49,10 @@ module Learnery
 
     def suggested_topics
       topics
+    end
+
+    def topics_enabled?
+      topics_enabled
     end
 
     def has_waitlist?

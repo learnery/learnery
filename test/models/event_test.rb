@@ -15,11 +15,12 @@ class EventTest < ActiveSupport::TestCase
 
     it "can be created with everything" do
       event_data = {
-          :name        => "next event",
-          :description => "mighty long text" * 10,
-          :starts      => Date.today + 10,
-          :ends        => Date.today + 11,
-          :venue       => "here",
+          :name           => "next event",
+          :description    => "mighty long text" * 10,
+          :starts         => Date.today + 10,
+          :ends           => Date.today + 11,
+          :venue          => "here",
+          :topics_enabled => false
       }
 
       event   = Learnery::OpenEvent.create( event_data )
@@ -31,6 +32,7 @@ class EventTest < ActiveSupport::TestCase
       event.starts.must_equal event_data[:starts]
       event.ends.must_equal event_data[:ends]
       event.venue.must_equal event_data[:venue]
+      event.topics_enabled.must_equal event_data[:topics_enabled]
     end
 
   end

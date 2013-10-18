@@ -6,13 +6,21 @@ FactoryGirl.define do
     description "Bla bla"
     venue "Berlin"
   end
+
+  factory :event_with_topics_disabled, class: Learnery::OpenEvent do
+    name "User Group"
+    starts 3.days.from_now
+    description "Bla bla"
+    venue "Berlin"
+    topics_enabled false
+  end
+
   factory :event_with_waitlist, class: Learnery::EventWithWaitlist do
     name "User Group"
     starts 3.days.from_now
     description "Bla bla"
     venue "Berlin"
   end
-
 
   factory :past_event, aliases: [:past_open_event],class: Learnery::OpenEvent do
     sequence(:name)    { |n| "User Group #{n}"}

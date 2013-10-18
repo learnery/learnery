@@ -7,6 +7,8 @@ de:
   errors:
     messages:
       starts_must_be_before_ends: Der Ende der Veranstaltung muss nach dem Beginn sein
+      event_has_topics_disabled: Für diese Veranstaltung werden keine Themen gesammelt
+      not_allowed_to_disable_topics_if_topics_present: Die Themensammlung kann nicht deaktiviert werden, solange Themen für diese Veranstaltung existieren.
   dummy: Mein Dummy
   navigation:
     events: Veranstaltungen
@@ -52,6 +54,7 @@ de:
   events:
     successfully_created: Veranstaltung wurde erfolgreich erstellt
     successfully_updated: Veranstaltung wurde erfolgreich aktualisiert
+    topics_enabled: Für diese Veranstaltung werden Themen gesammelt
     new:
       title: Neue Veranstaltung
     edit:
@@ -113,6 +116,7 @@ de:
         description: Beschreibung
         type: Art der Anmeldung
         max_attendees: Max TeilnehmerInnen
+        topics_enabled: Themen sammeln
       learnery/user:
         login: Login (Nickname oder Email)
         email: E-Mail
