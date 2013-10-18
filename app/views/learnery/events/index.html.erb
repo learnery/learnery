@@ -5,7 +5,7 @@
   <div class="hero-unit">
     <h1><%= t :nothing_planned %></h1>
     <p><%= t :not_right_now %></p>
-    <% if user_signed_in? %>
+    <% if user_signed_in? and current_user.admin? %>
       <p><%= link_to t(:new), new_event_path, class: 'btn btn-primary' %></p>
     <% end %>
   </div>
@@ -15,7 +15,7 @@
  <div class="hero-unit">
   <%= render "intro" %>
 </div>
-  <% if user_signed_in? %>
+  <% if user_signed_in? and current_user.admin? %>
     <%= link_to t('events.new.title'), new_event_path, :class => 'btn btn-primary' %>
   <% end %>
 

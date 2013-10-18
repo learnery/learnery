@@ -32,6 +32,32 @@ describe "Event Creation Integration Test" do
 
   end  # /context visitor
 
+  context "as a logged-in user" do
+    before do
+      #create an admin user first; otherwise the user is automatically an admin
+      create(:admin_user)
+      user = create(:user)
+      login_user( user )
+    end
+
+    it "do not see links to new event on homepage" do
+      past_event   = create( :event, :name => "event in the past",   :starts => Date.today - 10 )
+      visit learnery.root_path
+      page.wont_have_link(t :new)
+      page.wont_have_link(t :edit)
+      visit learnery.events_path(past: true) # "/events?past=true"
+      page.wont_have_link(t :edit)
+    end
+
+    it "do not see links to edit an event" do
+      future_event = create( :event, :name => "event in the future", :starts => Date.today + 30 )
+      visit learnery.event_path( future_event )
+      page.wont_have_link(t :edit)
+      page.wont_have_link(t :delete)
+    end
+
+  end  # /context logged-in user
+
   context "as an admin" do
 
     before do

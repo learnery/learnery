@@ -15,7 +15,7 @@
   <dd><%= event.venue %></dd>
   </dl>
 
-  <% if user_signed_in? %>
+  <% if user_signed_in? and current_user.admin? %>
     <p>
        <%= link_to t('.edit', :default => t("helpers.links.edit")),
           edit_event_path(event), :class => 'btn btn-mini' %>
